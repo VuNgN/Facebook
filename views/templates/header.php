@@ -19,7 +19,7 @@
 <!--CSS FOR SIDEBAR-->
     <link rel="stylesheet" href="assets/css/templates/sidebar.css">
 <!--CSS FOR NEWSFEED-->
-    <link rel="stylesheet" href="assets/css/templates/newsfeed2.css">
+    <link rel="stylesheet" href="assets/css/newsfeed/newsfeed2.css">
 <!--CSS FOR SEARCH-->
     <link rel="stylesheet" href="assets/css/templates/search.css">
 <!--CSS FOR USERPROFILE-->
