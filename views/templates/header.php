@@ -19,13 +19,13 @@
 <!--CSS FOR SIDEBAR-->
     <link rel="stylesheet" href="assets/css/templates/sidebar.css">
 <!--CSS FOR NEWSFEED-->
-    <link rel="stylesheet" href="assets/css/templates/newsfeed2.css">
+    <link rel="stylesheet" href="assets/css/newsfeed/newsfeed2.css">
 <!--CSS FOR SEARCH-->
     <link rel="stylesheet" href="assets/css/templates/search.css">
 <!--CSS FOR USERPROFILE-->
     <link rel="stylesheet" href="assets/css/profile/userProfile.css">
 <!--FaceBook LOGO-->
-    <link rel="icon" href="./assets/images/Facebook_logo/Facebook_logo.ico" type="image/x-icon"/>
+    <link rel="icon" href="assets/images/Facebook_logo/Facebook_logo.ico" type="image/x-icon"/>
     <title>Facebook</title>
 </head>
 <body>
@@ -172,7 +172,6 @@
                             $time = floor($notify['HH']) .' giờ trước';
                         }
                     ?>
-<<<<<<< HEAD
                         <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
                             <div class="user-ava">
                                 <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
@@ -187,7 +186,7 @@
                     <?php
                         }
                     ?>
-=======
+
                     <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
                         <div class="user-ava">
                             <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
@@ -200,10 +199,8 @@
                         </div>
                     </a>
         <?php
-            }
+            
         ?>
-
->>>>>>> fa09227f5ca9281be10caaa9dc65064b2fb0595c
                 </div>
             </div>
             <div class="nav-item">
