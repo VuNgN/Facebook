@@ -109,14 +109,20 @@
           </div>
           <div class="navbar-nav ms-auto mb-2 mb-lg-0 navbar-right">
             <div class="nav-item">
+            <?php
+                foreach ($row_user_ava as $user_ava){
+            ?>
                 <a id="user" class="text-decoration-none link-dark" href="user_profile.php">
                     <div id="user-ava">
-                        <img src="<?php echo $row_user_ava['UserAva'] ?>" alt="">
+                        <img src="<?php echo $user_ava['UserAva'] ?>" alt="">
                     </div>
                     <div id="user-name">
-                        <b><?php echo $row_user_ava['UserName'];?></b>
+                        <b><?php echo $user_ava['UserName'];?></b>
                     </div>
                 </a>
+            <?php
+                }
+            ?>
             </div>
             <div class="nav-item">
                     <button class="menu button" title="Menu">
@@ -141,7 +147,7 @@
                     <div class="notify">
                     <?php
                     foreach($row_friend_notify as $notify){
-                        ?>
+                    ?>
                         <a class="notify-item link-dark" href="user_profile_friend.php?UserIDFriend=<?php echo $notify['UserID'];?>">
                             <div class="user-ava">
                                 <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
@@ -166,6 +172,7 @@
                             $time = floor($notify['HH']) .' giờ trước';
                         }
                     ?>
+<<<<<<< HEAD
                         <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
                             <div class="user-ava">
                                 <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
@@ -180,6 +187,23 @@
                     <?php
                         }
                     ?>
+=======
+                    <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
+                        <div class="user-ava">
+                            <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
+                        </div>
+                        <div class="notify-content">
+                            <p>
+                                <b><?php echo ($notify['UserName']); ?></b> Đã đăng một bài viết mới: <?php echo ($notify['PostCaption']);?>
+                            </p>
+                            <b style="color:#1877F2"><?php echo $time?></b>
+                        </div>
+                    </a>
+        <?php
+            }
+        ?>
+
+>>>>>>> fa09227f5ca9281be10caaa9dc65064b2fb0595c
                 </div>
             </div>
             <div class="nav-item">
