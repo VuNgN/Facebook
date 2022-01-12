@@ -13,19 +13,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
 <!--CSS MDB-->
-    <link rel="stylesheet" href="../../assets/css/mdb/mdb.min.css" />
+    <link rel="stylesheet" href="assets/css/mdb/mdb.min.css" />
 <!--CSS FOR HEADER-->
-    <link rel="stylesheet" href="../../assets/css/templates/header.css">
+    <link rel="stylesheet" href="assets/css/templates/header.css">
 <!--CSS FOR SIDEBAR-->
-    <link rel="stylesheet" href="../../assets/css/templates/sidebar.css">
+    <link rel="stylesheet" href="assets/css/templates/sidebar.css">
 <!--CSS FOR NEWSFEED-->
-    <link rel="stylesheet" href="../../assets/css/templates/newsfeed2.css">
+    <link rel="stylesheet" href="assets/css/templates/newsfeed2.css">
 <!--CSS FOR SEARCH-->
-    <link rel="stylesheet" href="../../assets/css/templates/search.css">
+    <link rel="stylesheet" href="assets/css/templates/search.css">
 <!--CSS FOR USERPROFILE-->
-    <link rel="stylesheet" href="../../assets/css/profile/userProfile.css">
+    <link rel="stylesheet" href="assets/css/profile/userProfile.css">
 <!--FaceBook LOGO-->
-    <link rel="icon" href="../../assets/images/Facebook_logo/Facebook_logo.ico" type="image/x-icon"/>
+    <link rel="icon" href="./assets/images/Facebook_logo/Facebook_logo.ico" type="image/x-icon"/>
     <title>Facebook</title>
 </head>
 <body>
@@ -111,7 +111,7 @@
             <div class="nav-item">
                 <a id="user" class="text-decoration-none link-dark" href="user_profile.php">
                     <div id="user-ava">
-                        <img src="<?php echo defaultImage($row_user_ava['UserAva']) ?>" alt="">
+                        <img src="<?php echo $row_user_ava['UserAva'] ?>" alt="">
                     </div>
                     <div id="user-name">
                         <b><?php echo $row_user_ava['UserName'];?></b>
@@ -141,41 +141,53 @@
                     </button>
                     <div class="notify">
                     <?php
-            while($row_friend_notify){
-?>
-                        <a class="notify-item link-dark" href="user_profile_friend.php?UserIDFriend=<?php echo $row_friend_notify['UserID'];?>">
+                    foreach($row_friend_notify as $notify){
+                        ?>
+                        <a class="notify-item link-dark" href="user_profile_friend.php?UserIDFriend=<?php echo $notify['UserID'];?>">
                             <div class="user-ava">
-                                <img class="user-img" src="<?php echo ($row_friend_notify['UserAva']); ?>" alt="">
+                                <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
                             </div>
                             <div class="notify-content">
                                 <p>
-                                    <b><?php echo ($row_friend_notify['UserName']); ?></b> Đã gửi cho bạn một lời mời kết bạn
+                                    <b><?php echo ($notify['UserName']); ?></b> Đã gửi cho bạn một lời mời kết bạn
                                 </p>
                             </div>
                         </a>
-
-<?php
+                    <?php   
+            // while($row_friend_notify){
+            // ?>
+                <!-- <a class="notify-item link-dark" href="user_profile_friend.php?UserIDFriend=<?php echo $row_friend_notify['UserID'];?>">
+                    <div class="user-ava">
+                        <img class="user-img" src="<?php echo ($row_friend_notify['UserAva']); ?>" alt="">
+                    </div>
+                    <div class="notify-content">
+                        <p>
+                            <b><?php echo ($row_friend_notify['UserName']); ?></b> Đã gửi cho bạn một lời mời kết bạn
+                        </p>
+                    </div>
+                </a> -->
+            <?php           
             }
-            while ($row_notify){
+            foreach($row_notify as $notify){
                 $time = 'vừa xong';
-                if($row_notify['HH']==0){
-                    $time = $row_notify['MM'].' phút trước';
+                if($notify['HH']==0){
+                    $time = $notify['MM'].' phút trước';
                 }
-                else if($row_notify['HH']>=24){
-                    $time = floor($row_notify['HH']/24) .' ngày trước';
+                else if($notify['HH']>=24){
+                    $time = floor($notify['HH']/24) .' ngày trước';
                 }
-                else if($row_notify['HH']<24){
-                    $time = floor($row_notify['HH']) .' giờ trước';
+                else if($notify['HH']<24){
+                    $time = floor($notify['HH']) .' giờ trước';
                 }
                 
         ?>
-                        <a class="notify-item link-dark" href="post.php?PostID=<?php echo $row_notify['PostID'];?>">
+                        <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
                             <div class="user-ava">
-                                <img class="user-img" src="<?php echo ($row_notify['UserAva']); ?>" alt="">
+                                <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
                             </div>
                             <div class="notify-content">
                                 <p>
-                                    <b><?php echo ($row_notify['UserName']); ?></b> Đã đăng một bài viết mới: <?php echo ($row_notify['PostCaption']);?>
+                                    <b><?php echo ($notify['UserName']); ?></b> Đã đăng một bài viết mới: <?php echo ($notify['PostCaption']);?>
                                 </p>
                                 <b style="color:#1877F2"><?php echo $time?></b>
                             </div>
