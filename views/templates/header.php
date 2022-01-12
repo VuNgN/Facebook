@@ -130,7 +130,6 @@
                         <i class="fab fa-facebook-messenger messages-icon"></i>
                     </button>
                     <div class="messages-box">
-
                     </div>
             </div>
             <div class="nav-item">
@@ -153,7 +152,7 @@
                                 </p>
                             </div>
                         </a>
-                    <?php           
+                    <?php
                     }
                     foreach($row_notify as $notify){
                         $time = 'vừa xong';
@@ -166,7 +165,6 @@
                         else if($notify['HH']<24){
                             $time = floor($notify['HH']) .' giờ trước';
                         }
-                
                     ?>
                         <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
                             <div class="user-ava">
@@ -179,26 +177,25 @@
                                 <b style="color:#1877F2"><?php echo $time?></b>
                             </div>
                         </a>
-        <?php
-            }
-?>
-
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
             <div class="nav-item">
-                    <button class="account button" title="Account">
-                        <span class="material-icons-round account-icon">
-                            arrow_drop_down
+                <button class="account button" title="Account">
+                    <span class="material-icons-round account-icon">
+                        arrow_drop_down
+                    </span>
+                </button>
+                <div class="log-out">
+                    <a class="item-logout link-dark" href="login.php">
+                        <span class="material-icons-outlined">
+                            logout
                         </span>
-                    </button>
-                    <div class="log-out">
-                        <a class="item-logout link-dark" href="login.php">
-                            <span class="material-icons-outlined">
-                                logout
-                            </span>
-                            <b>Log-out</b>
-                        </a>
-                    </div>
+                        <b>Log-out</b>
+                    </a>
+                </div>
             </div>
           </div>
         </div>
