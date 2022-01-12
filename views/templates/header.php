@@ -112,7 +112,7 @@
             <?php
                 foreach ($row_user_ava as $user_ava){
             ?>
-                <a id="user" class="text-decoration-none link-dark" href="user_profile.php">
+                <a id="user" class="text-decoration-none link-dark" href="index.php?controller=profile&action=index">
                     <div id="user-ava">
                         <img src="<?php echo $user_ava['UserAva'] ?>" alt="">
                     </div>
