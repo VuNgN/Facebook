@@ -174,22 +174,6 @@
                         }
                 
                     ?>
-<<<<<<< HEAD
-                        <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
-                            <div class="user-ava">
-                                <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
-                            </div>
-                            <div class="notify-content">
-                                <p>
-                                    <b><?php echo ($notify['UserName']); ?></b> Đã đăng một bài viết mới: <?php echo ($notify['PostCaption']);?>
-                                </p>
-                                <b style="color:#1877F2"><?php echo $time?></b>
-                            </div>
-                        </a>
-                    <?php
-                        }
-                    ?>
-=======
                     <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
                         <div class="user-ava">
                             <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
@@ -204,7 +188,6 @@
         <?php
             }
         ?>
->>>>>>> fa09227f5ca9281be10caaa9dc65064b2fb0595c
 
                 </div>
             </div>
