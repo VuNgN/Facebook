@@ -1,7 +1,6 @@
 <?php
 session_start();
 $controller = isset($_GET['controller']) ? $_GET['controller'] : 'newsfeed';
-echo $_SESSION['isLoginOk'];
 if(!isset($_SESSION['isLoginOk'])) {
     $controller='login';
 }

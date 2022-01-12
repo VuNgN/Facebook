@@ -553,7 +553,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="src/signup/process-signup.php" method="post">
+            <form action="" method="post">
               <div class="mb-3">
                 <div class="firstRow d-flex align-items-center justify-content-center">
                   <input name="firstnameSignUp" type="text" class="form-control me-2 p-2 form-control-input" id="recipient-first-name" placeholder="First name" required autofocus>
