@@ -1,0 +1,190 @@
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.text-color-gray {
+  color: #a7a9ac;
+}
+
+.text-decoration-none.text-color-gray:hover {
+  color: #a7a9ac;
+}
+
+#body {
+  background: #f0f2f5;
+}
+
+#body-row {
+  padding-bottom: 190px;
+  padding-top: 130px;
+}
+
+#img-wrapper {
+  margin-top: 50px;
+}
+
+#logo-img {
+  width: 300px;
+}
+
+#header-title {
+  font-size: 28px;
+  font-family: "SF Pro Display Regular";
+  margin-left: 30px;
+}
+
+#body-top-right {
+  width: 390px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  background: #ffffff;
+}
+
+.login-form-input {
+  height: 52px;
+  padding: 14px;
+  font-size: 17px;
+}
+
+#login-form-input-password {
+  margin-top: 15px;
+}
+
+#login-btn {
+  margin-top: 15px;
+  width: 100%;
+  font-family: "SF Pro Display Bold";
+}
+
+#forgotten-pwd-link-wrapper {
+  border-bottom: 1px solid #dadde1;
+  padding-bottom: 20px;
+  padding-top: 17px;
+}
+
+#forgotten-pwd-link {
+  font-size: 14px;
+}
+
+#create-acc-btn-wrapper {
+  width: 100%;
+  margin-top: 25px;
+}
+
+#create-acc-btn {
+  width: 200px;
+  background: #36a420;
+  font-size: 17px;
+  font-family: "SF Pro Display Bold";
+}
+
+#footer-wrapper {
+  padding-right: 60px;
+  padding-left: 60px;
+}
+
+#footer-top {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dddfe2;
+}
+
+#footer-top-list {
+  font-size: 12px;
+  font-family: "SF Pro Display Medium";
+  margin-bottom: 0;
+}
+
+#footer-top-btn {
+  width: 30px;
+  height: 20px;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  background: #f5f6f7;
+  border: 1px solid #ccd0d5;
+  border-bottom-color: #ccd0d5;
+  margin-left: 10px;
+  text-align: center;
+  font-family: "SF Pro Display Regular";
+}
+
+#footer-bottom-list {
+  font-size: 14px;
+  font-family: "SF Pro Display Medium";
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+#footer-license-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#footer-license {
+  color: #737373;
+  font-size: 11px;
+}
+
+.signup-modal {
+  margin-top: 100px;
+}
+
+.modal-title-custom {
+  font-family: "SF Pro Display Bold";
+}
+
+.modal-title-description {
+  font-family: "SF Pro Display Regular";
+  font-size: 15px;
+  color: #606770;
+  margin: 0;
+}
+
+.form-control-input {
+  font-size: 15px;
+  font-family: "SF Pro Display Regular";
+}
+
+.form-description {
+  color: #606770;
+  font-family: "SF Pro Display Medium", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.gender-checkbox {
+  flex: 1;
+}
+
+#success-btn {
+  font-family: "SF Pro Display Bold", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: #fff;
+  background-color: rgb(0, 164, 0);
+}
+
+#success-btn:hover {
+  background: linear-gradient(#79bc64, #578843);
+}
+
+@media screen and (max-width: 995px) {
+  #body-row {
+    padding-top: 0px;
+    padding-bottom: 100px;
+  }
+  #img-wrapper {
+    margin-top: 0;
+  }
+  #body-left-bottom {
+    max-width: 410px;
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  #body-left-bottom > h1 {
+    font-size: 24px;
+  }
+  #footer-wrapper {
+    padding: 0;
+  }
+}

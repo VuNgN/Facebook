@@ -1,0 +1,321 @@
+.container-fluid{
+    padding: 0px;}
+.icon{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fb-navbar{
+    padding: 0px !important;
+    height: 55px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255) !important;
+    box-shadow: 0px 3px rgba(187, 179, 179, 0.2);
+}
+.inner-fb-navbar{
+    height: 55px;
+}
+:root{
+    --margin-right: 0px;
+}
+/*CSS for navbar-left*/
+.navbar-left{
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+}
+.fb_logo{
+    margin: 10px 0px;
+    width: 40px !important;
+    height: 40px !important;
+    border: 0px !important;
+    background-image: linear-gradient(0, #273cfa, #13cae2);
+    margin-left: 15px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+.fb-icon{
+    font-size: 32px;
+    margin-bottom: 0px;
+    color: rgba(255, 255, 255,1);
+}
+.search-button{
+    margin: 10px 0px !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    border-radius: 50%;
+    border: 0px solid white;
+    background-color: rgb(233, 233, 233);
+}
+.navbar-left .button{
+    margin: 10px 0px;
+    margin-left: 15px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 0px solid white;
+    background-color: rgb(233, 233, 233);
+    cursor: pointer;
+}
+.sidebar-menu-icon{
+    font-size: 30px;
+}
+.search-icon{
+    font-size: 28px;
+}
+.search-input{
+    margin: 10px 0px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+/*CSS for navbar-center*/
+.navbar-center-list .icon{
+    /*color: #1877F2;
+    border-bottom: 3.5px solid #1877F2; */
+    color: black;
+    width: 80px;
+    height: 45px;
+    border-radius: 5px;
+}
+.navbar-center-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.navbar-center .underline{
+    width: 100%;
+    height: 4px;
+    background-color: #ffffff;
+}
+.home-icon{
+    color: #1877F2;
+}
+.iconn{
+    color: rgb(97, 97, 97);
+}
+.navbar-center-list{
+    margin-right: 0px !important;
+    margin: 0px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+}
+.navbar-center{
+    justify-content: center;
+    align-items: center;
+}
+.home-icon,
+.watch-icon,
+.marketplace-icon,
+.groups-icon,
+.games-icon{
+    font-size: 33px;
+}
+.navbar-center-list .icon:hover{
+    background-color: rgb(240, 238, 238);
+}
+/*CSS for navbar-right*/
+.navbar-right{
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    margin: 0px !important;
+}
+.navbar-right .button{
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+    margin-right: var(--margin-right);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 0px solid white;
+    background-color: rgb(233, 233, 233);
+    cursor: pointer;
+}
+.account{
+    margin-right: 15px !important;
+}
+.navbar-right .menu{
+    margin-left: 0px;
+}
+.navbar-right .button:hover{
+    background-color: rgb(212, 208, 208);
+}
+.navbar-right .button:active{
+    background-color: rgb(185, 184, 184);
+}
+.menu-icon{
+    font-size: 29px;
+}
+.notifications-icon{
+    font-size: 23px;
+}
+.account-icon{
+    font-size: 40px;
+}
+.messages-icon{
+    font-size: 20px;
+}
+#user{
+    margin: 10px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#user:hover{
+    background-color: rgb(241, 241, 241);
+}
+#user-ava{
+    margin : 5px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 0px solid white;
+    background-color: rgb(233, 233, 233);
+}
+#user-ava img{
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+#user-name{
+    margin-right: 10px;
+    justify-items: center;
+    align-items: center;
+}
+#user-name b{
+    margin: 0px !important;
+}
+.log-out{
+    padding: 1px;
+    background-color: white;
+    display: none;
+    padding: 5px;
+    position: absolute;
+    top: 55px;
+    right: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgb(168, 166, 166);
+}
+.item-logout{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 5px;
+}
+.item-logout:hover{
+    background-color: rgb(240, 238, 238);
+}
+.item-logout:active{
+    background-color: rgb(185, 184, 184);
+}
+/*RESPONSIVE*/
+@media screen and (max-width:1259px) {
+    .search-input{
+        display: none;
+    }
+    .fb-navbar{
+        align-items: center;
+        justify-content: center;
+    }
+    #user{
+        display: none;
+    }
+}
+@media screen and (max-width:951px){
+    .navbar-center{
+        display: none;
+    }
+}
+@media screen and  (min-width:1100px){
+    .navbar-left .sidebar-menu{
+        display: none;
+    }
+}
+
+/*CSS FOR NOTIFICATION*/
+.notify{
+    width: 350px;
+    height: auto;
+    max-height: 600px;
+    padding: 1px;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    padding: 5px;
+    position: absolute;
+    top: 55px;
+    right: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgb(168, 166, 166);
+    overflow-y: scroll;
+}
+.notify-item{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 10px;
+    width: 100%;
+    height: 75px;
+}
+
+.notify-item:hover{
+    background-color: rgb(240, 238, 238);
+}
+.notify-item:active{
+    background-color: rgb(185, 184, 184);
+}
+.notify-content p{
+    margin: 0px;
+    height: 45px;
+    overflow: hidden;
+}
+.notify-content{
+    font-size: 14px;
+    padding-left: 12px;
+    border: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.notify::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background: #bdc2c9; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #90959c;
+}
