@@ -28,6 +28,21 @@ for (var j = 0; j < coll2.length; j++) {
   });
 }
 
+var coll3 = document.getElementsByClassName("btn-comment");
+var coll4 = document.getElementsByClassName("comments");
+
+for (var j = 0; j < coll3.length; j++) {
+  coll3[j].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var contentOption = coll4[j];
+    if (contentOption.style.display === "none") {
+      contentOption.style.display = "block";
+    }
+    else {
+      contentOption.style.display = "none";
+    }
+  });
+}
 //AJAX FOR COMMENT
 /* $(document).ready(function(){
   $('#comment-form').on('submit',function(event){

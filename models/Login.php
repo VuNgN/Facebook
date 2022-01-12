@@ -34,7 +34,7 @@
                 $sql2 = "insert into user_profile (UserEmail, UserPass, UserGender, UserFirstName, UserLastName, UserBirth, VerifyLink) values ('$UserMail', '$pass_hash', {$UserGender}, '$UserFirstName', '$UserLastName', '$UserBirth', '$token')";
                 $result2 = mysqli_query($conn, $sql2);
                 if($result2) {
-                    $link = "localhost/facebook_mvc/index.php?controller=login&action=verify&key=".$UserMail."&token=".$token."";
+                    $link = "localhost/facebook/index.php?controller=login&action=verify&key=".$UserMail."&token=".$token."";
                     $isSendMail = $this->sendMail($UserMail, $link);
                     return $isSendMail;
                 } else {

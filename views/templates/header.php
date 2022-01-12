@@ -25,7 +25,7 @@
 <!--CSS FOR USERPROFILE-->
     <link rel="stylesheet" href="assets/css/profile/userProfile.css">
 <!--FaceBook LOGO-->
-    <link rel="icon" href="./assets/images/Facebook_logo/Facebook_logo.ico" type="image/x-icon"/>
+    <link rel="icon" href="assets/images/Facebook_logo/Facebook_logo.ico" type="image/x-icon"/>
     <title>Facebook</title>
 </head>
 <body>
@@ -136,7 +136,6 @@
                         <i class="fab fa-facebook-messenger messages-icon"></i>
                     </button>
                     <div class="messages-box">
-
                     </div>
             </div>
             <div class="nav-item">
@@ -159,7 +158,7 @@
                                 </p>
                             </div>
                         </a>
-                    <?php           
+                    <?php
                     }
                     foreach($row_notify as $notify){
                         $time = 'vừa xong';
@@ -172,8 +171,22 @@
                         else if($notify['HH']<24){
                             $time = floor($notify['HH']) .' giờ trước';
                         }
-                
                     ?>
+                        <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
+                            <div class="user-ava">
+                                <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
+                            </div>
+                            <div class="notify-content">
+                                <p>
+                                    <b><?php echo ($notify['UserName']); ?></b> Đã đăng một bài viết mới: <?php echo ($notify['PostCaption']);?>
+                                </p>
+                                <b style="color:#1877F2"><?php echo $time?></b>
+                            </div>
+                        </a>
+                    <?php
+                        }
+                    ?>
+
                     <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
                         <div class="user-ava">
                             <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
@@ -186,25 +199,24 @@
                         </div>
                     </a>
         <?php
-            }
+            
         ?>
-
                 </div>
             </div>
             <div class="nav-item">
-                    <button class="account button" title="Account">
-                        <span class="material-icons-round account-icon">
-                            arrow_drop_down
+                <button class="account button" title="Account">
+                    <span class="material-icons-round account-icon">
+                        arrow_drop_down
+                    </span>
+                </button>
+                <div class="log-out">
+                    <a class="item-logout link-dark" href="login.php">
+                        <span class="material-icons-outlined">
+                            logout
                         </span>
-                    </button>
-                    <div class="log-out">
-                        <a class="item-logout link-dark" href="login.php">
-                            <span class="material-icons-outlined">
-                                logout
-                            </span>
-                            <b>Log-out</b>
-                        </a>
-                    </div>
+                        <b>Log-out</b>
+                    </a>
+                </div>
             </div>
           </div>
         </div>
