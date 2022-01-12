@@ -16,7 +16,9 @@
                     header("location: index.php?error=$error");
                 }
             }
-            require_once "views/login/login.php";
+            else {
+                require_once "views/login/login.php";
+            }
         }
     }
 ?>

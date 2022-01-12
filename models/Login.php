@@ -10,7 +10,7 @@
                 mysqli_stmt_bind_result($stmt, $UserId, $UserEmail, $UserPass, $UserGender, $UserFirstName, $UserLastName, $UserBirth, $UserAddress, $UserAva, $Reported, $Description, $VerifyLink, $Active, $VerifyDate, $LockTime);
                 if (mysqli_stmt_fetch($stmt)){
                     $this->closeDb($conn);
-
+                    
                     return (password_verify($pass, $UserPass) && $Active === 1) ? $UserId : false;                 
                 } else {
                     echo 'Du lieu khong khop';
