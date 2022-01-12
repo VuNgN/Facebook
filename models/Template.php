@@ -16,7 +16,7 @@
             $result_user_ava = mysqli_query($connection, $sql_user_ava);
             $names = [];
             if(mysqli_num_rows($result_user_ava) > 0){
-                $names = mysqli_fetch_assoc($result_user_ava); 
+                $names = mysqli_fetch_all($result_user_ava, MYSQLI_ASSOC); 
             }
             $this->closeDb($connection);
             return $names;
@@ -30,7 +30,7 @@
             $result_friend_notify = mysqli_query($connection, $sql_friend_notify);
             $friends = [];
             if(mysqli_num_rows($result_friend_notify) > 0){
-                    $friends = mysqli_fetch_assoc($result_friend_notify); 
+                    $friends = mysqli_fetch_all($result_friend_notify, MYSQLI_ASSOC); 
                 }
             $this->closeDb($connection);
             return $friends;
@@ -49,7 +49,7 @@
             $result_notify = mysqli_query($connection, $sql_notify);
             $notify = [];
             if (mysqli_num_rows($result_notify) > 0) {
-                    $notify = mysqli_fetch_assoc($result_notify); 
+                    $notify = mysqli_fetch_all($result_notify, MYSQLI_ASSOC); 
                 }
             $this->closeDb($connection);
             return $notify;

@@ -4,9 +4,11 @@
         public function index() {
             $UserID = $_SESSION['isLoginOk'];
             $Newsfeed = new Newsfeed($UserID);
-            $row_user_ava = $Newsfeed->getName();
+            $row_user_ava = $Newsfeed->getName(); 
             $posts = $Newsfeed->getPost();
-            $postId = $posts['PostID'];
+            foreach($posts as $post){
+                $postId = $post['PostID'];
+            }
             $postImgs = $Newsfeed->getImgPost($postId);
             $row_count_comment = $Newsfeed->countComment($postId);
             $comments = $Newsfeed->getComment($postId);
