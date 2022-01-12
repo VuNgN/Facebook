@@ -153,34 +153,21 @@
                                 </p>
                             </div>
                         </a>
-                    <?php   
-            // while($row_friend_notify){
-            // ?>
-                <!-- <a class="notify-item link-dark" href="user_profile_friend.php?UserIDFriend=<?php echo $row_friend_notify['UserID'];?>">
-                    <div class="user-ava">
-                        <img class="user-img" src="<?php echo ($row_friend_notify['UserAva']); ?>" alt="">
-                    </div>
-                    <div class="notify-content">
-                        <p>
-                            <b><?php echo ($row_friend_notify['UserName']); ?></b> Đã gửi cho bạn một lời mời kết bạn
-                        </p>
-                    </div>
-                </a> -->
-            <?php           
-            }
-            foreach($row_notify as $notify){
-                $time = 'vừa xong';
-                if($notify['HH']==0){
-                    $time = $notify['MM'].' phút trước';
-                }
-                else if($notify['HH']>=24){
-                    $time = floor($notify['HH']/24) .' ngày trước';
-                }
-                else if($notify['HH']<24){
-                    $time = floor($notify['HH']) .' giờ trước';
-                }
+                    <?php           
+                    }
+                    foreach($row_notify as $notify){
+                        $time = 'vừa xong';
+                        if($notify['HH']==0){
+                            $time = $notify['MM'].' phút trước';
+                        }
+                        else if($notify['HH']>=24){
+                            $time = floor($notify['HH']/24) .' ngày trước';
+                        }
+                        else if($notify['HH']<24){
+                            $time = floor($notify['HH']) .' giờ trước';
+                        }
                 
-        ?>
+                    ?>
                         <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
                             <div class="user-ava">
                                 <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">

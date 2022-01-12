@@ -1,12 +1,9 @@
-<?php
-include "template/header.php";
-?>
 <!--MAIN-->
 <main>
     <!--LEFT-SIDE-BAR-->
     <div id="left-side-bar" style="margin-top:10px">
         <?php
-        include "template/sidebar.php"
+        include "views/templates/sidebar.php";
         ?>
     </div>
     <!--MAIN-NEW-FEED-->
@@ -15,21 +12,9 @@ include "template/header.php";
         <div class="card mb-4 thinking-post">
             <div class="card-body">
                 <div class="d-flex">
-                    <?php
-                    include "src/connectDB.php";
-                    $sql_thinking_ava = "SELECT CONCAT(UserFirstName, ' ', UserLastName) as UserName, UserAva FROM user_profile WHERE UserID = $UserID";
-                    $result_thinking_ava = mysqli_query($conn, $sql_thinking_ava);
-                    if (mysqli_num_rows($result_thinking_ava) > 0) {
-                        $row_thinking_ava = mysqli_fetch_assoc($result_thinking_ava)
-                    ?>
-                        <a id="thinking-user" href="user_profile.php">
-                            <img src="<?php echo ($row_thinking_ava['UserAva']) ?>" alt="" class="rounded-circle border" />
-                        </a>
-                    <?php
-                    }
-                    //ĐÓNG KẾT NỐI
-                    mysqli_close($conn);
-                    ?>
+                    <a id="thinking-user" href="user_profile.php">
+                        <img src="<?php echo ($row_user_ava['UserAva']) ?>" alt="" class="rounded-circle border" />
+                    </a>
                     <button class="btn btn-light btn-block btn-rounded bg-light" data-mdb-toggle="modal" data-mdb-target="#buttonModalUserPost">
                         Bạn đang nghĩ gì?
                     </button>
@@ -44,20 +29,7 @@ include "template/header.php";
         </div>
         <!--News-->
         <?php
-        //KẾT NỐI SQL
-        include "src/connectDB.php";
-        //TRUY VẤN POST, POST_USER
-        $sql = "SELECT PostID, Bang.UserID, UserName, PostCaption, PostTime, UserAva
-                from user_profile,
-                    (SELECT *
-                    FROM friend_ship INNER JOIN view_post
-                    on UserID = User1ID or UserID = User2ID
-                    WHERE (User1ID = $UserID or User2ID = $UserID) AND Active = 1) as Bang
-                WHERE Bang.UserID != $UserID AND Bang.UserID = user_profile.UserID
-                ORDER BY PostTime DESC";                   //Người đăng nhập-->
-        $result_news = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result_news) > 0) {
-            while ($row_news = mysqli_fetch_assoc($result_news)) {
+            foreach ($posts as $row_news) {
         ?>
                 <div class="news">
                     <div class="row">
@@ -104,16 +76,11 @@ include "template/header.php";
                             </div>
                             <div class="content-images">
                                 <?php
-                                $sql_img_content = "SELECT * FROM images INNER JOIN post ON post.PostID = images.PostID WHERE post.PostID=" . $row_news['PostID'];
-                                $result_img_content = mysqli_query($conn, $sql_img_content);
-                                if (mysqli_num_rows($result_img_content) > 0) {
-                                    while ($row_img_content = mysqli_fetch_assoc($result_img_content)) {
-
+                                    foreach($postImgs as $row_img_content) {
                                 ?>
                                         <img src="<?php echo $row_img_content['images']; ?>" alt="" onclick="clickImg('<?php echo $row_img_content['images']; ?>')">
                                 <?php
                                     }
-                                }
                                 ?>
                             </div>
                         </div>
@@ -124,12 +91,7 @@ include "template/header.php";
                                         emoji_emotions
                                     </span>
                                 </div>
-                                <?php
-                                //ĐẾM LƯỢT BÌNH LUÂN
-                                $sql_count_comment = "SELECT count(CommentID) FROM comment where PostID=" . $row_news['PostID'];
-                                $result_count_comment = mysqli_query($conn, $sql_count_comment);
-                                $row_count_comment = mysqli_fetch_assoc($result_count_comment);
-                                ?>
+                                <!-- //ĐẾM LƯỢT BÌNH LUÂN -->
                                 <div class="comment-index">
                                     <div class="comment-index-item" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                                         <?php echo $row_count_comment['count(CommentID)']; ?> bình luận
@@ -175,18 +137,9 @@ include "template/header.php";
                             <form id="comment-form" action="src/process_add_comment.php" method="post" autocomplete="off">
                                 <div class="col-md-12 comment-input-form">
                                     <a class="icon" href="user_profile.php">
-                                        <?php
-                                        $sql_comment_ava = "SELECT CONCAT(UserFirstName, ' ', UserLastName) as UserName, UserAva FROM user_profile WHERE UserID = $UserID";
-                                        $result_comment_ava = mysqli_query($conn, $sql_comment_ava);
-                                        if (mysqli_num_rows($result_comment_ava) > 0) {
-                                            $row_comment_ava = mysqli_fetch_assoc($result_comment_ava)
-                                        ?>
-                                            <img class="user-img" src="<?php echo ($row_comment_ava['UserAva']); ?>" alt="">
-                                        <?php
-                                        }
-                                        ?>
+                                        <img class="user-img" src="<?php echo ($row_user_ava['UserAva']); ?>" alt="">
                                     </a>
-                                    <input class="ID" type="text" value="<?php echo $row_news['PostID']; ?>" name="PostID">
+                                    <input class="ID" type="text" value="<?php echo $postId; ?>" name="PostID">
                                     <input class="ID" type="text" value="<?php echo $UserID; ?>" name="UserID">
                                     <!--Người đăng nhập-->
                                     <div class="comment-input">
@@ -205,10 +158,7 @@ include "template/header.php";
                         <ul class="collapse collapse-horizontal comments" id="collapseWidthExample">
                             <?php
                             //TRUY VẤN COMMENT, COMMENT_USER
-                            $sql_comment = "SELECT * from view_comment WHERE PostID =" . $row_news['PostID'];
-                            $result_comment = mysqli_query($conn, $sql_comment);
-                            if (mysqli_num_rows($result_comment) > 0) {
-                                while ($row_comment = mysqli_fetch_assoc($result_comment)) {
+                                foreach ($comments as $row_comment) {
                                     if ($row_comment['UserID'] == $UserID) {
                             ?>
                                         <!--COMMENT OF USER LOGIN-->
@@ -269,7 +219,6 @@ include "template/header.php";
                             <?php
                                     }
                                 }
-                            }
                             ?>
                         </ul>
                     </div>
@@ -278,7 +227,6 @@ include "template/header.php";
                 </div>
         <?php
             }
-        }
         ?>
     </div>
         <!--THINKING POST-->
