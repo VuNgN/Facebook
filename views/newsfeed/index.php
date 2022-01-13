@@ -149,7 +149,7 @@
                     </div>
                     <!--COMMENT INPUT-->
                     <div class="row">
-                        <form id="comment-form" action="src/process_add_comment.php" method="post" autocomplete="off">
+                        <form id="comment-form" action="index.php?controller=newsfeed&action=addComment" method="post" autocomplete="off">
                             <div class="col-md-12 comment-input-form">
                                 <?php
                                 foreach ($row_user_ava as $user_ava) {
@@ -203,7 +203,7 @@
                                                 edit
                                             </span>
                                         </div>
-                                        <form class="content" id="form-edit-comment" action="src/process_update_comment.php" method="post">
+                                        <form class="content" id="form-edit-comment" action="index.php?controller=newsfeed&action=editComment" method="post">
                                             <input class="ID" type="text" value="<?php echo $row_comment['UserID']; ?>" name="CommentUserID">
                                             <input class="ID" type="text" value="<?php echo $UserID; ?>" name="UserID">
                                             <!--Người đăng nhập-->
@@ -211,8 +211,7 @@
                                             <textarea id="input-edit-comment" name="txt-edit" id="" cols="30" rows="4"><?php echo $row_comment['CommentContent']; ?></textarea>
                                             <button id="btn-edit-comment" name="btn-edit" type="submit">Lưu</button>
                                         </form>
-                                        <a href="src/process_delete_comment.php?CommentID=<?php echo $row_comment['CommentID']; ?>
-                                                    &&CommentUserID=<?php echo $row_comment['UserID'] ?>&&UserID=<?php echo $UserID; ?>" class="link-dark">
+                                        <a href="index.php?controller=newsfeed&action=deleteComment&CommentID=<?php echo $row_comment['CommentID']; ?>" class="link-dark">
                                             <!--Người đăng nhập-->
                                             <span class="hide material-icons-outlined option-comment option-icon" style="font-size:15px">
                                                 delete_forever

@@ -31,10 +31,12 @@ for (var j = 0; j < coll2.length; j++) {
 var coll3 = document.querySelectorAll(".btn-comment");
 var coll4 = document.querySelectorAll(".comments");
 
-for (var j = 0; j < coll3.length; j++) {
-  coll3[j].addEventListener("click", function() {
+coll3.foreach((btn, index) => {
+  btn.addEventListener("click", function(e) {
+    console.log(e.target);
+    console.log("hello");
     this.classList.toggle("active");
-    var contentOption = coll4[j];
+    var contentOption = coll4[index];
     if (contentOption.style.display === "none") {
       contentOption.style.display = "block";
     }
@@ -43,6 +45,7 @@ for (var j = 0; j < coll3.length; j++) {
     }
   });
 }
+)
 //AJAX FOR COMMENT
 /* $(document).ready(function(){
   $('#comment-form').on('submit',function(event){

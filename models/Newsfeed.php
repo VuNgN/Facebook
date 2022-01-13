@@ -91,7 +91,29 @@ class Newsfeed
             $this->closeDb($connection);
             return mysqli_fetch_all($result_friend, MYSQLI_ASSOC);
         }
-}
+    }
+    public function addComment($arrComment){
+        $connection = $this->connectDb();
+        $sql_comment = "INSERT INTO comment(PostID, UserID, CommentContent)
+                        VALUES('{$arrComment['postID']}', '{$arrComment['userID']}', '{$arrComment['content']}')";
+        $result = mysqli_query($connection, $sql_comment);
+        $this->closeDb($connection);
+        return $result;
+    }
+    public function editComment($arrComment){
+        $connection = $this->connectDb();
+        $sql = "UPDATE comment SET CommentContent='{$arrComment['content']}' WHERE CommentID='{$arrComment['commentID']}'";
+        $result = mysqli_query($connection, $sql);
+        $this->closeDb($connection);
+        return $result;
+    }
+    public function deleteComment($commentID){
+        $connection = $this->connectDb();
+        $sql = "DELETE FROM comment WHERE CommentID = $commentID";
+        $result = mysqli_query($connection, $sql);
+        $this->closeDb($connection);
+        return $result;
+    }
     public function connectDb()
     {
         $connection = mysqli_connect(

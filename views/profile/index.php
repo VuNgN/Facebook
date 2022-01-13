@@ -339,7 +339,7 @@
                 </div>
                 <!--COMMENT INPUTT-->
                 <div class="row">
-                  <form id="comment-form" action="src/userProfile/add_comment.php" method="post" autocomplete="off">
+                  <form id="comment-form" action="index.php?controller=profile&action=addComment" method="post" autocomplete="off">
                     <div class="col-md-12 comment-input-form">
                       <a class="icon" href="user_profile.php">
                         <img class="user-img" src="<?php echo $row_news['UserAva'] ?>" alt="">
@@ -392,7 +392,7 @@
                             </span>
                           </div>
                           <!-- form sửa comment -->
-                          <form class="content" id="form-edit-comment" action="src/userProfile/update_comment.php" method="post">
+                          <form class="content" id="form-edit-comment" action="index.php?controller=profile&action=editComment" method="post">
                             <input class="ID" type="text" value="<?php echo $row_comment['UserID']; ?>" name="CommentUserID">
                             <input class="ID" type="text" value="<?php echo $UserID; ?>" name="UserID">
                             <!--Người đăng nhậpp-->
@@ -403,8 +403,7 @@
                           <!-- form sửa comment -->
 
                           <!-- xóa comment -->
-                          <a href="src/userProfile/delete_comment.php?CommentID=<?php echo $row_comment['CommentID']; ?>
-                        &&CommentUserID=<?php echo $row_comment['UserID'] ?>&&UserID=2" class="link-dark">
+                          <a href="index.php?controller=profile&action=deleteComment&CommentID=<?php echo $row_comment['CommentID'];?>" class="link-dark">
                             <span class="hide material-icons-outlined option-comment option-icon" style="font-size:15px">
                               delete_forever
                             </span>
@@ -424,7 +423,6 @@
                         <a class="icon" href="user_profile.php">
                           <?php
                           //TRUY VẤN COMMENT, COMMENT_USER
-
                           ?>
                           <img class="user-img" src="<?php echo $row_ava['UserAva'] ?>" alt="">
                         </a>
@@ -437,10 +435,9 @@
                             <?php echo $row_comment['CommentContent']; ?>
                           </p>
                         </div>
-                        <!- EDIT COMMENTT-->
+                        <!--delete COMMENTT-->
                           <div id="edit-comment" class="hide">
-                            <a href="src/userProfile/delete_comment.php?CommentID=<?php echo $row_comment['CommentID']; ?>
-                        &&CommentUserID=<?php echo $row_comment['UserID'] ?>&&UserID=2" class="link-dark">
+                            <a href="index.php?controller=profile&action=deleteComment&CommentID=<?php echo $row_comment['CommentID'];?>" class="link-dark">
                               <span class="hide material-icons-outlined option-comment option-icon" style="font-size:15px">
                                 delete_forever
                               </span>
