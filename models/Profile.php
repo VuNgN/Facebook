@@ -76,8 +76,9 @@ class Profile
         $this->closeDb($connection);
         return mysqli_fetch_all($result_count_comment, MYSQLI_ASSOC);
     }
-    
-    public function viewComment($postId) {
+
+    public function viewComment($postId)
+    {
         $connection = $this->connectDb();
         $sql_comment = "SELECT * from view_comment WHERE PostID =" . $postId;
         $result_count_comment = mysqli_query($connection, $sql_comment);
@@ -85,14 +86,16 @@ class Profile
         return mysqli_fetch_all($result_count_comment, MYSQLI_ASSOC);
     }
 
-    public function getAvatar($userid) {
+    public function getAvatar($userid)
+    {
         $connection = $this->connectDb();
         $queryAvatar = "SELECT * from user_profile WHERE UserID =" . $userid;
         $result_count_comment = mysqli_query($connection, $queryAvatar);
         $this->closeDb($connection);
         return mysqli_fetch_all($result_count_comment, MYSQLI_ASSOC);
     }
-    public function addComment($arrComment){
+    public function addComment($arrComment)
+    {
         $connection = $this->connectDb();
         $sql_comment = "INSERT INTO comment(PostID, UserID, CommentContent)
                         VALUES('{$arrComment['postID']}', '{$arrComment['userID']}', '{$arrComment['content']}')";
@@ -100,33 +103,36 @@ class Profile
         $this->closeDb($connection);
         return $result;
     }
-    public function editComment($arrComment){
+    public function editComment($arrComment)
+    {
         $connection = $this->connectDb();
         $sql = "UPDATE comment SET CommentContent='{$arrComment['content']}' WHERE CommentID='{$arrComment['commentID']}'";
         $result = mysqli_query($connection, $sql);
         $this->closeDb($connection);
         return $result;
     }
-    public function deleteComment($commentID){
+    public function deleteComment($commentID)
+    {
         $connection = $this->connectDb();
         $sql = "DELETE FROM comment WHERE CommentID = $commentID";
         $result = mysqli_query($connection, $sql);
         $this->closeDb($connection);
         return $result;
     }
-    public function addPost($arrPost){
+    public function addPost($arrPost)
+    {
         //add post
         $connection = $this->connectDb();
         $sql = "INSERT INTO `post` (`UserID`, `PostTime`,`PostCaption`) VALUES ('" . $this->UserID . "', '" . date("Y-m-d h:i:s") . "','" . $arrPost['content'] . "');";
         mysqli_query($connection, $sql);
         //Lấy PostId cho ảnh
-        $queryPostId = "SELECT MAX(PostID) as PostID from post where UserID=".$this->UserID;
+        $queryPostId = "SELECT MAX(PostID) as PostID from post where UserID=" . $this->UserID;
         $result_id = mysqli_query($connection, $queryPostId);
         if (mysqli_num_rows($result_id) > 0) {
             $row_id = mysqli_fetch_assoc($result_id);
             $PostID = $row_id['PostID'];
         }
-            $statusMsg = ''; // tạo ra 1 biến để lưu lại trạng thái upload nhằm mục tiêu phản hồi lại cho người dùng
+        $statusMsg = ''; // tạo ra 1 biến để lưu lại trạng thái upload nhằm mục tiêu phản hồi lại cho người dùng
 
         // 1. Động tác thiết lập cho việc chuẩn bị upload
         $targetDir = "assets/uploads/"; // thư mục chỉ định, nằm trong cùng project này để lưu trữ tệp tải lên
@@ -159,10 +165,11 @@ class Profile
         }
         $this->closeDb($connection);
     }
-    public function editPost(){
-
+    public function editPost()
+    {
     }
-    public function deletePost($PostID){
+    public function deletePost($PostID)
+    {
         $connection = $this->connectDb();
         $sql1 = "DELETE FROM images WHERE PostID = $PostID";
         $sql2 = "DELETE FROM post WHERE PostID = $PostID";
@@ -171,6 +178,83 @@ class Profile
         $this->closeDb($connection);
         return $result1;
     }
+
+    public function getFriendInfo($FriendID)
+    {
+        $connection = $this->connectDb();
+        $queryProfile = "SELECT * from user_profile where UserID= " . $FriendID . "";
+        $result = mysqli_query($connection, $queryProfile);
+        if (mysqli_num_rows($result) > 0) {
+            $this->closeDb($connection);
+            return mysqli_fetch_all($result, MYSQLI_ASSOC);
+        }
+    }
+
+    public function isMySendFriend($idfriend)
+    {
+        $connection = $this->connectDb();
+        $sql_my_send  = "select * from friend_ship where (User1ID='" . $this->UserID . "' and User2ID='" . $idfriend . "')";
+        $result_my_send = mysqli_query($connection, $sql_my_send);
+        if (mysqli_num_rows($result_my_send) > 0) {
+            $this->closeDb($connection);
+            return mysqli_fetch_all($result_my_send, MYSQLI_ASSOC);
+        } else {
+            return false;
+        }
+    }
+
+    public function isOtherSendFriend($idfriend)
+    {
+        $connection = $this->connectDb();
+        $sql_other_people_send = "select * from friend_ship where (User1ID='" . $idfriend . "' and User2ID='" . $this->UserID . "')";
+        $result_other_people_send = mysqli_query($connection, $sql_other_people_send);
+        if (mysqli_num_rows($result_other_people_send) > 0) {
+            $this->closeDb($connection);
+            return mysqli_fetch_all($result_other_people_send, MYSQLI_ASSOC);
+        } else {
+            return false;
+        }
+    }
+    public function addFriend($UserId)
+    {
+        $connection = $this->connectDb();
+        $sql = "select * from friend_ship where (User1ID='" . $this->UserID . "' and User2ID='" . $UserId . "') or (User2ID='" . $this->UserID . "' and User1ID='" . $UserId . "')";
+        $result1 = mysqli_query($connection, $sql);
+        if (mysqli_num_rows($result1) <= 0) {
+            $sql2 = "insert into friend_ship values ('" . $this->UserID . "', '" . $UserId . "', 0)";
+            $result2 = mysqli_query($connection, $sql2);
+            $this->closeDb($connection);
+        }
+    }
+
+    public function removeFriend($UserId)
+    {
+        $connection = $this->connectDb();
+        $sql = "delete from friend_ship where (User1ID='" . $this->UserID . "' and User2ID='" . $UserId . "') or (User2ID='" . $this->UserID . "' and User1ID='" . $UserId . "')";
+        $result1 = mysqli_query($connection, $sql);
+        $this->closeDb($connection);
+    }
+
+    public function cancelFriend($UserId)
+    {
+        $connection = $this->connectDb();
+        $sql = "delete from friend_ship where (User1ID='" . $this->UserID . "' and User2ID='" . $UserId . "') or (User2ID='" . $this->UserID . "' and User1ID='" . $UserId . "')";
+        $result1 = mysqli_query($connection, $sql);
+        $this->closeDb($connection);
+    }
+
+    public function acceptFriend($UserId)
+    {
+        $connection = $this->connectDb();
+        $sql = "select * from friend_ship where (User1ID='" . $this->UserID . "' and User2ID='" . $UserId . "') or (User2ID='" . $this->UserID . "' and User1ID='" . $UserId . "')";
+        $result1 = mysqli_query($connection, $sql);
+        if (mysqli_num_rows($result1) > 0) {
+            $sql2 = "UPDATE friend_ship SET Active=1 WHERE (User1ID='" . $this->UserID . "' and User2ID='" . $UserId . "') or (User2ID='" . $this->UserID . "' and User1ID='" . $UserId . "')";
+            $result2 = mysqli_query($connection, $sql2);
+            $this->closeDb($connection);
+        }
+    }
+
     public function connectDb()
     {
         $connection = mysqli_connect(

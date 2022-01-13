@@ -54,6 +54,19 @@
             $this->closeDb($connection);
             return $notify;
         }
+
+        public function getUserSearch($search) {
+            $connection = $this->connectDb();
+            $sql_search = " SELECT UserID, UserName, UserAva
+                        FROM 	(SELECT UserID ,CONCAT(UserFirstName, ' ', UserLastName) as UserName, UserAva
+                                FROM user_profile) as Bang
+                        WHERE UserName LIKE '%$search%'";
+            $result_search = mysqli_query($connection, $sql_search);
+            if(mysqli_num_rows($result_search) > 0){
+                $this->closeDb($connection);
+                return mysqli_fetch_all($result_search,MYSQLI_ASSOC);
+            }
+        }
         public function connectDb() {
             $connection = mysqli_connect(DB_HOST,
             DB_USERNAME, DB_PASSWORD, DB_NAME);

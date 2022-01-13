@@ -36,6 +36,7 @@
         </div>
         <!--News-->
         <?php
+        if($posts)
         foreach ($posts as $row_news) {
         ?>
             <div class="news <?php echo $row_news['PostID']?>">

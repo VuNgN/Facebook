@@ -6,9 +6,9 @@
       <section class="mb-10">
         <!-- Background imagee -->
         <div class="p-5 text-center bg-image shadow-1-strong rounded-bottom" style="
-                background-image: url('assets/images_dev/sky.jpg');
+                background-image: url('assets/images/sky.jpg');
                 height: 400px;
-              " onclick="clickImg('assets/images_dev/sky.jpg')"></div>
+              " onclick="clickImg('assets/images/sky.jpg')"></div>
         <?php
         foreach ($profileInfo as $row_ava) {
         ?>
@@ -137,8 +137,9 @@
             <a href="user_profile_image.php" class="btn btn-link d-inline-block py-1 px-3" style="float: right">Xem tất cả ảnh</a>
             <?php
             $count = 0;
+            if($profileImg)
             foreach ($profileImg as $row_img) {
-              global $row_img;
+              // global $row_img;
               if ($count % 3 == 0) {
                 echo '<div class="row gx-2">'; // open
               }
@@ -175,6 +176,7 @@
             </div>
             <?php
             $count = 0;
+            if($profileFriend)
             foreach ($profileFriend as $rowFriends) {
 
               if ($count % 3 == 0) {
@@ -225,6 +227,7 @@
           <!--Newss-->
           <?php
           //TRUY VẤN POST, POST_USERR
+          if($profilePost)
           foreach ($profilePost as $row_news) {
           ?>
             <div class="news <?php echo $row_news['PostID']?>">
