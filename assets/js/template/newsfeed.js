@@ -28,8 +28,8 @@ for (var j = 0; j < coll2.length; j++) {
   });
 }
 
-var coll3 = document.getElementsByClassName("btn-comment");
-var coll4 = document.getElementsByClassName("comments");
+var coll3 = document.querySelectorAll(".btn-comment");
+var coll4 = document.querySelectorAll(".comments");
 
 for (var j = 0; j < coll3.length; j++) {
   coll3[j].addEventListener("click", function() {

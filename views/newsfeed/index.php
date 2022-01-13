@@ -133,7 +133,7 @@
                                         chat_bubble_outline
                                     </span>
                                 </div>
-                                <div class="action-name btn-comment" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                                <div class="action-name btn-comment">
                                     <h6>Bình luận</h6>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                     </div>
 
                     <!--COMMENTS-->
-                    <ul class="collapse collapse-horizontal comments" id="collapseWidthExample">
+                    <ul class="comments" style="display:none">
                         <?php
                         //TRUY VẤN COMMENT, COMMENT_USER
                         if($Newsfeed->getComment($row_news['PostID']))
