@@ -4,7 +4,7 @@
         <?php
         foreach ($row_user_ava as $user_ava) {
         ?>
-            <a class="col-md-12 text-decoration-none link-dark sidebar-item" href="user_profile.php">
+            <a class="col-md-12 text-decoration-none link-dark sidebar-item" href="index.php?controller=profile&action=index">
                 <div class="icon">
                     <img class="user-img" src="<?php echo ($user_ava['UserAva']); ?>" alt="">
                 </div>
