@@ -129,7 +129,7 @@ class Profile
             $statusMsg = ''; // tạo ra 1 biến để lưu lại trạng thái upload nhằm mục tiêu phản hồi lại cho người dùng
 
         // 1. Động tác thiết lập cho việc chuẩn bị upload
-        $targetDir = "assets/uploads"; // thư mục chỉ định, nằm trong cùng project này để lưu trữ tệp tải lên
+        $targetDir = "assets/uploads/"; // thư mục chỉ định, nằm trong cùng project này để lưu trữ tệp tải lên
         $fileName = basename($arrPost['img']["name"]); // $_FILE là 1 biến siêu toàn cục lưu trữ toàn bộ phần tử file trên form
         $uploadDir = "" . $targetDir . $fileName; // Đây là đường dẫn upload ảnh vào thư mục uploads (tên đầy đủ + đường dẫn sau khi việc upload hoàn thành)
         $targetFilePath = $targetDir . $fileName; // Đây là đường dẫn insert db (tên đầy đủ + đường dẫn sau khi việc upload hoàn thành)
@@ -162,8 +162,14 @@ class Profile
     public function editPost(){
 
     }
-    public function deletePost(){
-        
+    public function deletePost($PostID){
+        $connection = $this->connectDb();
+        $sql1 = "DELETE FROM images WHERE PostID = $PostID";
+        $sql2 = "DELETE FROM post WHERE PostID = $PostID";
+        $result1 = mysqli_query($connection, $sql1);
+        $result2 = mysqli_query($connection, $sql2);
+        $this->closeDb($connection);
+        return $result1;
     }
     public function connectDb()
     {

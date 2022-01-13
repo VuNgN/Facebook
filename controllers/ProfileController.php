@@ -65,10 +65,15 @@
             }
         }
         public function editPost(){
-
+            
         }
         public function deletePost(){
-
+            $UserID = $_SESSION['isLoginOk'];
+            $Profile = new Profile($UserID);
+            $PostID = $_GET['PostID'];
+            echo $PostID;
+            $profileDeleltePost = $Profile->deletePost($PostID);
+            header('location: index.php?controller=profile&action=index');
         }
     }
 ?>

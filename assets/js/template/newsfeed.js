@@ -28,13 +28,20 @@ for (var j = 0; j < coll2.length; j++) {
   });
 }
 
+
+
 var coll3 = document.querySelectorAll(".btn-comment");
 var coll4 = document.querySelectorAll(".comments");
+/* var arrPostID = [];
+coll3.forEach((btn, index) =>{
+  console.log(btn.className.split(' ')[2]);
+  arrPostID.push(btn.className.split(' ')[2]);
+})
+console.log(arrPostID) */
 
-coll3.foreach((btn, index) => {
+
+coll3.forEach((btn, index) => {
   btn.addEventListener("click", function(e) {
-    console.log(e.target);
-    console.log("hello");
     this.classList.toggle("active");
     var contentOption = coll4[index];
     if (contentOption.style.display === "none") {

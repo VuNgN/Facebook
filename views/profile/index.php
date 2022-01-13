@@ -227,7 +227,7 @@
           //TRUY VẤN POST, POST_USERR
           foreach ($profilePost as $row_news) {
           ?>
-            <div class="news">
+            <div class="news <?php echo $row_news['PostID']?>">
               <div class="row">
                 <!-- heading -->
                 <div class="heading">
@@ -248,17 +248,32 @@
                         more_horiz
                       </span>
                     </div>
-                    <div class="collapse contentOption">
+                    <div class="collapse contentOption" >
                       <div class="option-item">
-                        <div class="col-md-12 items">
+                        <div class="col-md-12 items editPost-item">
                           <!-- bấm vào đây sửa bài viết -->
-                          <span class="material-icons-outlined">history</span>
+                          <span class="material-icons">mode_edit</span>
                           <b>Sửa bài viết</b>
                         </div>
-                        <div class="col-md-12 items">
-                          <span class="material-icons-outlined">bookmarks</span>
+                        <!--Sửa bài-->
+        <form  action="" style="width:500px;height:300px;dislay:flex;position:absolute;top:100px">
+          <textarea name="" id="" cols="100" rows="10">
+            <?php echo $row_news['PostID']?>
+          </textarea>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary">
+              Đóng
+            </button>
+            <button type="submit" class="btn btn-primary" name="btn-sendPost">
+              Lưu
+            </button>
+          </div>
+        </form>
+                        <!--Xóa bài-->
+                        <a class="col-md-12 items" href="index.php?controller=Profile&action=deletePost&PostID=<?php echo $row_news['PostID']?>">
+                        <span class="material-icons">delete</span>
                           <b>Xóa bài viết</b> <!-- bấm vào đây xóa bài viết -->
-                        </div>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -360,7 +375,7 @@
                 </div>
 
                 <!--COMMENTSS-->
-                <ul class="collapse collapse-horizontal comments" id="collapseWidthExample">
+                <ul class="collapse collapse-horizontal comments <?php echo $row_news['PostID']?>" id="collapseWidthExample">
                   <?php
                   //TRUY VẤN COMMENT, COMMENT_USER
                   foreach ($Profile->viewComment($row_news['PostID']) as $row_comment) {
@@ -450,7 +465,7 @@
                   ?>
                 </ul>
               </div>
-            </div>
+            </div>                      
           <?php
           } // to
           ?>
