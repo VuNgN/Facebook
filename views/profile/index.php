@@ -207,7 +207,7 @@
           <div class="card mb-4 thinking-post">
             <div class="card-body">
               <div class="d-flex">
-                <a id="thinking-user" href="user_profile.php">
+                <a id="thinking-user" href="index.php?controller=profile&action=index">
                   <img src="<?php echo $row_ava['UserAva'] ?>" alt="" class="rounded-circle border" />
                 </a>
                 <button class="btn btn-light btn-block btn-rounded bg-light" data-mdb-toggle="modal" data-mdb-target="#buttonModalUserPost">
@@ -231,11 +231,11 @@
               <div class="row">
                 <!-- heading -->
                 <div class="heading">
-                  <a class="user-ava" href="userPuser_profile.php">
+                  <a class="user-ava" href="index.php?controller=profile&action=index">
                     <img class="user-img" src="<?php echo $row_news['UserAva'] ?>" alt="">
                   </a>
                   <div class="user-name-time">
-                    <a href="user_profile.php" class="user-name text-decoration-none link-dark">
+                    <a href="index.php?controller=profile&action=index" class="user-name text-decoration-none link-dark">
                       <b><?php echo $row_news['UserFirstName'] . " " . $row_news['UserLastName'] ?></b>
                     </a>
                     <h6 class="time">
@@ -339,9 +339,9 @@
                 </div>
                 <!--COMMENT INPUTT-->
                 <div class="row">
-                  <form id="comment-form" action="src/userProfile/add_comment.php" method="post" autocomplete="off">
+                  <form id="comment-form" action="index.php?controller=profile&action=addComment" method="post" autocomplete="off">
                     <div class="col-md-12 comment-input-form">
-                      <a class="icon" href="user_profile.php">
+                      <a class="icon" href="index.php?controller=profile&action=index">
                         <img class="user-img" src="<?php echo $row_news['UserAva'] ?>" alt="">
                       </a>
                       <input class="ID" type="text" value="<?php echo $row_news['PostID']; ?>" name="PostID">
@@ -367,7 +367,7 @@
                     if ($row_comment['UserID'] == $UserID) {
                   ?>
                       <li class="comment-item myDIV">
-                        <a class="icon" href="user_profile.php">
+                        <a class="icon" href="index.php?controller=profile&action=index">
                           <?php
                           //TRUY VẤN COMMENT, COMMENT_USER
                           foreach ($Profile->getAvatar($row_comment['UserID']) as $rowAvatar) {
@@ -376,7 +376,7 @@
                           <img class="user-img" src="<?php echo $row_news['UserAva'] ?>" alt="">
                         </a>
                         <div class="commentator-name">
-                          <a href="user_profile.php" class="user-name text-decoration-none link-dark">
+                          <a href="index.php?controller=profile&action=index" class="user-name text-decoration-none link-dark">
                             <b><?php echo $row_comment['UserName']; ?></b>
                           </a>
                           <p class="comment-content">
@@ -392,7 +392,7 @@
                             </span>
                           </div>
                           <!-- form sửa comment -->
-                          <form class="content" id="form-edit-comment" action="src/userProfile/update_comment.php" method="post">
+                          <form class="content" id="form-edit-comment" action="index.php?controller=profile&action=editComment" method="post">
                             <input class="ID" type="text" value="<?php echo $row_comment['UserID']; ?>" name="CommentUserID">
                             <input class="ID" type="text" value="<?php echo $UserID; ?>" name="UserID">
                             <!--Người đăng nhậpp-->
@@ -403,8 +403,7 @@
                           <!-- form sửa comment -->
 
                           <!-- xóa comment -->
-                          <a href="src/userProfile/delete_comment.php?CommentID=<?php echo $row_comment['CommentID']; ?>
-                        &&CommentUserID=<?php echo $row_comment['UserID'] ?>&&UserID=2" class="link-dark">
+                          <a href="index.php?controller=profile&action=deleteComment&CommentID=<?php echo $row_comment['CommentID'];?>" class="link-dark">
                             <span class="hide material-icons-outlined option-comment option-icon" style="font-size:15px">
                               delete_forever
                             </span>
@@ -424,7 +423,6 @@
                         <a class="icon" href="user_profile.php">
                           <?php
                           //TRUY VẤN COMMENT, COMMENT_USER
-
                           ?>
                           <img class="user-img" src="<?php echo $row_ava['UserAva'] ?>" alt="">
                         </a>
@@ -437,10 +435,9 @@
                             <?php echo $row_comment['CommentContent']; ?>
                           </p>
                         </div>
-                        <!- EDIT COMMENTT-->
+                        <!--delete COMMENTT-->
                           <div id="edit-comment" class="hide">
-                            <a href="src/userProfile/delete_comment.php?CommentID=<?php echo $row_comment['CommentID']; ?>
-                        &&CommentUserID=<?php echo $row_comment['UserID'] ?>&&UserID=2" class="link-dark">
+                            <a href="index.php?controller=profile&action=deleteComment&CommentID=<?php echo $row_comment['CommentID'];?>" class="link-dark">
                               <span class="hide material-icons-outlined option-comment option-icon" style="font-size:15px">
                                 delete_forever
                               </span>
@@ -461,7 +458,7 @@
           <div class="col-md-9 mb-4 mb-md-0 thinking-post">
             <div class="modal fade" id="buttonModalUserPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
-                <form id="post-form" action="src/userProfile/addPost.php" method="post" autocomplete="off" enctype="multipart/form-data">
+                <form id="post-form" action="index.php?controller=Profile&action=addPost" method="post" autocomplete="off" enctype="multipart/form-data">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">

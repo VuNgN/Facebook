@@ -17,3 +17,6 @@
 <!-- <script src="assets/js/comment.js"></script> -->
 </body>
 </html>
+<?php
+    ob_flush();
+?>

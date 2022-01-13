@@ -15,7 +15,7 @@
                     <?php
                     foreach ($row_user_ava as $avatar) {
                     ?>
-                        <a id="thinking-user" href="index.php?controller=">
+                        <a id="thinking-user" href="index.php?controller=profile&action=index">
                             <img src="<?php echo ($avatar['UserAva']) ?>" alt="" class="rounded-circle border" />
                         </a>
                     <?php
@@ -133,7 +133,7 @@
                                         chat_bubble_outline
                                     </span>
                                 </div>
-                                <div class="action-name btn-comment" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                                <div class="action-name btn-comment">
                                     <h6>Bình luận</h6>
                                 </div>
                             </div>
@@ -149,12 +149,12 @@
                     </div>
                     <!--COMMENT INPUT-->
                     <div class="row">
-                        <form id="comment-form" action="src/process_add_comment.php" method="post" autocomplete="off">
+                        <form id="comment-form" action="index.php?controller=newsfeed&action=addComment" method="post" autocomplete="off">
                             <div class="col-md-12 comment-input-form">
                                 <?php
                                 foreach ($row_user_ava as $user_ava) {
                                 ?>
-                                    <a class="icon" href="index.php?controller=">
+                                    <a class="icon" href="index.php?controller=profile&action=index">
                                         <img class="user-img" src="<?php echo ($user_ava['UserAva']); ?>" alt="">
                                     </a>
                                 <?php
@@ -176,7 +176,7 @@
                     </div>
 
                     <!--COMMENTS-->
-                    <ul class="collapse collapse-horizontal comments" id="collapseWidthExample">
+                    <ul class="comments" style="display:none">
                         <?php
                         //TRUY VẤN COMMENT, COMMENT_USER
                         if($Newsfeed->getComment($row_news['PostID']))
@@ -185,11 +185,11 @@
                         ?>
                                 <!--COMMENT OF USER LOGIN-->
                                 <li class="comment-item myDIV">
-                                    <a class="icon" href="index.php?controller=">
+                                    <a class="icon" href="index.php?controller=profile&action=index">
                                         <img class="user-img" src="<?php echo ($row_comment['UserAva']); ?>" alt="">
                                     </a>
                                     <div class="commentator-name">
-                                        <a href="index.php?controller=" class="user-name text-decoration-none link-dark">
+                                        <a href="index.php?controller=profile&action=index" class="user-name text-decoration-none link-dark">
                                             <b><?php echo $row_comment['UserName']; ?></b>
                                         </a>
                                         <p class="comment-content">
@@ -203,7 +203,7 @@
                                                 edit
                                             </span>
                                         </div>
-                                        <form class="content" id="form-edit-comment" action="src/process_update_comment.php" method="post">
+                                        <form class="content" id="form-edit-comment" action="index.php?controller=newsfeed&action=editComment" method="post">
                                             <input class="ID" type="text" value="<?php echo $row_comment['UserID']; ?>" name="CommentUserID">
                                             <input class="ID" type="text" value="<?php echo $UserID; ?>" name="UserID">
                                             <!--Người đăng nhập-->
@@ -211,8 +211,7 @@
                                             <textarea id="input-edit-comment" name="txt-edit" id="" cols="30" rows="4"><?php echo $row_comment['CommentContent']; ?></textarea>
                                             <button id="btn-edit-comment" name="btn-edit" type="submit">Lưu</button>
                                         </form>
-                                        <a href="src/process_delete_comment.php?CommentID=<?php echo $row_comment['CommentID']; ?>
-                                                    &&CommentUserID=<?php echo $row_comment['UserID'] ?>&&UserID=<?php echo $UserID; ?>" class="link-dark">
+                                        <a href="index.php?controller=newsfeed&action=deleteComment&CommentID=<?php echo $row_comment['CommentID']; ?>" class="link-dark">
                                             <!--Người đăng nhập-->
                                             <span class="hide material-icons-outlined option-comment option-icon" style="font-size:15px">
                                                 delete_forever
