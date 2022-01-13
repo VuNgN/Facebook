@@ -15,7 +15,7 @@
                     <?php
                     foreach ($row_user_ava as $avatar) {
                     ?>
-                        <a id="thinking-user" href="index.php?controller=">
+                        <a id="thinking-user" href="index.php?controller=profile&action=index">
                             <img src="<?php echo ($avatar['UserAva']) ?>" alt="" class="rounded-circle border" />
                         </a>
                     <?php
@@ -154,7 +154,7 @@
                                 <?php
                                 foreach ($row_user_ava as $user_ava) {
                                 ?>
-                                    <a class="icon" href="index.php?controller=">
+                                    <a class="icon" href="index.php?controller=profile&action=index">
                                         <img class="user-img" src="<?php echo ($user_ava['UserAva']); ?>" alt="">
                                     </a>
                                 <?php
@@ -185,11 +185,11 @@
                         ?>
                                 <!--COMMENT OF USER LOGIN-->
                                 <li class="comment-item myDIV">
-                                    <a class="icon" href="index.php?controller=">
+                                    <a class="icon" href="index.php?controller=profile&action=index">
                                         <img class="user-img" src="<?php echo ($row_comment['UserAva']); ?>" alt="">
                                     </a>
                                     <div class="commentator-name">
-                                        <a href="index.php?controller=" class="user-name text-decoration-none link-dark">
+                                        <a href="index.php?controller=profile&action=index" class="user-name text-decoration-none link-dark">
                                             <b><?php echo $row_comment['UserName']; ?></b>
                                         </a>
                                         <p class="comment-content">

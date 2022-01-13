@@ -31,7 +31,7 @@
             //edit cmt
             $UserID = $_SESSION['isLoginOk'];
             $Profile = new Profile($UserID);
-            if (isset($_POST["btn-edit"])&& $_POST['txt-edit']){
+            if (isset($_POST["btn-edit"]) && $_POST['txt-edit']){
                 $CommentID = $_POST["CommentID"];
                 $CommentContent = $_POST["txt-edit"];
                 $arrComment = [
@@ -49,6 +49,26 @@
             $commentID = $_GET['CommentID'];
             $profileAddComment = $Profile->deleteComment($commentID);
             header('location: index.php?controller=profile&action=index');
+        }
+        public function addPost(){
+            $UserID = $_SESSION['isLoginOk'];
+            $Profile = new Profile($UserID);
+            if (isset($_POST['btn-sendPost']) && ($_POST['txt-content'] || $_FILES['myFile'])){
+                $PostContent = $_POST['txt-content'];
+                $PostImg = $_FILES['myFile'];
+                $arrPost = [
+                    'content' => $PostContent,
+                    'img' => $PostImg
+                ];
+                $profileAddPost = $Profile->addPost($arrPost);
+            header('location: index.php?controller=profile&action=index');
+            }
+        }
+        public function editPost(){
+
+        }
+        public function deletePost(){
+
         }
     }
 ?>
