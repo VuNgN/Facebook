@@ -1,10 +1,3 @@
-<?php
-  session_start();
-  if(isset($_SESSION['Admin'])){
-    unset($_SESSION['Admin']);
-    session_destroy();
-  }
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,20 +7,20 @@
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
     <title>Facebook admin</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
     <link
       rel="stylesheet"
-      href="../assets/css/login-page/SF Pro Display Bold.css"
+      href="assets/css/login-page/SF Pro Display Bold.css"
     />
     <link
       rel="stylesheet"
-      href="../assets/css/login-page/SF Pro Display Medium.css"
+      href="assets/css/login-page/SF Pro Display Medium.css"
     />
     <link
       rel="stylesheet"
-      href="../assets/css/login-page/SF Pro Display Regular.css"
+      href="assets/css/login-page/SF Pro Display Regular.css"
     />
-    <link rel="stylesheet" href="../assets/css/login-page/login-page.css" />
+    <link rel="stylesheet" href="assets/css/login-page/login-page.css" />
   </head>
 
   <body>
@@ -72,7 +65,7 @@
               "
             >
               <div id="body-top-right">
-                <form action="process_signin.php" method="post">
+                <form action="" method="post">
                   <div>
                     <input
                       name="UserEmail"
@@ -520,6 +513,6 @@
       </div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="./assets/src/login.js" charset="utf-8"></script> 
+    <script src="assets/src/login.js" charset="utf-8"></script> 
   </body>
 </html>

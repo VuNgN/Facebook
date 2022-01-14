@@ -2,7 +2,12 @@
 session_start();
 $controller = isset($_GET['controller']) ? $_GET['controller'] : 'newsfeed';
 if(!isset($_SESSION['isLoginOk'])) {
-    $controller='login';
+    if(isset($_GET['controller'])) {
+        if($_GET['controller'] != "admin") 
+            $controller='login';
+    } else {
+        $controller='login';
+    }
 }
 //lấy ra action
 $action = isset($_GET['action']) ? $_GET['action'] :
