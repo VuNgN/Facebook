@@ -69,8 +69,7 @@
                                         <span class="material-icons-outlined">bookmarks</span>
                                         <b>Lưu bài viết</b>
                                     </div>
-                                    <a class="col-md-12 items link-dark" href="src/process_report.php?PostID=<?php echo $row_news['PostID']; ?>
-                                        &&PostUserID=<?php echo $row_news['UserID']; ?>">
+                                    <a class="col-md-12 items link-dark" href="index.php?controller=newsfeed&action=reportPost&PostID=<?php echo $row_news['PostID']; ?>&PostUserID=<?php echo $row_news['UserID']; ?>">
                                         <span class="material-icons-outlined">report</span>
                                         <b>Báo cáo bài viết</b>
                                     </a>

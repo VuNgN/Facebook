@@ -54,7 +54,7 @@
     <p id='message'>
       Chúc mừng, tài khoản của bạn đã sẵn sàng để sử dụng.
     </p>
-    <a href="/facebook/login.php" id="contBtn">Về trang đăng nhập</a>
+    <a href="../../index.php" id="contBtn">Về trang đăng nhập</a>
   </div>
 </div>
 <!-- partial -->
