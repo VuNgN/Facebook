@@ -24,5 +24,13 @@
             }
             require_once "views/templates/search.php";
         }
+        public function postDetail(){
+            $UserID = $_SESSION['isLoginOk'];
+            $templates = new Template($UserID);
+            $PostID = $_GET['PostID'];
+            $PostDetail = $templates->PostDetail($PostID);
+            $row_user_ava = $templates->getName();
+            require_once "views/templates/post.php";
+        }
     }
 ?>

@@ -165,8 +165,13 @@ class Profile
         }
         $this->closeDb($connection);
     }
-    public function editPost()
+    public function editPost($arrPost)
     {
+        $connection = $this->connectDb();
+        $sql = "UPDATE post SET PostCaption='{$arrPost['edit']}' WHERE PostID={$arrPost['PostID']}";
+        $result = mysqli_query($connection, $sql);
+        $this->closeDb($connection);
+        return $result;
     }
     public function deletePost($PostID)
     {

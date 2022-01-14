@@ -61,11 +61,22 @@
                     'img' => $PostImg
                 ];
                 $profileAddPost = $Profile->addPost($arrPost);
-            header('location: index.php?controller=profile&action=index');
+                header('location: index.php?controller=profile&action=index');
             }
         }
         public function editPost(){
-            
+            $UserID = $_SESSION['isLoginOk'];
+            $Profile = new Profile($UserID);
+            if(isset($_POST['btn-sendPost']) && $_POST['editContent']){
+                $PostID = $_GET['PostID'];
+                $EditContent = $_POST['editContent'];
+                $arrEdit = [
+                    'PostID' => $PostID,
+                    'edit' => $EditContent
+                ];
+                $profileEditPost = $Profile->editPost($arrEdit);
+                header('location: index.php?controller=profile&action=index');
+            }
         }
         public function deletePost(){
             $UserID = $_SESSION['isLoginOk'];

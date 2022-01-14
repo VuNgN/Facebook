@@ -1,6 +1,7 @@
 <main id="search-main">
     <div class="row search-results">
 <?php
+            if($users)
             foreach($users as $row_search){
                 if($row_search['UserID'] == $UserID){
 ?>

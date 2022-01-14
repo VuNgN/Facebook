@@ -253,25 +253,13 @@
                     </div>
                     <div class="collapse contentOption" >
                       <div class="option-item">
-                        <div class="col-md-12 items editPost-item">
+                        <div class="col-md-12 items btn-editPost">
                           <!-- bấm vào đây sửa bài viết -->
                           <span class="material-icons">mode_edit</span>
                           <b>Sửa bài viết</b>
                         </div>
                         <!--Sửa bài-->
-        <form  action="" style="width:500px;height:300px;dislay:flex;position:absolute;top:100px">
-          <textarea name="" id="" cols="100" rows="10">
-            <?php echo $row_news['PostID']?>
-          </textarea>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary">
-              Đóng
-            </button>
-            <button type="submit" class="btn btn-primary" name="btn-sendPost">
-              Lưu
-            </button>
-          </div>
-        </form>
+
                         <!--Xóa bài-->
                         <a class="col-md-12 items" href="index.php?controller=Profile&action=deletePost&PostID=<?php echo $row_news['PostID']?>">
                         <span class="material-icons">delete</span>
@@ -285,6 +273,18 @@
                 <div class="news-content">
                   <div class="content-caption">
                     <?php echo $row_news['PostCaption'] ?>
+                      <form class="editPost" action="index.php?controller=Profile&action=editPost&PostID=<?php echo $row_news['PostID']?>"
+                      style="width:100%;height:auto;display:none; flex-direction:column" method="post">
+                        <textarea name="editContent" id="" cols="100" rows="10"><?php echo $row_news['PostCaption']?></textarea>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary editPostCloseBtn">
+                            Đóng
+                          </button>
+                          <button type="submit" class="btn btn-primary" name="btn-sendPost">
+                            Lưu
+                          </button>
+                        </div>
+                      </form>
                   </div>
                   <?php
                   if ($Profile->getImgPost($row_news['PostID']))
@@ -341,7 +341,7 @@
                           chat_bubble_outline
                         </span>
                       </div>
-                      <div class="action-name" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                      <div class="action-name btn-comment">
                         <h6>Bình luận</h6>
                       </div>
                     </div>
@@ -378,7 +378,7 @@
                 </div>
 
                 <!--COMMENTSS-->
-                <ul class="collapse collapse-horizontal comments <?php echo $row_news['PostID']?>" id="collapseWidthExample">
+                <ul class="comments <?php echo $row_news['PostID']?>" style="display:none">
                   <?php
                   //TRUY VẤN COMMENT, COMMENT_USER
                   foreach ($Profile->viewComment($row_news['PostID']) as $row_comment) {
