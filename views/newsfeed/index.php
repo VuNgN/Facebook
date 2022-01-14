@@ -293,7 +293,7 @@
             if($friends)
             foreach($friends as $row_friend ){
         ?>
-                <a class="row" href="user_profile_friend.php?UserIDFriend=<?php echo $row_friend['UserID']; ?>">
+                <a class="row" href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_friend['UserID']; ?>">
                     <div class="sidebar-item">
                         <div class="icon">
                             <img src="<?php echo ($row_friend['UserAva']); ?>" alt="" style="border-radius: 50%;width:36px;height:36px">
