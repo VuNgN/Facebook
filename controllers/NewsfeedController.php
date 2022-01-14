@@ -49,5 +49,19 @@
             $NewsfeedAddComment = $Newsfeed->deleteComment($commentID);
             header('location: index.php?controller=Newsfeed&action=index');
         }
+        public function addPost(){
+            $UserID = $_SESSION['isLoginOk'];
+            $Newsfeed = new Newsfeed($UserID);
+            if (isset($_POST['btn-sendPost']) && ($_POST['txt-content'] || $_FILES['myFile'])){
+                $PostContent = $_POST['txt-content'];
+                $PostImg = $_FILES['myFile'];
+                $arrPost = [
+                    'content' => $PostContent,
+                    'img' => $PostImg
+                ];
+                $newsfeedAddPost = $Newsfeed->addPost($arrPost);
+                header('location: index.php?controller=profile&action=index');
+            }
+        }
     }
 ?>

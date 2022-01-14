@@ -139,6 +139,7 @@
                         <i class="fab fa-facebook-messenger messages-icon"></i>
                     </button>
                     <div class="messages-box">
+
                     </div>
             </div>
             <div class="nav-item">
@@ -161,7 +162,7 @@
                                 </p>
                             </div>
                         </a>
-                    <?php
+                    <?php           
                     }
                     foreach($row_notify as $notify){
                         $time = 'vừa xong';
@@ -174,6 +175,7 @@
                         else if($notify['HH']<24){
                             $time = floor($notify['HH']) .' giờ trước';
                         }
+                
                     ?>
                         <a class="notify-item link-dark" href="index.php?controller=template&action=postDetail&PostID=<?php echo $notify['PostID'];?>">
                             <div class="user-ava">
@@ -201,9 +203,6 @@
                             <b style="color:#1877F2"><?php echo $time?></b>
                         </div>
                     </a>
-        <?php
-            
-        ?>
                 </div>
             </div>
             <div class="nav-item">
