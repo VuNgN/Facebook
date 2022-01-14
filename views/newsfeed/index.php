@@ -255,7 +255,7 @@
     <div class="col-md-9 mb-4 mb-md-0 thinking-post">
         <div class="modal fade" id="buttonModalUserPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <form id="post-form" action="src/userProfile/addPost.php" method="post" autocomplete="off" enctype="multipart/form-data">
+                <form id="post-form" action="index.php?controller=newsfeed&action=addPost" method="post" autocomplete="off" enctype="multipart/form-data">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">

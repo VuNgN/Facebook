@@ -22,13 +22,13 @@
 <!--CSS FOR SIDEBAR-->
     <link rel="stylesheet" href="assets/css/templates/sidebar.css">
 <!--CSS FOR NEWSFEED-->
-    <link rel="stylesheet" href="assets/css/templates/newsfeed2.css">
+    <link rel="stylesheet" href="assets/css/newsfeed/newsfeed2.css">
 <!--CSS FOR SEARCH-->
     <link rel="stylesheet" href="assets/css/templates/search.css">
 <!--CSS FOR USERPROFILE-->
     <link rel="stylesheet" href="assets/css/profile/userProfile.css">
 <!--FaceBook LOGO-->
-    <link rel="icon" href="./assets/images/Facebook_logo/Facebook_logo.ico" type="image/x-icon"/>
+    <link rel="icon" href="assets/images/Facebook_logo/Facebook_logo.ico" type="image/x-icon"/>
     <title>Facebook</title>
 </head>
 <body>

@@ -258,23 +258,6 @@
                           <b>Sửa bài viết</b>
                         </div>
                         <!--Sửa bài-->
-<<<<<<< HEAD
-                        <form action="" style="width:500px;height:300px;dislay:flex;position:absolute;top:100px">
-                          <textarea name="" id="" cols="100" rows="10">
-            <?php echo $row_news['PostID'] ?>
-          </textarea>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary">
-                              Đóng
-                            </button>
-                            <button type="submit" class="btn btn-primary" name="btn-sendPost">
-                              Lưu
-                            </button>
-                          </div>
-                        </form>
-=======
-
->>>>>>> af5623a26ea5ea938eb44d8b72e68c5a5d836848
                         <!--Xóa bài-->
                         <a class="col-md-12 items" href="index.php?controller=Profile&action=deletePost&PostID=<?php echo $row_news['PostID'] ?>">
                           <span class="material-icons">delete</span>
@@ -393,11 +376,7 @@
                 </div>
 
                 <!--COMMENTSS-->
-<<<<<<< HEAD
-                <ul class="collapse collapse-horizontal comments <?php echo $row_news['PostID'] ?>" id="collapseWidthExample">
-=======
                 <ul class="comments <?php echo $row_news['PostID']?>" style="display:none">
->>>>>>> af5623a26ea5ea938eb44d8b72e68c5a5d836848
                   <?php
                   //TRUY VẤN COMMENT, COMMENT_USER
                   foreach ($Profile->viewComment($row_news['PostID']) as $row_comment) {
