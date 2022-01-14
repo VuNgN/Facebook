@@ -30,8 +30,6 @@ for (var j = 0; j < coll2.length; j++) {
 
 
 
-var coll3 = document.querySelectorAll(".btn-comment");
-var coll4 = document.querySelectorAll(".comments");
 /* var arrPostID = [];
 coll3.forEach((btn, index) =>{
   console.log(btn.className.split(' ')[2]);
@@ -39,6 +37,8 @@ coll3.forEach((btn, index) =>{
 })
 console.log(arrPostID) */
 
+var coll3 = document.querySelectorAll(".btn-comment");
+var coll4 = document.querySelectorAll(".comments");
 
 coll3.forEach((btn, index) => {
   btn.addEventListener("click", function(e) {
@@ -53,17 +53,35 @@ coll3.forEach((btn, index) => {
   });
 }
 )
-//AJAX FOR COMMENT
-/* $(document).ready(function(){
-  $('#comment-form').on('submit',function(event){
-    event.preventDefault();
-    $.ajax({
-      url: "process_add_comment.php",
-      method: "post",
-      data:{txt_comment: $(this).val()},
-      success: function(res){
-        $("#comment-form").reset();
-      }
-    })
-  })
-}) */
+
+var edit = document.querySelectorAll(".btn-editPost");
+var editContent = document.querySelectorAll(".editPost");
+
+edit.forEach((btn, index) => {
+  btn.addEventListener("click", function(e) {
+    this.classList.toggle("active");
+    var contentOption = editContent[index];
+    if (contentOption.style.display === "none") {
+      contentOption.style.display = "flex";
+    }
+    else {
+      contentOption.style.display = "none";
+    }
+  });
+}
+)
+
+var closeEdit = document.querySelectorAll(".editPostCloseBtn");
+closeEdit.forEach((btn, index) => {
+  btn.addEventListener("click", function(e) {
+    this.classList.toggle("active");
+    var contentOption = editContent[index];
+    if (contentOption.style.display === "none") {
+      contentOption.style.display = "flex";
+    }
+    else {
+      contentOption.style.display = "none";
+    }
+  });
+}
+)

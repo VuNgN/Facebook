@@ -67,6 +67,46 @@
                 return mysqli_fetch_all($result_search,MYSQLI_ASSOC);
             }
         }
+        public function PostDetail($PostID){
+            $connection = $this->connectDb();
+            $sql = "SELECT PostID, view_post.UserID, UserName, PostCaption, PostTime, UserAva
+                    from view_post INNER JOIN user_profile 
+                    on view_post.UserID = user_profile.UserID
+                    WHERE PostID = $PostID";
+            $result = mysqli_query($connection, $sql);
+            if(mysqli_num_rows($result) > 0){
+                $this->closeDb($connection);
+                return mysqli_fetch_all($result, MYSQLI_ASSOC);
+            }
+        }
+        public function getImgPost($postId)
+        {
+            $connection = $this->connectDb();
+            $sql_img_content = "SELECT * FROM images INNER JOIN post ON post.PostID = images.PostID WHERE post.PostID=" . $postId;
+            $result_img_content = mysqli_query($connection, $sql_img_content);
+            if (mysqli_num_rows($result_img_content) > 0) {
+                $this->closeDb($connection);
+                return mysqli_fetch_all($result_img_content, MYSQLI_ASSOC);
+            }
+        }
+        public function countComment($postId)
+        {
+            $connection = $this->connectDb();
+            $sql_count_comment = "SELECT count(CommentID) FROM comment where PostID=" . $postId;
+            $result_count_comment = mysqli_query($connection, $sql_count_comment);
+            $this->closeDb($connection);
+            return mysqli_fetch_all($result_count_comment, MYSQLI_ASSOC);
+        }
+        public function getComment($postId)
+        {
+            $connection = $this->connectDb();
+            $sql_comment = "SELECT * from view_comment WHERE PostID =" . $postId;
+            $result_comment = mysqli_query($connection, $sql_comment);
+            if (mysqli_num_rows($result_comment) > 0) {
+                $this->closeDb($connection);
+                return mysqli_fetch_all($result_comment, MYSQLI_ASSOC);
+            }
+        }
         public function connectDb() {
             $connection = mysqli_connect(DB_HOST,
             DB_USERNAME, DB_PASSWORD, DB_NAME);

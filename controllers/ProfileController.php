@@ -8,7 +8,39 @@
             $profileImg = $Profile->getProfileImage();
             $profileFriend = $Profile->getProfileFriend();
             $profilePost = $Profile->getPost();
+           
             require_once "views/profile/index.php";
+        }
+        public function viewImage () {
+            $UserID = $_SESSION['isLoginOk'];
+            $Profile = new Profile($UserID);
+            $profileInfo = $Profile->getProfileInfo();
+            $getImgage = $Profile->viewImg();
+            require_once "views/profile/user_profile_image.php";
+        }
+
+        public function viewFriend() {
+            $UserID = $_SESSION['isLoginOk'];
+            $Profile = new Profile($UserID);
+            $profileInfo = $Profile->getProfileInfo();
+            $getFriend = $Profile->viewFriend();
+            require_once "views/profile/user_profile_myFriend.php";
+        }
+
+        public function viewVideo() {
+            $UserID = $_SESSION['isLoginOk'];
+            $Profile = new Profile($UserID);
+            $profileInfo = $Profile->getProfileInfo();
+            require_once "views/profile/user_profile_video.php";
+        }
+        public function viewGioiThieu() {
+            $UserID = $_SESSION['isLoginOk'];
+            $Profile = new Profile($UserID);
+            $getFriend = $Profile->viewFriend();
+            $getImgage = $Profile->viewImg();
+            $profileInfo = $Profile->getProfileInfo();
+
+            require_once "views/profile/user_profile_gioithieu.php";
         }
         public function addComment(){
             //add cmt
@@ -61,11 +93,22 @@
                     'img' => $PostImg
                 ];
                 $profileAddPost = $Profile->addPost($arrPost);
-            header('location: index.php?controller=profile&action=index');
+                header('location: index.php?controller=profile&action=index');
             }
         }
         public function editPost(){
-            
+            $UserID = $_SESSION['isLoginOk'];
+            $Profile = new Profile($UserID);
+            if(isset($_POST['btn-sendPost']) && $_POST['editContent']){
+                $PostID = $_GET['PostID'];
+                $EditContent = $_POST['editContent'];
+                $arrEdit = [
+                    'PostID' => $PostID,
+                    'edit' => $EditContent
+                ];
+                $profileEditPost = $Profile->editPost($arrEdit);
+                header('location: index.php?controller=profile&action=index');
+            }
         }
         public function deletePost(){
             $UserID = $_SESSION['isLoginOk'];
