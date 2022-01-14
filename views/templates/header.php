@@ -177,8 +177,6 @@
                         }
                 
                     ?>
-<<<<<<< HEAD
-=======
                         <a class="notify-item link-dark" href="index.php?controller=template&action=postDetail&PostID=<?php echo $notify['PostID'];?>">
                             <div class="user-ava">
                                 <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
@@ -194,7 +192,6 @@
                         }
                     ?>
 
->>>>>>> 64cb4d060a2730dfcc168ebab8092fa053e39427
                     <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
                         <div class="user-ava">
                             <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
@@ -206,10 +203,6 @@
                             <b style="color:#1877F2"><?php echo $time?></b>
                         </div>
                     </a>
-        <?php
-            }
-        ?>
-
                 </div>
             </div>
             <div class="nav-item">
