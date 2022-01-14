@@ -40,19 +40,19 @@
       <section class="py-2 d-flex justify-content-between">
         <!-- leftt -->
         <div>
-          <button type="button" class="btn btn-link bg-light" datadata-ripple-color="dark" onclick="document.location.href='user_profile.php'">
+          <button type="button" class="btn btn-link bg-light" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=index'">
             Bài viết
           </button>
-          <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='user_profile_gioithieu.php'">
+          <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewGioiThieu'">
             Giới thiệu
           </button>
-          <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='user_profile_myFriend.php'">
+          <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewFriend'">
             Bạn bè
           </button>
-          <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='user_profile_image.php'">
+          <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewImage'">
             Ảnh
           </button>
-          <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='user_profile_video.php'">
+          <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewVideo'">
             Video
           </button>
           <div class="dropdown d-inline-block">
@@ -61,9 +61,9 @@
             </button>
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="https://vnexpress.net/the-thao">Thể thao</a></li>
-              <li><a class="dropdown-item" href="https://tinnhac.com/nhac-chau-a.html">Âm nhạc</a></li>
-              <li><a class="dropdown-item" href="https://vietnamnet.vn/vn/giai-tri/">Giải trí</a></li>
+              <li><a class="dropdown-item" href="https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw" target="_blank">Thể thao</a></li>
+              <li><a class="dropdown-item" href="https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ" target="_blank">Âm nhạc</a></li>
+              <li><a class="dropdown-item" href="https://www.youtube.com/feed/trending?bp=6gQJRkVleHBsb3Jl" target="_blank">Giải trí</a></li>
             </ul>
           </div>
         </div>
@@ -137,13 +137,12 @@
             <a href="user_profile_image.php" class="btn btn-link d-inline-block py-1 px-3" style="float: right">Xem tất cả ảnh</a>
             <?php
             $count = 0;
-            if($profileImg)
-            foreach ($profileImg as $row_img) {
-              // global $row_img;
-              if ($count % 3 == 0) {
-                echo '<div class="row gx-2">'; // open
-              }
-
+            if ($profileImg)
+              foreach ($profileImg as $row_img) {
+                // global $row_img;
+                if ($count % 3 == 0) {
+                  echo '<div class="row gx-2">'; // open
+                }
             ?>
               <div class="col-lg-4 mb-3">
                 <a href="<?php echo $row_img['images'] ?>" target="_blank">
@@ -151,11 +150,11 @@
                 </a>
               </div>
             <?php
-              if ($count % 3 == 2 || $count == count($profileImg) - 1) {
-                echo '</div>'; // close
+                if ($count % 3 == 2 || $count == count($profileImg) - 1) {
+                  echo '</div>'; // close
+                }
+                $count++;
               }
-              $count++;
-            }
             ?>
           </div>
         </div>
@@ -176,21 +175,21 @@
             </div>
             <?php
             $count = 0;
-            if($profileFriend)
-            foreach ($profileFriend as $rowFriends) {
+            if ($profileFriend)
+              foreach ($profileFriend as $rowFriends) {
 
-              if ($count % 3 == 0) {
-                echo '<div class="row">';
-              }
-              echo '<div class="col-md-4 text-center">';
-              echo '<img src="' . $rowFriends['UserAva'] . '" alt="" class="shadow-1-strong rounded" style="width: 75px; height: 75px;"/>';
-              echo '<p><small>' . $rowFriends['UserFirstName'] . " " . $rowFriends['UserLastName'] . '</small></p>';
-              echo '</div>';
-              if ($count % 3 == 2 ||  $count == count($profileFriend) - 1) {
+                if ($count % 3 == 0) {
+                  echo '<div class="row">';
+                }
+                echo '<div class="col-md-4 text-center">';
+                echo '<img src="' . $rowFriends['UserAva'] . '" alt="" class="shadow-1-strong rounded" style="width: 75px; height: 75px;"/>';
+                echo '<p><small>' . $rowFriends['UserFirstName'] . " " . $rowFriends['UserLastName'] . '</small></p>';
                 echo '</div>';
+                if ($count % 3 == 2 ||  $count == count($profileFriend) - 1) {
+                  echo '</div>';
+                }
+                $count++;
               }
-              $count++;
-            }
             ?>
           </div>
         </div>
@@ -227,10 +226,10 @@
           <!--Newss-->
           <?php
           //TRUY VẤN POST, POST_USERR
-          if($profilePost)
-          foreach ($profilePost as $row_news) {
+          if ($profilePost)
+            foreach ($profilePost as $row_news) {
           ?>
-            <div class="news <?php echo $row_news['PostID']?>">
+            <div class="news <?php echo $row_news['PostID'] ?>">
               <div class="row">
                 <!-- heading -->
                 <div class="heading">
@@ -251,7 +250,7 @@
                         more_horiz
                       </span>
                     </div>
-                    <div class="collapse contentOption" >
+                    <div class="collapse contentOption">
                       <div class="option-item">
                         <div class="col-md-12 items editPost-item">
                           <!-- bấm vào đây sửa bài viết -->
@@ -259,22 +258,22 @@
                           <b>Sửa bài viết</b>
                         </div>
                         <!--Sửa bài-->
-        <form  action="" style="width:500px;height:300px;dislay:flex;position:absolute;top:100px">
-          <textarea name="" id="" cols="100" rows="10">
-            <?php echo $row_news['PostID']?>
+                        <form action="" style="width:500px;height:300px;dislay:flex;position:absolute;top:100px">
+                          <textarea name="" id="" cols="100" rows="10">
+            <?php echo $row_news['PostID'] ?>
           </textarea>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary">
-              Đóng
-            </button>
-            <button type="submit" class="btn btn-primary" name="btn-sendPost">
-              Lưu
-            </button>
-          </div>
-        </form>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary">
+                              Đóng
+                            </button>
+                            <button type="submit" class="btn btn-primary" name="btn-sendPost">
+                              Lưu
+                            </button>
+                          </div>
+                        </form>
                         <!--Xóa bài-->
-                        <a class="col-md-12 items" href="index.php?controller=Profile&action=deletePost&PostID=<?php echo $row_news['PostID']?>">
-                        <span class="material-icons">delete</span>
+                        <a class="col-md-12 items" href="index.php?controller=Profile&action=deletePost&PostID=<?php echo $row_news['PostID'] ?>">
+                          <span class="material-icons">delete</span>
                           <b>Xóa bài viết</b> <!-- bấm vào đây xóa bài viết -->
                         </a>
                       </div>
@@ -378,7 +377,7 @@
                 </div>
 
                 <!--COMMENTSS-->
-                <ul class="collapse collapse-horizontal comments <?php echo $row_news['PostID']?>" id="collapseWidthExample">
+                <ul class="collapse collapse-horizontal comments <?php echo $row_news['PostID'] ?>" id="collapseWidthExample">
                   <?php
                   //TRUY VẤN COMMENT, COMMENT_USER
                   foreach ($Profile->viewComment($row_news['PostID']) as $row_comment) {
@@ -421,7 +420,7 @@
                           <!-- form sửa comment -->
 
                           <!-- xóa comment -->
-                          <a href="index.php?controller=profile&action=deleteComment&CommentID=<?php echo $row_comment['CommentID'];?>" class="link-dark">
+                          <a href="index.php?controller=profile&action=deleteComment&CommentID=<?php echo $row_comment['CommentID']; ?>" class="link-dark">
                             <span class="hide material-icons-outlined option-comment option-icon" style="font-size:15px">
                               delete_forever
                             </span>
@@ -438,12 +437,12 @@
                         foreach ($Profile->getAvatar($row_comment['UserID']) as $rowAvatar) {
 
                         ?>
-                        <a class="icon" href="user_profile.php">
-                          <?php
-                          //TRUY VẤN COMMENT, COMMENT_USER
-                          ?>
-                          <img class="user-img" src="<?php echo $row_ava['UserAva'] ?>" alt="">
-                        </a>
+                          <a class="icon" href="user_profile.php">
+                            <?php
+                            //TRUY VẤN COMMENT, COMMENT_USER
+                            ?>
+                            <img class="user-img" src="<?php echo $row_ava['UserAva'] ?>" alt="">
+                          </a>
                         <?php } ?>
                         <div class="commentator-name">
                           <a href="user_profile.php" class="user-name text-decoration-none link-dark">
@@ -454,13 +453,13 @@
                           </p>
                         </div>
                         <!--delete COMMENTT-->
-                          <div id="edit-comment" class="hide">
-                            <a href="index.php?controller=profile&action=deleteComment&CommentID=<?php echo $row_comment['CommentID'];?>" class="link-dark">
-                              <span class="hide material-icons-outlined option-comment option-icon" style="font-size:15px">
-                                delete_forever
-                              </span>
-                            </a>
-                          </div>
+                        <div id="edit-comment" class="hide">
+                          <a href="index.php?controller=profile&action=deleteComment&CommentID=<?php echo $row_comment['CommentID']; ?>" class="link-dark">
+                            <span class="hide material-icons-outlined option-comment option-icon" style="font-size:15px">
+                              delete_forever
+                            </span>
+                          </a>
+                        </div>
                       </li>
                   <?php
                     }
@@ -468,9 +467,9 @@
                   ?>
                 </ul>
               </div>
-            </div>                      
+            </div>
           <?php
-          } // to
+            } // to
           ?>
           <!--THINKING POSTT-->
           <div class="col-md-9 mb-4 mb-md-0 thinking-post">

@@ -254,6 +254,33 @@ class Profile
             $this->closeDb($connection);
         }
     }
+    public function viewImg()
+    {
+        $connection = $this->connectDb();
+        $sql_images_user = "SELECT * from images, post where images.PostID = post.PostID and post.UserID= " . $this->UserID .  ";";
+        $result_images_user = mysqli_query($connection, $sql_images_user);
+        if (mysqli_num_rows($result_images_user) > 0) {
+            $this->closeDb($connection);
+            return mysqli_fetch_all($result_images_user, MYSQLI_ASSOC);
+        }
+    }
+
+    public function viewFriend () {
+        $connection = $this->connectDb();
+        $queryFriends = "SELECT * FROM user_profile, friend_ship 
+                        WHERE (friend_ship.User1ID = UserID OR friend_ship.User2ID = UserID)
+                        AND UserID != $this->UserID
+                        AND (friend_ship.User1ID = $this->UserID OR friend_ship.User2ID = $this->UserID) 
+                        GROUP BY UserID;";
+        $resultFriends = mysqli_query($connection, $queryFriends);
+        if (mysqli_num_rows($resultFriends) > 0) {
+            $this->closeDb($connection);
+            return mysqli_fetch_all($resultFriends, MYSQLI_ASSOC);
+        }
+    }
+
+    
+    // public function
 
     public function connectDb()
     {
