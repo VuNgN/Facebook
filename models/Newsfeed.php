@@ -128,16 +128,13 @@ class Newsfeed
             $PostID = $row_id['PostID'];
         }
         $statusMsg = ''; // tạo ra 1 biến để lưu lại trạng thái upload nhằm mục tiêu phản hồi lại cho người dùng
-
         // 1. Động tác thiết lập cho việc chuẩn bị upload
         $targetDir = "assets/uploads/"; // thư mục chỉ định, nằm trong cùng project này để lưu trữ tệp tải lên
         $fileName = basename($arrPost['img']["name"]); // $_FILE là 1 biến siêu toàn cục lưu trữ toàn bộ phần tử file trên form
         $uploadDir = "" . $targetDir . $fileName; // Đây là đường dẫn upload ảnh vào thư mục uploads (tên đầy đủ + đường dẫn sau khi việc upload hoàn thành)
         $targetFilePath = $targetDir . $fileName; // Đây là đường dẫn insert db (tên đầy đủ + đường dẫn sau khi việc upload hoàn thành)
         // nó là giá trị cần phải truyền vào hàm move_upload_file
-
         $fileType = pathinfo($uploadDir, PATHINFO_EXTENSION); // bắt định dạng tệp tin, ktra định dạng có hợp lệ hay k
-
         if (!empty($arrPost['img']["name"])) {
             $allowTypes = array('jpg', 'png', 'jpeg'); // allow 3 types img type
             if (in_array($fileType, $allowTypes)) { // phương thức in_array kiểm tra 1 giá trị có thuộc mảng hay không
