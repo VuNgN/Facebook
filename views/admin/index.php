@@ -1,10 +1,3 @@
-<?php
-    session_start();    
-    if(!isset($_SESSION['Admin'])) {
-        header('Location: signinAdmin.php');
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,9 +11,9 @@
 <!--THƯ VIỆN BOOSTRAP-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <!--CSS ADMIN-->
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="assets/css/admin/admin.css">
     <!--FaceBook LOGO-->
-    <link rel="icon" href="..\assets\images\Facebook_logo\Facebook_logo.ico" type="image/x-icon"/>
+    <link rel="icon" href="assets/images/Facebook_logo/Facebook_logo.ico" type="image/x-icon"/>
     <title>Admin-Facebook</title>
 </head>
 <body>
@@ -42,7 +35,7 @@
                     </div>
                 </div>
                 <div class="log-out">
-                    <a href="signinAdmin.php" class="text-decoration-none link-dark">
+                    <a href="index.php?controller=admin&action=index" class="text-decoration-none link-dark">
                         <div class="item">
                             <span class="material-icons-outlined">
                                 logout
@@ -65,22 +58,15 @@
         </div>
         <div class="main-news-report">
 <?php
-    //KẾT NỐI SQL
-    include "../src/connectDB.php";
     //TRUY VẤN POST BỊ REPORT
-    $sql_news = "SELECT view_post.PostID, view_post.UserID, view_post.UserName, view_post.PostTime, view_post.PostCaption, UserAva
-                FROM user_profile,view_post INNER JOIN post
-                ON post.PostID = view_post.PostID
-                WHERE post.Reported = 1 and post.UserID = user_profile.UserID";
-    $result_news = mysqli_query($conn, $sql_news);
-    if(mysqli_num_rows($result_news) > 0){
-        while($row_news = mysqli_fetch_assoc($result_news)){
+        if($postsReported)
+        foreach($postsReported as $row_news){
 ?>
             <div class="news">
                 <div class="row">
                     <div class="heading">
                         <a class="user-ava">
-                            <img class="user-img" src="../<?php echo $row_news['UserAva']?>" alt="">
+                            <img class="user-img" src="<?php echo $row_news['UserAva']?>" alt="">
                         </a>
                         <div class="user-name-time">
                             <a class="user-name text-decoration-none link-dark">
@@ -99,7 +85,7 @@
                             <div class="content" >
                                 <div class="option-item">
                                     <a class="col-md-12 items text-decoration-none link-dark"
-                                        href="controllers/process_ban_post.php?PostID= <?php echo $row_news['PostID'];?>">
+                                        href="index.php?controller=admin&action=banPost&PostID=<?php echo $row_news['PostID'];?>">
                                         <span class="material-icons-outlined">
                                             remove_circle_outline
                                         </span>
@@ -115,25 +101,18 @@
                         </div>
                         <div class="content-images">
                         <?php
-    $sql_img_content = "SELECT * FROM images INNER JOIN post ON post.PostID = images.PostID WHERE post.PostID=" .$row_news['PostID'];
-    $result_img_content = mysqli_query($conn, $sql_img_content);
-    if(mysqli_num_rows($result_img_content) > 0){
-        while($row_img_content = mysqli_fetch_assoc($result_img_content)){
-    
+                        foreach($adminprocess->showPost($row_news['PostID']) as $row_img_content) {
 ?>
-                        <img src="../<?php echo $row_img_content['images'];?>" alt="">
+                        <img src="<?php echo $row_img_content['images'];?>" alt="">
 <?php
-        }
-    }
+                        }
 ?>
                         </div>
                     </div>
                 </div>
-                
             </div>
 <?php
         }
-    }
 ?>
         </div>
 <!--REPORTED USER-->
@@ -146,16 +125,12 @@
         <div class="main-users-report">
 <?php
     //TRUY VẤN USER BỊ REPORT
-    $sql_reported_user = "SELECT UserID, CONCAT(UserFirstName, ' ', UserLastName) as UserName, UserAva, Reported
-                        FROM user_profile WHERE Reported > 0 and Active = 1";
-    $result_reported_user = mysqli_query($conn, $sql_reported_user);
-    if(mysqli_num_rows($result_reported_user)>0){
-        while($row_reported_user = mysqli_fetch_assoc($result_reported_user)){
+        foreach($reportedUser as $row_reported_user){
 ?>
             <div class="row search-results">
                 <div class="col-md-12 search-result-item collapsible">
                     <div class="user-icon">
-                        <img class="user-img" src="../<?php echo $row_reported_user['UserAva'];?>" alt="">
+                        <img class="user-img" src="<?php echo $row_reported_user['UserAva'];?>" alt="">
                     </div>
                     <div class="txt">
                         <b><?php echo $row_reported_user['UserName'];?></b>
@@ -168,7 +143,7 @@
                 </div>
                 <div class="ban-option content">
                     <a class="ban-item text-decoration-none link-dark"
-                        href="controllers/process_lock_user.php?UserID= <?php echo $row_reported_user['UserID'];?>">
+                        href="index.php?controller=admin&action=lockUser&UserID=<?php echo $row_reported_user['UserID'];?>">
                         <span class="material-icons-outlined lock-icon">
                             lock
                         </span>
@@ -179,7 +154,6 @@
             </div>
 <?php
         }
-    }
 ?>
         </div>
 <!--LOCKED USER-->
@@ -192,16 +166,13 @@
     <div class="main-users-ban">
 <?php
     //TRUY VẤN USER BỊ LOCKER
-    $sql_locked_user = "SELECT UserID, CONCAT(UserFirstName, ' ', UserLastName) as UserName, UserAva, Reported, TIMEDIFF(NOW(),LockTime) as Time
-                        FROM user_profile WHERE Reported > 0 and Active = 0";
-    $result_locked_user = mysqli_query($conn, $sql_locked_user);
-    if(mysqli_num_rows($result_locked_user)>0){
-        while($row_locked_user = mysqli_fetch_assoc($result_locked_user)){
+    
+        foreach($lockedUser as $row_locked_user){
 ?>
         <div class="row search-results">
             <div class="col-md-12 search-result-item collapsible">
                 <div class="user-icon">
-                    <img class="user-img" src="../<?php echo $row_locked_user['UserAva'];?>" alt="">
+                    <img class="user-img" src="<?php echo $row_locked_user['UserAva'];?>" alt="">
                 </div>
                 <div class="txt">
                     <b><?php echo $row_locked_user['UserName'];?></b>
@@ -217,7 +188,7 @@
             </div>
             <div class="lock-option content">
                 <a class="ban-item text-decoration-none link-dark"
-                href="controllers/process_unlock_user.php?UserID= <?php echo $row_locked_user['UserID'];?>">
+                href="index.php?controller=admin&action=unlockUser&UserID=<?php echo $row_locked_user['UserID'];?>">
                     <span class="material-icons-outlined">
                         lock_open
                     </span>
@@ -228,12 +199,11 @@
         </div>
 <?php
         }
-    }
 ?>
     </div>
         </main>
 <!--Thư viện Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="js/admin.js"></script>
+    <script src="assets/js/admin/admin.js"></script>
 </body>
 </html>
