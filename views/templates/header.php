@@ -175,7 +175,7 @@
                             $time = floor($notify['HH']) .' giờ trước';
                         }
                     ?>
-                        <a class="notify-item link-dark" href="post.php?PostID=<?php echo $notify['PostID'];?>">
+                        <a class="notify-item link-dark" href="index.php?controller=template&action=postDetail&PostID=<?php echo $notify['PostID'];?>">
                             <div class="user-ava">
                                 <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
                             </div>
