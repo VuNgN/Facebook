@@ -7,6 +7,7 @@
             $row_user_ava = $Newsfeed->getName(); 
             $posts = $Newsfeed->getPost();
             $friends = $Newsfeed->getFriend();
+        
             require_once "views/newsfeed/index.php";
         }
         public function addComment(){
@@ -75,6 +76,13 @@
                 $error = "Report thất bại";
                 header("location: views/templates/404page.php?error=$error");
             }
+        }
+        public function likeProcess() {
+            $UserID = $_SESSION['isLoginOk'];
+            $Newsfeed = new Newsfeed($UserID);
+            $PostID = $_GET['PostID'];
+            $Newsfeed->likeProcess($PostID);
+            header("location: index.php?controller=newsfeed&action=index");
         }
     }
 ?>

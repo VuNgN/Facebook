@@ -36,10 +36,10 @@
         </div>
         <!--News-->
         <?php
-        if($posts)
-        foreach ($posts as $row_news) {
+        if ($posts)
+            foreach ($posts as $row_news) {
         ?>
-            <div class="news <?php echo $row_news['PostID']?>">
+            <div class="news <?php echo $row_news['PostID'] ?>">
                 <div class="row">
                     <div class="heading">
                         <a class="user-ava" href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>">
@@ -83,12 +83,12 @@
                         </div>
                         <div class="content-images">
                             <?php
-                            if($Newsfeed->getImgPost($row_news['PostID'])) 
-                            foreach ($Newsfeed->getImgPost($row_news['PostID']) as $row_img_content) {
+                            if ($Newsfeed->getImgPost($row_news['PostID']))
+                                foreach ($Newsfeed->getImgPost($row_news['PostID']) as $row_img_content) {
                             ?>
                                 <img src="<?php echo $row_img_content['images']; ?>" alt="" onclick="clickImg('<?php echo $row_img_content['images']; ?>')">
                             <?php
-                            }
+                                }
                             ?>
                         </div>
                     </div>
@@ -113,27 +113,49 @@
                                 ?>
                                 <div class="share-index-item">
                                     100 lượt chia sẻ
+                                    <!-- luot yeu thichh -->
                                 </div>
                             </div>
                         </div>
                         <div class="action-comment-under">
-                            <div class="action-comment-under-item">
-                                <div class="action-icon">
-                                    <span class="material-icons-outlined like-icon">
-                                        thumb_up
-                                    </span>
-                                </div>
-                                <div class="action-name">
-                                    <h6>Thích</h6>
-                                </div>
-                            </div>
+                            <?php
+                            if ($Newsfeed->getLikeModel($row_news['PostID'])) {
+
+                            ?>
+                                <a class="action-comment-under-item text-decoration-none" href="index.php?controller=newsfeed&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>" style="">
+                                    <div class="action-icon">
+                                        <span class="material-icons">
+                                            thumb_up
+                                        </span>
+
+                                    </div>
+                                    <div class="action-name">
+                                        <h6>Thích</h6>
+                                    </div>
+                                </a>
+                            <?php } else {
+
+                            ?>
+                                <a class="action-comment-under-item text-decoration-none link-dark" href="index.php?controller=newsfeed&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>" style="">
+                                    <div class="action-icon">
+                                        <span class="material-icons">
+                                            thumb_up
+                                        </span>
+
+                                    </div>
+                                    <div class="action-name">
+                                        <h6>Thích</h6>
+                                    </div>
+                                </a>
+
+                            <?php  } ?>
                             <div class="action-comment-under-item">
                                 <div class="action-icon">
                                     <span class="material-icons-outlined comment-icon">
                                         chat_bubble_outline
                                     </span>
                                 </div>
-                                <div class="action-name btn-comment <?php echo $row_news['PostID']?>">
+                                <div class="action-name btn-comment <?php echo $row_news['PostID'] ?>">
                                     <h6>Bình luận</h6>
                                 </div>
                             </div>
@@ -176,12 +198,12 @@
                     </div>
 
                     <!--COMMENTS-->
-                    <ul class="comments <?php echo $row_news['PostID']?>" style="display:none">
+                    <ul class="comments <?php echo $row_news['PostID'] ?>" style="display:none">
                         <?php
                         //TRUY VẤN COMMENT, COMMENT_USER
-                        if($Newsfeed->getComment($row_news['PostID']))
-                        foreach ($Newsfeed->getComment($row_news['PostID']) as $row_comment) {
-                            if ($row_comment['UserID'] == $UserID) {
+                        if ($Newsfeed->getComment($row_news['PostID']))
+                            foreach ($Newsfeed->getComment($row_news['PostID']) as $row_comment) {
+                                if ($row_comment['UserID'] == $UserID) {
                         ?>
                                 <!--COMMENT OF USER LOGIN-->
                                 <li class="comment-item myDIV">
@@ -220,7 +242,7 @@
                                     </div>
                                 </li>
                             <?php
-                            } else {
+                                } else {
                             ?>
                                 <!--COMMENT OF USER FRIEND-->
                                 <li class="comment-item myDIV">
@@ -238,8 +260,8 @@
                                 </li>
 
                         <?php
+                                }
                             }
-                        }
                         ?>
                     </ul>
                 </div>
@@ -247,7 +269,7 @@
 
             </div>
         <?php
-        }
+            }
         ?>
     </div>
     <!--THINKING POST-->
@@ -289,19 +311,19 @@
             <h6>Người liên hệ</h6>
         </div>
         <?php
-            if($friends)
-            foreach($friends as $row_friend ){
+        if ($friends)
+            foreach ($friends as $row_friend) {
         ?>
-                <a class="row" href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_friend['UserID']; ?>">
-                    <div class="sidebar-item">
-                        <div class="icon">
-                            <img src="<?php echo ($row_friend['UserAva']); ?>" alt="" style="border-radius: 50%;width:36px;height:36px">
-                        </div>
-                        <div class="text">
-                            <b><?php echo $row_friend['UserName']; ?></b>
-                        </div>
+            <a class="row" href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_friend['UserID']; ?>">
+                <div class="sidebar-item">
+                    <div class="icon">
+                        <img src="<?php echo ($row_friend['UserAva']); ?>" alt="" style="border-radius: 50%;width:36px;height:36px">
                     </div>
-                </a>
+                    <div class="text">
+                        <b><?php echo $row_friend['UserName']; ?></b>
+                    </div>
+                </div>
+            </a>
         <?php
             }
         ?>
