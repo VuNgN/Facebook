@@ -6,9 +6,9 @@
       <section class="mb-10">
         <!-- Background imagee -->
         <div class="p-5 text-center bg-image shadow-1-strong rounded-bottom" style="
-                background-image: url('assets/images_dev/sky.jpg');
+                background-image: url('assets/images/sky.jpg');
                 height: 400px;
-              " onclick="clickImg('assets/images_dev/sky.jpg')"></div>
+              " onclick="clickImg('assets/images/sky.jpg')"></div>
         <?php
         foreach ($profileInfo as $row_ava) {
         ?>
@@ -137,8 +137,9 @@
             <a href="user_profile_image.php" class="btn btn-link d-inline-block py-1 px-3" style="float: right">Xem tất cả ảnh</a>
             <?php
             $count = 0;
+            if($profileImg)
             foreach ($profileImg as $row_img) {
-              global $row_img;
+              // global $row_img;
               if ($count % 3 == 0) {
                 echo '<div class="row gx-2">'; // open
               }
@@ -175,6 +176,7 @@
             </div>
             <?php
             $count = 0;
+            if($profileFriend)
             foreach ($profileFriend as $rowFriends) {
 
               if ($count % 3 == 0) {
@@ -225,9 +227,10 @@
           <!--Newss-->
           <?php
           //TRUY VẤN POST, POST_USERR
+          if($profilePost)
           foreach ($profilePost as $row_news) {
           ?>
-            <div class="news">
+            <div class="news <?php echo $row_news['PostID']?>">
               <div class="row">
                 <!-- heading -->
                 <div class="heading">
@@ -248,17 +251,32 @@
                         more_horiz
                       </span>
                     </div>
-                    <div class="collapse contentOption">
+                    <div class="collapse contentOption" >
                       <div class="option-item">
-                        <div class="col-md-12 items">
+                        <div class="col-md-12 items editPost-item">
                           <!-- bấm vào đây sửa bài viết -->
-                          <span class="material-icons-outlined">history</span>
+                          <span class="material-icons">mode_edit</span>
                           <b>Sửa bài viết</b>
                         </div>
-                        <div class="col-md-12 items">
-                          <span class="material-icons-outlined">bookmarks</span>
+                        <!--Sửa bài-->
+        <form  action="" style="width:500px;height:300px;dislay:flex;position:absolute;top:100px">
+          <textarea name="" id="" cols="100" rows="10">
+            <?php echo $row_news['PostID']?>
+          </textarea>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary">
+              Đóng
+            </button>
+            <button type="submit" class="btn btn-primary" name="btn-sendPost">
+              Lưu
+            </button>
+          </div>
+        </form>
+                        <!--Xóa bài-->
+                        <a class="col-md-12 items" href="index.php?controller=Profile&action=deletePost&PostID=<?php echo $row_news['PostID']?>">
+                        <span class="material-icons">delete</span>
                           <b>Xóa bài viết</b> <!-- bấm vào đây xóa bài viết -->
-                        </div>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -360,7 +378,7 @@
                 </div>
 
                 <!--COMMENTSS-->
-                <ul class="collapse collapse-horizontal comments" id="collapseWidthExample">
+                <ul class="collapse collapse-horizontal comments <?php echo $row_news['PostID']?>" id="collapseWidthExample">
                   <?php
                   //TRUY VẤN COMMENT, COMMENT_USER
                   foreach ($Profile->viewComment($row_news['PostID']) as $row_comment) {
@@ -450,7 +468,7 @@
                   ?>
                 </ul>
               </div>
-            </div>
+            </div>                      
           <?php
           } // to
           ?>

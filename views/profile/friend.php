@@ -1,31 +1,6 @@
 <?php
-  include "template/header.php";
   $UserIDFriend = $_GET['UserIDFriend'];
-  include "src/connectDB.php";
-
-  $queryProfile = "SELECT * from user_profile where UserID=?";
-  $stmt = mysqli_prepare($conn, $queryProfile);
-  mysqli_stmt_bind_param($stmt, "s", $UserIDFriend);
-  if(mysqli_stmt_execute($stmt)) {
-      mysqli_stmt_bind_result($stmt, $UserId, $UserEmail, $UserPass, $UserGender, $UserFirstName, $UserLastName, $UserBirth, $UserAddress, $UserAva, $Reported, $Description, $VerifyLink, $Active, $VerifyDate, $LockTime);
-      mysqli_stmt_fetch($stmt);
-      // if (mysqli_stmt_fetch($stmt)){
-      //     if(password_verify($pass, $UserPass)){
-      //         $_SESSION['isLoginOk'] = $UserId;
-      //         mysqli_close($conn);
-      //         header("Location: ../../");
-      //     } else {
-      //       echo 'Du lieu khong khop';
-      //       mysqli_close($conn);
-      //     }
-      // } else {
-      //     echo 'Du lieu khong khop';
-      //     mysqli_close($conn);
-      // }
-  } else {
-      mysqli_close($conn);
-      echo 'khong co du lieu';
-  }    
+  foreach($friendInfo as $frdInfo) {
 ?>
 <main>
   <!-- Section: white bg -->
@@ -40,12 +15,12 @@
               " onclick="clickImg('assets/images_dev/sky.jpg')"></div>
 
         <div class="d-flex justify-content-center">
-          <img src=<?php echo "'".$UserAva."'" ?> alt="" class="
+          <img src=<?php echo "'".$frdInfo['UserAva']."'" ?> alt="" class="
                   rounded-circle
                   shadow-3-strong
                   position-absolute
                   border border-white
-                " id="avatarImg" style="width: 180px;height:180px; margin-top: -60px" onclick="clickImg('<?php echo $UserAva ?>')" />
+                " id="avatarImg" style="width: 180px;height:180px; margin-top: -60px" onclick="clickImg('<?php echo $frdInfo['UserAva'] ?>')" />
         </div>
         <!-- Background image -->
       </section>
@@ -55,9 +30,9 @@
       <section class="text-center border-bottom">
         <div class="row d-flex justify-content-center">
           <div class="col-md-6">
-            <h2><strong><?php echo $UserFirstName.$UserLastName ?></strong></h2>
+            <h2><strong><?php echo $frdInfo['UserFirstName'].$frdInfo['UserLastName'] ?></strong></h2>
             <p class="text-muted">
-              <?php echo $Description ?>
+              <?php echo $frdInfo['Description'] ?>
             </p>
           </div>
         </div>
@@ -99,54 +74,52 @@
         <!-- right -->
         <div style="display: flex">
           <?php
-            require "src/connectDB.php";
-            $sql_my_send  = "select * from friend_ship where (User1ID='".$UserID."' and User2ID='".$UserId."')";
-            $sql_other_people_send = "select * from friend_ship where (User1ID='".$UserId."' and User2ID='".$UserID."')";
-            $result_my_send = mysqli_query($conn, $sql_my_send);
-            $result_other_people_send = mysqli_query($conn, $sql_other_people_send);
-            if (mysqli_num_rows($result_my_send) > 0 && mysqli_num_rows($result_other_people_send) <= 0) {
-              if (mysqli_fetch_assoc($result_my_send)['Active'] == 1) {
+            if ($isMySendFriend && !$isOtherSendFriend) {
+              foreach($isMySendFriend as $mysendF) {
+              if ($mysendF['Active'] == 1) {
                 echo "
-                  <form class='mr-2' method='post' action='src/friend/process_friend.php'>
-                    <button name='removeFriend' type='submit' value='".$UserId."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                  <form class='mr-2' method='post' action='index.php?controller=profile&action=processFriend'>
+                    <button name='removeFriend' type='submit' value='".$frdInfo['UserID']."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
                       <i class='fas fa-user-times'></i> Xóa bạn bè
                     </button>
                   </form>";
               } else {
                 echo "
-                  <form class='mr-2' method='post' action='src/friend/process_friend.php'>
-                    <button name='cancelFriend' type='submit' value='".$UserId."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                  <form class='mr-2' method='post' action='index.php?controller=profile&action=processFriend'>
+                    <button name='cancelFriend' type='submit' value='".$frdInfo['UserID']."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
                       <i class='fas fa-user-slash'></i> Hủy kết bạn
                     </button>
                   </form>";
               }
-              
+              } 
             } 
-            else if (mysqli_num_rows($result_my_send) <= 0 && mysqli_num_rows($result_other_people_send) > 0) {
-                if (mysqli_fetch_assoc($result_other_people_send)['Active'] == 0) {
+            else if (!$isMySendFriend && $isOtherSendFriend) {
+              foreach($isOtherSendFriend as $othersendF) {
+                if ($othersendF['Active'] == 0) {
                 echo "
-                <form class='mr-2' method='post' action='src/friend/process_friend.php'>
-                  <button name='acceptFriend' type='submit' value='".$UserId."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                <form class='mr-2' method='post' action='index.php?controller=profile&action=processFriend'>
+                  <button name='acceptFriend' type='submit' value='".$frdInfo['UserID']."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
                     <i class='fas fa-user-check'></i> Đồng ý kết bạn
                   </button>
-                  <button name='cancelFriend' type='submit' value='".$UserId."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                  <button name='cancelFriend' type='submit' value='".$frdInfo['UserID']."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
                     <i class='fas fa-user-times'></i> Hủy kết bạn
                   </button>
                 </form>";
                 }
                 else {
                 echo "
-                  <form class='mr-2' method='post' action='src/friend/process_friend.php'>
-                    <button name='removeFriend' type='submit' value='".$UserId."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                  <form class='mr-2' method='post' action='index.php?controller=profile&action=processFriend'>
+                    <button name='removeFriend' type='submit' value='".$frdInfo['UserID']."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
                       <i class='fas fa-user-times'></i> Xóa bạn bè
                     </button>
                   </form>";
                 }
+              }
             }
             else {
               echo "
-                <form class='mr-2' method='post' action='src/friend/process_friend.php'>
-                  <button name='addFriend' type='submit' value='".$UserId."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                <form class='mr-2' method='post' action='index.php?controller=profile&action=processFriend'>
+                  <button name='addFriend' type='submit' value='".$frdInfo['UserID']."' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
                     <i class='fas fa-user-plus'></i> Kết bạn
                   </button>
                 </form>";
@@ -462,8 +435,8 @@
   </section>
   <!-- Section grey bg -->
 </main>
-
-<script type="text/javascript" src="assets/js_mdb/mdb.min.js"></script>
+<?php } ?>
+<script type="text/javascript" src="assets/js/mdb/mdb.min.js"></script>
 <!-- Custom scripts -->
 <script type="text/javascript"></script>
 </body>

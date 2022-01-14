@@ -42,7 +42,7 @@
                 <i class="fab fa-facebook-f fb-icon"></i>
             </div>
           </a>
-          <form class="d-flex" action="search.php" method="post" autocomplete="off">
+          <form class="d-flex" action="index.php?controller=template&action=search" method="post" autocomplete="off">
             <input name="search-input" class="form-control me-2 search-input" type="search" placeholder="Tìm kiếm..." aria-label="Search">
             <button name="search-btn" class="search-button" type="submit">
                 <span class="material-icons-round search-icon">
@@ -201,7 +201,7 @@
                     </span>
                 </button>
                 <div class="log-out">
-                    <a class="item-logout link-dark" href="login.php">
+                    <a class="item-logout link-dark" href="index.php?controller=login">
                         <span class="material-icons-outlined">
                             logout
                         </span>

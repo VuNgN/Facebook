@@ -36,9 +36,10 @@
         </div>
         <!--News-->
         <?php
+        if($posts)
         foreach ($posts as $row_news) {
         ?>
-            <div class="news">
+            <div class="news <?php echo $row_news['PostID']?>">
                 <div class="row">
                     <div class="heading">
                         <a class="user-ava" href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>">
@@ -133,7 +134,7 @@
                                         chat_bubble_outline
                                     </span>
                                 </div>
-                                <div class="action-name btn-comment">
+                                <div class="action-name btn-comment <?php echo $row_news['PostID']?>">
                                     <h6>Bình luận</h6>
                                 </div>
                             </div>
@@ -176,7 +177,7 @@
                     </div>
 
                     <!--COMMENTS-->
-                    <ul class="comments" style="display:none">
+                    <ul class="comments <?php echo $row_news['PostID']?>" style="display:none">
                         <?php
                         //TRUY VẤN COMMENT, COMMENT_USER
                         if($Newsfeed->getComment($row_news['PostID']))

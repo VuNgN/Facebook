@@ -13,5 +13,16 @@
         public function footer() {
             require_once "views/templates/footer.php";
         }
+        public function search() {
+            $UserID = $_SESSION['isLoginOk'];
+            $templates = new Template($UserID);
+            if(isset($_POST['search-btn'])){
+                $search = $_POST['search-input'];
+                if($search != ''){
+                    $users = $templates->getUserSearch($search);
+                }
+            }
+            require_once "views/templates/search.php";
+        }
     }
 ?>
