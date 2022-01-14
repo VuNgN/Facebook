@@ -294,7 +294,7 @@
                   Bạn đã xác nhận tài khoản rồi?
                 </h2>
                 <p style="margin: 0">
-                  <a href="/facebook/login.php" style="color: #1c7ed6"
+                  <a href="../../index.php" style="color: #1c7ed6"
                     >Về trang đăng nhập</a
                   >
                 </p>

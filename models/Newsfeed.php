@@ -157,6 +157,15 @@ class Newsfeed
         }
         $this->closeDb($connection);
     }
+    public function report($postId, $PostUserID){
+        $connection = $this->connectDb();
+        $sql_report_post = "UPDATE post SET Reported = 1 WHERE PostID = $postId";
+        $sql_report_user = "UPDATE user_profile SET  Reported = Reported + 1 WHERE UserID = $PostUserID";
+        $KQ1= mysqli_query($connection, $sql_report_post);
+        $KQ2= mysqli_query($connection, $sql_report_user);
+        $this->closeDb($connection);
+        return ($KQ1 && $KQ2);
+    }
     public function connectDb()
     {
         $connection = mysqli_connect(

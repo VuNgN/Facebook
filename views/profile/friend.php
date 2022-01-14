@@ -142,33 +142,19 @@ foreach ($friendInfo as $frdInfo) {
             <div class="card mb-3">
               <div class="card-body">
                 <h5 class="card-title mt"><strong>Giới thiệu</strong></h5>
-                <button type="button" class="btn mt-3 btn-light bg-light btn-block">
-                  <strong> Thêm tiểu sử</strong>
-                </button>
                 <ul class="list-unstyled text-muted mt-3">
                   <li>
                     <i class="fas fa-house-damage me-2 mt-3"></i>Sống tại
-                    <a href="https://vi.wikipedia.org/wiki/H%C3%A0_N%E1%BB%99i"><strong>Hà Nội</strong></a>
+                    <a href="https://vi.wikipedia.org/wiki/H%C3%A0_N%E1%BB%99i"><strong><?php echo $frdInfo['UserAddress'] ?></strong></a>
                   </li>
                   <li>
                     <i class="fas fa-map-marker-alt me-2 mt-3"></i>Đến từ
-                    <a href="https://vi.wikipedia.org/wiki/H%C3%A0_N%E1%BB%99i"><strong>Hà Nội</strong></a>
+                    <a href="https://vi.wikipedia.org/wiki/H%C3%A0_N%E1%BB%99i"><strong><?php echo $frdInfo['UserAddress'] ?></strong></a>
                   </li>
                   <li>
-                    <i class="fab fa-github me-2 mt-3"></i><a href="https://github.com/vantranthao">https://github.com/vantranthao</a>
-                  </li>
-                  <li>
-                    <i class="fas fa-school me-2 mt-3"></i><a href="http://c3chuongmya.edu.vn/">THPT Chương Mỹ A</a>
+                    <i class="fab fa-github me-2 mt-3"></i><a href="https://github.com/vantranthao">https://github.com/VuNgN/facebook</a>
                   </li>
                 </ul>
-
-                <button type="button" class="btn btn-light bg-light btn-block mt-3">
-                  <strong> Chỉnh sửa chi tiết</strong>
-                </button>
-                <button type="button" class="btn btn-light bg-light btn-block mt-3">
-                  <strong>Thêm sở thích</strong>
-                </button>
-
                 <div class="lightbox mt-4">
                   <div class="row gx-2">
                     <div class="col-lg-4 mb-3">
@@ -192,10 +178,6 @@ foreach ($friendInfo as $frdInfo) {
                     </div>
                   </div>
                 </div>
-
-                <button type="button" class="btn btn-light bg-light btn-block">
-                  <strong>Chỉnh sửa</strong>
-                </button>
               </div>
             </div>
             <!-- ảnh feature -->
@@ -205,225 +187,296 @@ foreach ($friendInfo as $frdInfo) {
                   <h5 class="card-title mt"><strong>Ảnh</strong></h5>
                 </a>
                 <a href="" class="btn btn-link d-inline-block py-1 px-3" style="float: right">Xem tất cả ảnh</a>
-                <div class="lightbox mt-4">
-                  <div class="row gx-2">
-                    <div class="col-lg-4 mb-3">
-                      <img src="assets/images_dev/aot_01.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    </div>
-                    <div class="col-lg-4 mb-3">
-                      <img src="assets/images_dev/aot_02.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    </div>
-                    <div class="col-lg-4 mb-3">
-                      <img src="assets/images_dev/aot_03.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    </div>
-
-                    <div class="col-lg-4 mb-3">
-                      <img src="assets/images_dev/aot_02.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    </div>
-                    <div class="col-lg-4 mb-3">
-                      <img src="assets/images_dev/aot_03.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    </div>
-                    <div class="col-lg-4 mb-3">
-                      <img src="assets/images_dev/aot_01.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    </div>
-
-                    <div class="col-lg-4 mb-3">
-                      <img src="assets/images_dev/aot_01.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    </div>
-                    <div class="col-lg-4 mb-3">
-                      <img src="assets/images_dev/aot_02.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    </div>
-                    <div class="col-lg-4 mb-3">
-                      <img src="assets/images_dev/aot_03.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    </div>
-                  </div>
-                </div>
+                <?php
+            $count = 0;
+            if ($profileImg)
+              foreach ($profileImg as $row_img) {
+                // global $row_img;
+                if ($count % 3 == 0) {
+                  echo '<div class="row gx-2">'; // open
+                }
+            ?>
+              <div class="col-lg-4 mb-3">
+                <a href="<?php echo $row_img['images'] ?>" target="_blank">
+                  <img src="<?php echo $row_img['images'] ?>" alt="" onclick="clickImg('<?php echo $row_img['images'] ?>')" class="w-100 shadow-1-strong rounded" style="height: 100px;" />
+                </a>
+              </div>
+            <?php
+                if ($count % 3 == 2 || $count == count($profileImg) - 1) {
+                  echo '</div>'; // close
+                }
+                $count++;
+              }
+            ?>
               </div>
             </div>
             <!-- ảnh feature -->
             <!-- friends -->
             <div class="card mb-3">
               <div class="card-body">
-                <div class="card_left d-inline-block">
-                  <a href="" class="text-reset">
-                    <h5 class="card-title mt"><strong>Bạn bè</strong></h5>
-                  </a>
-                  <p class="friend_numbers">1420 người bạn</p>
-                </div>
-                <div class="card_right d-inline-block" style="float: right">
-                  <a href="" class="btn btn-link py-1 px-3">Xem tất cả bạn bè</a>
-                </div>
-
-                <div class="row gx-2">
-                  <div class="col-lg-4 text-center mb-4">
-                    <img src="assets/images_dev/ava1.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    <p><small>Kelly Hel</small></p>
-                  </div>
-                  <div class="col-lg-4 text-center mb-4">
-                    <img src="assets/images_dev/ava1.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    <p><small>Kelly Hel</small></p>
-                  </div>
-                  <div class="col-lg-4 text-center mb-4">
-                    <img src="assets/images_dev/ava1.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    <p><small>Kelly Hel</small></p>
-                  </div>
-
-                  <div class="col-lg-4 text-center mb-4">
-                    <img src="assets/images_dev/ava1.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    <p><small>Kelly Hel</small></p>
-                  </div>
-                  <div class="col-lg-4 text-center mb-4">
-                    <img src="assets/images_dev/ava1.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    <p><small>Kelly Hel</small></p>
-                  </div>
-                  <div class="col-lg-4 text-center mb-4">
-                    <img src="assets/images_dev/ava1.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    <p><small>Kelly Hel</small></p>
-                  </div>
-
-                  <div class="col-lg-4 text-center mb-4">
-                    <img src="assets/images_dev/ava1.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    <p><small>Kelly Hel</small></p>
-                  </div>
-                  <div class="col-lg-4 text-center mb-4">
-                    <img src="assets/images_dev/ava1.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    <p><small>Kelly Hel</small></p>
-                  </div>
-                  <div class="col-lg-4 text-center mb-4">
-                    <img src="assets/images_dev/ava1.jpg" alt="" class="w-100 h-100 shadow-1-strong rounded" />
-                    <p><small>Kelly Hel</small></p>
-                  </div>
-                </div>
+                <?php
+                  $count = 0;
+                  $countFriend = 0;
+                  if ($profileFriend)
+                    foreach ($profileFriend as $rowFriends) {
+                      $countFriend += $rowFriends["countFriend"]; 
+                    }
+                    ?>
+                    <div class='card_left d-inline-block'>
+                      <a href='' class='text-reset'>
+                        <h5 class='card-title mt'><strong>Bạn bè</strong></h5>
+                      </a>
+                      <p class='friend_numbers'><?php echo $countFriend ?> người bạn</p>
+                    </div>
+                    <div class='card_right d-inline-block' style='float: right'>
+                      <a href='' class='btn btn-link py-1 px-3'>Xem tất cả bạn bè</a>
+                    </div>
+                    <?php
+                    foreach ($profileFriend as $rowFriends) {
+                      if ($count % 3 == 0) {
+                        echo '<div class="row">';
+                      }
+                      echo '<div class="col-md-4 text-center">';
+                      echo '<img src="' . $rowFriends['UserAva'] . '" alt="" class="shadow-1-strong rounded" style="width: 75px; height: 75px;"/>';
+                      echo '<p><small>' . $rowFriends['UserFirstName'] . " " . $rowFriends['UserLastName'] . '</small></p>';
+                      echo '</div>';
+                      if ($count % 3 == 2 ||  $count == count($profileFriend) - 1) {
+                        echo '</div>';
+                      }
+                      $count++;
+                    }
+                  ?>
               </div>
             </div>
             <!-- friends -->
             <!-- footer -->
             <?php
-            include "template/footer_link.php"
+            include "views/templates/footer_link.php"
             ?>
             <!-- footer -->
           </div>
-          <!-- left -->
+          <!-- rightt -->
+        <div class="col-md-7 mb-4 mb-md-0">
+          <!--THINKING POSTT-->
+          <!--Newss-->
+          <?php
+          //TRUY VẤN POST, POST_USERR
+          if ($profilePost)
+            foreach ($profilePost as $row_news) {
+          ?>
+            <div class="news <?php echo $row_news['PostID']?>">
+                <div class="row">
+                    <div class="heading">
+                        <a class="user-ava" href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>">
+                            <img class="user-img" src="<?php echo ($row_news['UserAva']); ?>" alt="">
+                        </a>
+                        <div class="user-name-time">
+                            <a href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>" class="user-name text-decoration-none link-dark">
+                                <b><?php echo $row_news['UserFirstName'] . " " . $row_news['UserLastName'] ?></b>
+                            </a>
+                            <h6 class="time">
+                                <?php echo $row_news['PostTime'] ?>
+                            </h6>
+                        </div>
+                        <div class="option ms-auto">
+                            <div class="option-icon collapsibleOption">
+                                <span class="material-icons-outlined" style="position: absolute;">
+                                    more_horiz
+                                </span>
+                            </div>
+                            <div class="collapse contentOption">
+                                <div class="option-item">
+                                    <div class="col-md-12 items">
+                                        <span class="material-icons-outlined">history</span>
+                                        <b>Xem lịch sử chỉnh sửa</b>
+                                    </div>
+                                    <div class="col-md-12 items">
+                                        <span class="material-icons-outlined">bookmarks</span>
+                                        <b>Lưu bài viết</b>
+                                    </div>
+                                    <a class="col-md-12 items link-dark" href="src/process_report.php?PostID=<?php echo $row_news['PostID']; ?>
+                                        &&PostUserID=<?php echo $row_news['UserID']; ?>">
+                                        <span class="material-icons-outlined">report</span>
+                                        <b>Báo cáo bài viết</b>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-content">
+                        <div class="content-caption">
+                            <?php echo $row_news['PostCaption'] ?>
+                        </div>
+                        <div class="content-images">
+                            <?php
+                            if($Profile->getImgPost($row_news['PostID'])) 
+                            foreach ($Profile->getImgPost($row_news['PostID']) as $row_img_content) {
+                            ?>
+                                <img src="<?php echo $row_img_content['images']; ?>" alt="" onclick="clickImg('<?php echo $row_img_content['images']; ?>')">
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                    <div class="action-comment">
+                        <div class="action-comment-above">
+                            <div class="action-index">
+                                <span class="material-icons-round">
+                                    emoji_emotions
+                                </span>
+                            </div>
+                            <!-- //ĐẾM LƯỢT BÌNH LUÂN -->
+                            <div class="comment-index">
 
-          <!-- right -->
-          <div class="col-md-7 mb-4 mb-md-0">
-            <!-- Modal -->
-            <div class="modal fade" id="buttonModalUserPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                      <strong>Tạo bài viết</strong>
-                    </h5>
-                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">...</div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                      Close
-                    </button>
-                    <button type="button" class="btn btn-primary">
-                      Save changes
-                    </button>
-                  </div>
+                                <?php
+                                foreach ($Profile->countComment($row_news['PostID']) as $comment) {
+                                ?>
+                                    <div class="comment-index-item" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                                        <?php echo $comment['count(CommentID)']; ?> bình luận
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                                <div class="share-index-item">
+                                    100 lượt chia sẻ
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-comment-under">
+                            <div class="action-comment-under-item">
+                                <div class="action-icon">
+                                    <span class="material-icons-outlined like-icon">
+                                        thumb_up
+                                    </span>
+                                </div>
+                                <div class="action-name">
+                                    <h6>Thích</h6>
+                                </div>
+                            </div>
+                            <div class="action-comment-under-item">
+                                <div class="action-icon">
+                                    <span class="material-icons-outlined comment-icon">
+                                        chat_bubble_outline
+                                    </span>
+                                </div>
+                                <div class="action-name btn-comment <?php echo $row_news['PostID']?>">
+                                    <h6>Bình luận</h6>
+                                </div>
+                            </div>
+                            <div class="action-comment-under-item">
+                                <div class="action-icon">
+                                    <i class="far fa-share-square share-icon"></i>
+                                </div>
+                                <div class="action-name">
+                                    <h6>Chia sẻ</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--COMMENT INPUT-->
+                    <div class="row">
+                        <form id="comment-form" action="index.php?controller=Profile&action=addCommentFriend" method="post" autocomplete="off">
+                            <div class="col-md-12 comment-input-form">
+                                <?php
+                                if ($getProfileImage)
+                                foreach ($getProfileImage as $user_ava) {
+                                ?>
+                                    <a class="icon" href="index.php?controller=profile&action=index">
+                                        <img class="user-img" src="<?php echo ($user_ava['UserAva']); ?>" alt="">
+                                    </a>
+                                <?php
+                                }
+                                ?>
+                                <input class="ID" type="text" value="<?php echo $row_news['PostID']; ?>" name="PostID">
+                                <input class="ID" type="text" value="<?php echo $UserID; ?>" name="UserID">
+                                <input class="ID" type="text" value="<?php echo $row_news['UserID']; ?>" name="UserIDFriend">
+                                <!--Người đăng nhập-->
+                                <div class="comment-input">
+                                    <input id="comment-input" name="txt-comment" type="text" placeholder=" Viết bình luận" class="form-control">
+                                </div>
+                                <button id="send-comment" name="btn-comment" type="submit">
+                                    <span class="material-icons-round send-icon">
+                                        reply
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!--COMMENTS-->
+                    <ul class="comments <?php echo $row_news['PostID']?>" style="display:none">
+                        <?php
+                        //TRUY VẤN COMMENT, COMMENT_USER
+                        if($Profile->viewComment($row_news['PostID']))
+                        foreach ($Profile->viewComment($row_news['PostID']) as $row_comment) {
+                            if ($row_comment['UserID'] == $UserID) {
+                        ?>
+                                <!--COMMENT OF USER LOGIN-->
+                                <li class="comment-item myDIV">
+                                    <a class="icon" href="index.php?controller=profile&action=index">
+                                        <img class="user-img" src="<?php echo ($row_comment['UserAva']); ?>" alt="">
+                                    </a>
+                                    <div class="commentator-name">
+                                        <a href="index.php?controller=profile&action=index" class="user-name text-decoration-none link-dark">
+                                            <b><?php echo $row_comment['UserName']; ?></b>
+                                        </a>
+                                        <p class="comment-content">
+                                            <?php echo $row_comment['CommentContent']; ?>
+                                        </p>
+                                    </div>
+                                    <!--EDIT COMMENT-->
+                                    <div id="edit-comment" class="hide">
+                                        <div class="option-comment option-icon collapsible">
+                                            <span id="btn-edit" class="material-icons-outlined option-comment option-icon" style="font-size:15px">
+                                                edit
+                                            </span>
+                                        </div>
+                                        <form class="content" id="form-edit-comment" action="index.php?controller=Profile&action=editComment" method="post">
+                                            <input class="ID" type="text" value="<?php echo $row_comment['UserID']; ?>" name="CommentUserID">
+                                            <input class="ID" type="text" value="<?php echo $UserID; ?>" name="UserID">
+                                            <!--Người đăng nhập-->
+                                            <input class="ID" type="text" value="<?php echo $row_comment['CommentID']; ?>" name="CommentID">
+                                            <textarea id="input-edit-comment" name="txt-edit" id="" cols="30" rows="4"><?php echo $row_comment['CommentContent']; ?></textarea>
+                                            <button id="btn-edit-comment" name="btn-edit" type="submit">Lưu</button>
+                                        </form>
+                                        <a href="index.php?controller=Profile&action=deleteComment&CommentID=<?php echo $row_comment['CommentID']; ?>" class="link-dark">
+                                            <!--Người đăng nhập-->
+                                            <span class="hide material-icons-outlined option-comment option-icon" style="font-size:15px">
+                                                delete_forever
+                                            </span>
+                                        </a>
+                                    </div>
+                                </li>
+                            <?php
+                            } else {
+                            ?>
+                                <!--COMMENT OF USER FRIEND-->
+                                <li class="comment-item myDIV">
+                                    <a class="icon" href="user_profile_friend.php?UserIDFriend=<?php echo $row_comment['UserID']; ?>">
+                                        <img class="user-img" src="<?php echo ($row_comment['UserAva']); ?>" alt="">
+                                    </a>
+                                    <div class="commentator-name">
+                                        <a href="user_profile_friend.php?UserIDFriend=<?php echo $row_comment['UserID']; ?>" class="user-name text-decoration-none link-dark">
+                                            <b><?php echo $row_comment['UserName']; ?></b>
+                                        </a>
+                                        <p class="comment-content">
+                                            <?php echo $row_comment['CommentContent']; ?>
+                                        </p>
+                                    </div>
+                                </li>
+
+                        <?php
+                            }
+                        }
+                        ?>
+                    </ul>
                 </div>
-              </div>
+
+
             </div>
-
-            <div class="card mb-4">
-              <div class="card-body">
-                <div class="d-flex">
-                  <a style="margin-right: 0.5rem;" href=""><img src="assets/images_dev/totoro.webp" alt="" style="height: 40px; margin-right: 8px" class="rounded-circle border" /></a>
-                  <button class="btn btn-light btn-block btn-rounded bg-light" data-mdb-toggle="modal" data-mdb-target="#buttonModalUserPost">
-                    Bạn đang nghĩ gì?
-                  </button>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between">
-                  <button class="btn btn-link btn-lg"><i class="fas fa-video"></i> Video trực tiếp</button>
-                  <button class="btn btn-link btn-lg"><i class="fas fa-images"></i> Ảnh/Video</button>
-                  <button class="btn btn-link btn-lg"><i class="far fa-grin-wink"></i> Cảm xúc</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="card text-start|center|end">
-              <div class="card-body">
-                <div class="d-flex mb-2">
-                  <a href=""><img src="assets/images_dev/totoro.webp" alt="" style="height: 40px; margin-right: 8px" class="rounded-circle border" /></a>
-                  <div>
-                    <a href="" class="text-dark mb-0"><strong>ThaoVan</strong></a>
-                    <a href="" class="text-muted d-block" style="margin-top: -6px;"><small>10h</small></a>
-                  </div>
-                </div>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni fuga unde eius ea suscipit numquam exercitationem possimus nostrum ex adipisci dicta quidem et optio quas deserunt non ipsum assumenda, expedita iure dolor qui tenetur. Recusandae omnis, optio blanditiis sunt vel dolore cupiditate veritatis corporis, cum consectetur molestias suscipit, officia perspiciatis?</p>
-
-              </div>
-              <a href="">
-                <img src="assets/images_dev/anh.jpg" class="w-100" alt="">
-              </a>
-
-              <div class="action-comment">
-                <div class="action-comment-above">
-                  <div class="action-index">
-                    <span class="material-icons-round">
-                      emoji_emotions
-                    </span>
-                  </div>
-                  <div class="comment-index">
-                    <div class="comment-index-item" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                      100 bình luận
-                    </div>
-                    <div class="share-index-item">
-                      100 lượt chia sẻ
-                    </div>
-                  </div>
-                </div>
-                <div class="action-comment-under">
-                  <div class="action-comment-under-item">
-                    <div class="action-icon">
-                      <span class="material-icons-outlined like-icon">
-                        thumb_up
-                      </span>
-                    </div>
-                    <div class="action-name">
-                      <h6>Thích</h6>
-                    </div>
-                  </div>
-                  <div class="action-comment-under-item">
-                    <div class="action-icon">
-                      <span class="material-icons-outlined comment-icon">
-                        chat_bubble_outline
-                      </span>
-                    </div>
-                    <div class="action-name" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                      <h6>Bình luận</h6>
-                    </div>
-                  </div>
-                  <div class="action-comment-under-item">
-                    <div class="action-icon">
-                      <i class="far fa-share-square share-icon"></i>
-                    </div>
-                    <div class="action-name">
-                      <h6>Chia sẻ</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--COMMENT INPUT-->
-              <div class="row">
-                <div class="col-md-12 comment-input-form">
-                  <a class="icon" href="userProfile.html">
-                    <img class="user-img" src="assets/images_dev/totoro.webp" alt="">
-                  </a>
-                  <div class="comment-input">
-                    <input type="text" placeholder=" Viết bình luận" class="form-control">
-                  </div>
-                </div>
-              </div>
-
-
+          <?php
+            } // to
+          ?>
             </div>
           </div>
           <!-- right -->

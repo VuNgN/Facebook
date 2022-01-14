@@ -69,8 +69,7 @@
                                         <span class="material-icons-outlined">bookmarks</span>
                                         <b>Lưu bài viết</b>
                                     </div>
-                                    <a class="col-md-12 items link-dark" href="src/process_report.php?PostID=<?php echo $row_news['PostID']; ?>
-                                        &&PostUserID=<?php echo $row_news['UserID']; ?>">
+                                    <a class="col-md-12 items link-dark" href="index.php?controller=newsfeed&action=reportPost&PostID=<?php echo $row_news['PostID']; ?>&PostUserID=<?php echo $row_news['UserID']; ?>">
                                         <span class="material-icons-outlined">report</span>
                                         <b>Báo cáo bài viết</b>
                                     </a>
@@ -293,7 +292,7 @@
             if($friends)
             foreach($friends as $row_friend ){
         ?>
-                <a class="row" href="user_profile_friend.php?UserIDFriend=<?php echo $row_friend['UserID']; ?>">
+                <a class="row" href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_friend['UserID']; ?>">
                     <div class="sidebar-item">
                         <div class="icon">
                             <img src="<?php echo ($row_friend['UserAva']); ?>" alt="" style="border-radius: 50%;width:36px;height:36px">

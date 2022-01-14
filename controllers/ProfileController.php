@@ -126,7 +126,10 @@
             $friendInfo = $Profile->getFriendInfo($IDFriend);
             $isMySendFriend = $Profile->isMySendFriend($IDFriend);
             $isOtherSendFriend = $Profile->isOtherSendFriend($IDFriend);
-
+            $profileImg = $Profile->getFriendImage($IDFriend );
+            $profileFriend = $Profile->getFriendsFriend($IDFriend);
+            $profilePost = $Profile->getFriendPost($IDFriend);
+            $getProfileImage = $Profile->getAvatar($UserID);
             include_once "views/profile/friend.php";
         }
 
@@ -153,5 +156,23 @@
                 }
             }
             header("location: index.php?controller=profile&action=getFriendInfo&UserIDFriend= ". $IDFriend ." ");
+        }
+        public function addCommentFriend(){
+            //add cmt
+            $UserID = $_SESSION['isLoginOk'];
+            $Profile = new Profile($UserID);
+            $friendID = $_POST["UserIDFriend"];
+            if (isset($_POST["btn-comment"])&& $_POST['txt-comment']){
+                $UserCommentID = $_POST["UserID"];
+                $PostID = $_POST["PostID"];
+                $CommentContent = $_POST["txt-comment"];
+                $arrComment = [
+                    'userID' => $UserCommentID,
+                    'postID' => $PostID,
+                    'content' => $CommentContent
+                ];
+                $profileAddComment = $Profile->addComment($arrComment);
+            }
+            header("location: index.php?controller=profile&action=getFriendInfo&UserIDFriend=".$friendID);
         }
     }

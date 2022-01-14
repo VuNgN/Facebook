@@ -63,5 +63,18 @@
                 header('location: index.php?controller=profile&action=index');
             }
         }
+        public function reportPost() {
+            $UserID = $_SESSION['isLoginOk'];
+            $Newsfeed = new Newsfeed($UserID);
+            $PostID = $_GET['PostID'];
+            $PostUserId = $_GET['PostUserID'];
+            $isReported = $Newsfeed->report($PostID, $PostUserId);
+            if ($isReported)
+            header('location: index.php?controller=Newsfeed&action=index');
+            else {
+                $error = "Report thất bại";
+                header("location: views/templates/404page.php?error=$error");
+            }
+        }
     }
 ?>

@@ -183,7 +183,8 @@ class Profile
         $this->closeDb($connection);
         return $result1;
     }
-
+    // --------------------------------------------------------------------
+    // FRIENDDDDDDD
     public function getFriendInfo($FriendID)
     {
         $connection = $this->connectDb();
@@ -283,7 +284,41 @@ class Profile
             return mysqli_fetch_all($resultFriends, MYSQLI_ASSOC);
         }
     }
+    public function getFriendImage($FriendID){
+        $connection = $this->connectDb();
+        $sql_img = "SELECT * from images, post, user_profile where images.PostID = post.PostID and post.UserID = user_profile.UserID 
+        and user_profile.UserID = '" . $FriendID . "' LIMIT 6;"; // max 6
+        $result_img = mysqli_query($connection, $sql_img);
+        if (mysqli_num_rows($result_img) > 0) {
+            $this->closeDb($connection);
+            return mysqli_fetch_all($result_img, MYSQLI_ASSOC);
+        }
+    }
+    public function getFriendsFriend($friendId)
+    {
+        $connection = $this->connectDb();
+        $queryFriends = "SELECT *, count(User1ID) as countFriend FROM user_profile, friend_ship
+            WHERE (friend_ship.User1ID = UserID OR friend_ship.User2ID = UserID)
+            AND UserID != '" . $friendId . "'
+            AND (friend_ship.User1ID = '" . $friendId . "' OR friend_ship.User2ID = '" . $friendId . "')  
+            GROUP BY UserID LIMIT 6;"; /*limit 6 nguoi bann*/
+        $resultFriends = mysqli_query($connection, $queryFriends);
 
+        if (mysqli_num_rows($resultFriends) > 0) {
+            $this->closeDb($connection);
+            return mysqli_fetch_all($resultFriends, MYSQLI_ASSOC);
+        }
+    }
+    public function getFriendPost($friendID){
+        $connection = $this->connectDb();
+        $sql = "SELECT * from post, user_profile WHERE post.UserID = user_profile.UserID AND user_profile.UserID = '" . $friendID . "' GROUP BY post.PostID ORDER BY post.PostID DESC";
+        //Người đăng nhậpp-->
+        $result_news = mysqli_query($connection, $sql);
+        if (mysqli_num_rows($result_news) > 0) {
+            $this->closeDb($connection);
+            return mysqli_fetch_all($result_news, MYSQLI_ASSOC);
+        }
+    }
     
     // public function
 
