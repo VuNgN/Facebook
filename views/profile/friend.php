@@ -267,11 +267,11 @@ foreach ($friendInfo as $frdInfo) {
             <div class="news <?php echo $row_news['PostID']?>">
                 <div class="row">
                     <div class="heading">
-                        <a class="user-ava" href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>">
+                        <a class="user-ava" href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_news['UserID']; ?>">
                             <img class="user-img" src="<?php echo ($row_news['UserAva']); ?>" alt="">
                         </a>
                         <div class="user-name-time">
-                            <a href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>" class="user-name text-decoration-none link-dark">
+                            <a href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_news['UserID']; ?>" class="user-name text-decoration-none link-dark">
                                 <b><?php echo $row_news['UserFirstName'] . " " . $row_news['UserLastName'] ?></b>
                             </a>
                             <h6 class="time">
@@ -344,14 +344,37 @@ foreach ($friendInfo as $frdInfo) {
                         </div>
                         <div class="action-comment-under">
                             <div class="action-comment-under-item">
-                                <div class="action-icon">
-                                    <span class="material-icons-outlined like-icon">
-                                        thumb_up
-                                    </span>
-                                </div>
-                                <div class="action-name">
-                                    <h6>Thích</h6>
-                                </div>
+                            <?php
+                            if ($Profile->getLikeModel($row_news['PostID'])) {
+
+                            ?>
+                                <a class="action-comment-under-item text-decoration-none" href="index.php?controller=profile&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>&UserID=<?php echo $row_news['UserID'] ?>" style="">
+                                    <div class="action-icon">
+                                        <span class="material-icons">
+                                            thumb_up
+                                        </span>
+
+                                    </div>
+                                    <div class="action-name">
+                                        <h6>Thích</h6>
+                                    </div>
+                                </a>
+                            <?php } else {
+
+                            ?>
+                                <a class="action-comment-under-item text-decoration-none text-muted" href="index.php?controller=profile&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>&UserID=<?php echo $row_news['UserID'] ?>" style="">
+                                    <div class="action-icon">
+                                        <span class="material-icons">
+                                            thumb_up
+                                        </span>
+
+                                    </div>
+                                    <div class="action-name">
+                                        <h6>Thích</h6>
+                                    </div>
+                                </a>
+
+                            <?php  } ?>
                             </div>
                             <div class="action-comment-under-item">
                                 <div class="action-icon">
