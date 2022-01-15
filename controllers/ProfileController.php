@@ -14,32 +14,53 @@
         public function viewImage () {
             $UserID = $_SESSION['isLoginOk'];
             $Profile = new Profile($UserID);
-            $profileInfo = $Profile->getProfileInfo();
-            $getImgage = $Profile->viewImg();
+            if ($_GET['UserID']) {
+                $profileInfo = $Profile->getFriendInfo($_GET['UserID']);
+                $getImgage = $Profile->viewImg($_GET['UserID']);
+            }
+            else {
+                $profileInfo = $Profile->getProfileInfo();
+                $getImgage = $Profile->viewImg($UserID);
+            }
             require_once "views/profile/user_profile_image.php";
         }
 
         public function viewFriend() {
             $UserID = $_SESSION['isLoginOk'];
             $Profile = new Profile($UserID);
-            $profileInfo = $Profile->getProfileInfo();
-            $getFriend = $Profile->viewFriend();
+            if ($_GET['UserID']) {
+                $profileInfo = $Profile->getFriendInfo($_GET['UserID']);
+                $getFriend = $Profile->viewFriend($_GET['UserID']);
+            }
+            else {
+                $profileInfo = $Profile->getProfileInfo();
+                $getFriend = $Profile->viewFriend($UserID);
+            }
             require_once "views/profile/user_profile_myFriend.php";
         }
 
         public function viewVideo() {
             $UserID = $_SESSION['isLoginOk'];
             $Profile = new Profile($UserID);
-            $profileInfo = $Profile->getProfileInfo();
+            if ($_GET['UserID']) {
+                $profileInfo = $Profile->getFriendInfo($_GET['UserID']);
+            } else {
+                $profileInfo = $Profile->getProfileInfo();
+            }
             require_once "views/profile/user_profile_video.php";
         }
         public function viewGioiThieu() {
             $UserID = $_SESSION['isLoginOk'];
             $Profile = new Profile($UserID);
-            $getFriend = $Profile->viewFriend();
-            $getImgage = $Profile->viewImg();
-            $profileInfo = $Profile->getProfileInfo();
-
+            if ($_GET['UserID']) {
+                $profileInfo = $Profile->getFriendInfo($_GET['UserID']);
+                $getFriend = $Profile->viewFriend($_GET['UserID']);
+                $getImgage = $Profile->viewImg($_GET['UserID']);
+            } else {
+                $getFriend = $Profile->viewFriend($UserID);
+                $getImgage = $Profile->viewImg($UserID);
+                $profileInfo = $Profile->getProfileInfo();
+            }
             require_once "views/profile/user_profile_gioithieu.php";
         }
         public function addComment(){

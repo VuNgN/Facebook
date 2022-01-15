@@ -131,7 +131,7 @@
             <a href="" class="text-reset d-inline-block">
               <h5 class="card-title mt"><strong>Ảnh</strong></h5>
             </a>
-            <a href="user_profile_image.php" class="btn btn-link d-inline-block py-1 px-3" style="float: right">Xem tất cả ảnh</a>
+            <a href="index.php?controller=profile&action=viewImage" class="btn btn-link d-inline-block py-1 px-3" style="float: right">Xem tất cả ảnh</a>
             <?php
             $count = 0;
             if ($profileImg)
@@ -168,7 +168,7 @@
             </div>
 
             <div class="card_right d-inline-block" style="float: right">
-              <a href="user_profile_myFriend.php" class="btn btn-link py-1 px-3">Xem tất cả bạn bè</a>
+              <a href="index.php?controller=profile&action=viewFriend" class="btn btn-link py-1 px-3">Xem tất cả bạn bè</a>
             </div>
             <?php
             $count = 0;
@@ -268,7 +268,6 @@
                 <div class="news-content">
                   <div class="content-caption">
                     <?php echo $row_news['PostCaption'] ?>
-                    <!--Edit post-->
                       <form class="editPost" action="index.php?controller=Profile&action=editPost&PostID=<?php echo $row_news['PostID']?>"
                       style="width:100%;height:auto;display:none; flex-direction:column" method="post">
                         <textarea name="editContent" id="" cols="100" rows="10"><?php echo $row_news['PostCaption']?></textarea>
@@ -325,12 +324,12 @@
                     </div>
                   </div>
                   <div class="action-comment-under">
-                    <div class="action-comment-under-item">
                     <?php
                             if ($Profile->getLikeModel($row_news['PostID'])) {
-
-                            ?>
+                              
+                              ?>
                                 <a class="action-comment-under-item text-decoration-none" href="index.php?controller=profile&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>&UserID=<?php echo $row_news['UserID'] ?>" style="">
+                                  <div class="action-comment-under-item">
                                     <div class="action-icon">
                                         <span class="material-icons">
                                             thumb_up
@@ -340,11 +339,13 @@
                                     <div class="action-name">
                                         <h6>Thích</h6>
                                     </div>
+                                  </div>
                                 </a>
                             <?php } else {
 
                             ?>
                                 <a class="action-comment-under-item text-decoration-none text-muted" href="index.php?controller=profile&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>&UserID=<?php echo $row_news['UserID'] ?>" style="">
+                                  <div class="action-comment-under-item">    
                                     <div class="action-icon">
                                         <span class="material-icons">
                                             thumb_up
@@ -354,17 +355,17 @@
                                     <div class="action-name">
                                         <h6>Thích</h6>
                                     </div>
+                                  </div>
                                 </a>
 
                             <?php  } ?>
-                    </div>
-                    <div class="action-comment-under-item">
+                    <div class="action-comment-under-item btn-comment">
                       <div class="action-icon">
                         <span class="material-icons-outlined comment-icon">
                           chat_bubble_outline
                         </span>
                       </div>
-                      <div class="action-name btn-comment">
+                      <div class="action-name ">
                         <h6>Bình luận</h6>
                       </div>
                     </div>

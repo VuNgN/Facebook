@@ -42,20 +42,20 @@ if ($profileInfo)
                 <section class="py-2 d-flex justify-content-between">
                     <!-- leftt -->
                     <div>
-                        <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=index'">
-                            Bài viết
+                        <button type="button" class="btn btn-link bg-light" datadata-ripple-color="dark"  onclick="document.location.href='index.php?controller=profile&action=<?php echo $row_ava['UserID']==$UserID ? 'index' : 'getFriendInfo' ?>&UserIDFriend=<?php echo $row_ava['UserID'] ?>'">
+                        Bài viết
                         </button>
-                        <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewGioiThieu'">
-                            Giới thiệu
+                        <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewGioiThieu&UserID=<?php echo $row_ava['UserID'] ?>'">
+                        Giới thiệu
                         </button>
-                        <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewFriend'">
-                            Bạn bè
+                        <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewFriend&UserID=<?php echo $row_ava['UserID'] ?>'">
+                        Bạn bè
                         </button>
-                        <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewImage'">
-                            Ảnh
+                        <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewImage&UserID=<?php echo $row_ava['UserID'] ?>'">
+                        Ảnh
                         </button>
-                        <button type="button" class="btn btn-link bg-light" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewVideo'">
-                            Video
+                        <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewVideo&UserID=<?php echo $row_ava['UserID'] ?>'">
+                        Video
                         </button>
                         <div class="dropdown d-inline-block">
                             <button class="btn btn-link dropdown-toggle text-reset" type="button" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -71,9 +71,6 @@ if ($profileInfo)
                     <!-- leftt -->
                     <!-- rightt -->
                     <div>
-                        <button type="button" class="btn btn-light bg-light mr-2" data-mdb-ripple-color="dark">
-                            <i class="far fa-edit me-2"></i>Chỉnh sửa trang cá nhân
-                        </button>
                         <button type="button" class="btn btn-light bg-light mr-2" data-mdb-ripple-color="dark">
                             <i class="fas fa-search me-2"></i>Tìm kiếm
                         </button>

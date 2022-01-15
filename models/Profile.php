@@ -265,10 +265,10 @@ class Profile
             $this->closeDb($connection);
         }
     }
-    public function viewImg()
+    public function viewImg($userID)
     {
         $connection = $this->connectDb();
-        $sql_images_user = "SELECT * from images, post where images.PostID = post.PostID and post.UserID= " . $this->UserID .  ";";
+        $sql_images_user = "SELECT * from images, post where images.PostID = post.PostID and post.UserID= " . $userID .  ";";
         $result_images_user = mysqli_query($connection, $sql_images_user);
         if (mysqli_num_rows($result_images_user) > 0) {
             $this->closeDb($connection);
@@ -276,12 +276,12 @@ class Profile
         }
     }
 
-    public function viewFriend () {
+    public function viewFriend ($userID) {
         $connection = $this->connectDb();
         $queryFriends = "SELECT * FROM user_profile, friend_ship 
                         WHERE (friend_ship.User1ID = UserID OR friend_ship.User2ID = UserID)
-                        AND UserID != $this->UserID
-                        AND (friend_ship.User1ID = $this->UserID OR friend_ship.User2ID = $this->UserID) 
+                        AND UserID != $userID
+                        AND (friend_ship.User1ID = $userID OR friend_ship.User2ID = $userID) 
                         AND friend_ship.Active=1
                         GROUP BY UserID;";
         $resultFriends = mysqli_query($connection, $queryFriends);

@@ -30,7 +30,7 @@ foreach ($friendInfo as $frdInfo) {
         <section class="text-center border-bottom">
           <div class="row d-flex justify-content-center">
             <div class="col-md-6">
-              <h2><strong><?php echo $frdInfo['UserFirstName'] . $frdInfo['UserLastName'] ?></strong></h2>
+              <h2><strong><?php echo $frdInfo['UserFirstName']. " " . $frdInfo['UserLastName'] ?></strong></h2>
               <p class="text-muted">
                 <?php echo $frdInfo['Description'] ?>
               </p>
@@ -43,19 +43,19 @@ foreach ($friendInfo as $frdInfo) {
         <section class="py-2 d-flex justify-content-between">
           <!-- left -->
           <div>
-            <button type="button" class="btn btn-link bg-light" datadata-ripple-color="dark">
+            <button type="button" class="btn btn-link bg-light" datadata-ripple-color="dark"  onclick="document.location.href='index.php?controller=profile&action=getFriendInfo&UserID=<?php echo $frdInfo['UserID'] ?>'">
               Bài viết
             </button>
-            <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark">
+            <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewGioiThieu&UserID=<?php echo $frdInfo['UserID'] ?>'">
               Giới thiệu
             </button>
-            <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark">
+            <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewFriend&UserID=<?php echo $frdInfo['UserID'] ?>'">
               Bạn bè
             </button>
-            <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark">
+            <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewImage&UserID=<?php echo $frdInfo['UserID'] ?>'">
               Ảnh
             </button>
-            <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark">
+            <button type="button" class="btn btn-link text-reset" datadata-ripple-color="dark" onclick="document.location.href='index.php?controller=profile&action=viewVideo&UserID=<?php echo $frdInfo['UserID'] ?>'">
               Video
             </button>
             <div class="dropdown d-inline-block">
@@ -186,7 +186,7 @@ foreach ($friendInfo as $frdInfo) {
                 <a href="" class="text-reset d-inline-block">
                   <h5 class="card-title mt"><strong>Ảnh</strong></h5>
                 </a>
-                <a href="" class="btn btn-link d-inline-block py-1 px-3" style="float: right">Xem tất cả ảnh</a>
+                <a href="index.php?controller=profile&action=viewImage&UserID=<?php echo $frdInfo['UserID'] ?>" class="btn btn-link d-inline-block py-1 px-3" style="float: right">Xem tất cả ảnh</a>
                 <?php
             $count = 0;
             if ($profileImg)
@@ -229,7 +229,7 @@ foreach ($friendInfo as $frdInfo) {
                       <p class='friend_numbers'><?php echo $countFriend ?> người bạn</p>
                     </div>
                     <div class='card_right d-inline-block' style='float: right'>
-                      <a href='' class='btn btn-link py-1 px-3'>Xem tất cả bạn bè</a>
+                      <a href='index.php?controller=profile&action=viewFriend&UserID=<?php echo $frdInfo['UserID'] ?>' class='btn btn-link py-1 px-3'>Xem tất cả bạn bè</a>
                     </div>
                     <?php
                     if ($profileFriend)
@@ -348,12 +348,12 @@ foreach ($friendInfo as $frdInfo) {
                             </div>
                         </div>
                         <div class="action-comment-under">
-                            <div class="action-comment-under-item">
-                            <?php
+                          <?php
                             if ($Profile->getLikeModel($row_news['PostID'])) {
-
-                            ?>
+                              
+                              ?>
                                 <a class="action-comment-under-item text-decoration-none" href="index.php?controller=profile&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>&UserID=<?php echo $row_news['UserID'] ?>" style="">
+                                  <div class="action-comment-under-item">
                                     <div class="action-icon">
                                         <span class="material-icons">
                                             thumb_up
@@ -363,11 +363,13 @@ foreach ($friendInfo as $frdInfo) {
                                     <div class="action-name">
                                         <h6>Thích</h6>
                                     </div>
+                                  </div>  
                                 </a>
                             <?php } else {
 
                             ?>
                                 <a class="action-comment-under-item text-decoration-none text-muted" href="index.php?controller=profile&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>&UserID=<?php echo $row_news['UserID'] ?>" style="">
+                                  <div class="action-comment-under-item">  
                                     <div class="action-icon">
                                         <span class="material-icons">
                                             thumb_up
@@ -377,17 +379,17 @@ foreach ($friendInfo as $frdInfo) {
                                     <div class="action-name">
                                         <h6>Thích</h6>
                                     </div>
+                                  </div>
                                 </a>
 
                             <?php  } ?>
-                            </div>
-                            <div class="action-comment-under-item">
+                            <div class="action-comment-under-item btn-comment">
                                 <div class="action-icon">
                                     <span class="material-icons-outlined comment-icon">
                                         chat_bubble_outline
                                     </span>
                                 </div>
-                                <div class="action-name btn-comment <?php echo $row_news['PostID']?>">
+                                <div class="action-name <?php echo $row_news['PostID']?>">
                                     <h6>Bình luận</h6>
                                 </div>
                             </div>
