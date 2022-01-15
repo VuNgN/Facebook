@@ -16,13 +16,16 @@
         public function search() {
             $UserID = $_SESSION['isLoginOk'];
             $templates = new Template($UserID);
-            if(isset($_POST['search-btn'])){
+            if(isset($_POST['search-btn']) && $_POST['search-input']){
                 $search = $_POST['search-input'];
                 if($search != ''){
                     $users = $templates->getUserSearch($search);
                 }
+                require_once "views/templates/search.php";
             }
-            require_once "views/templates/search.php";
+            else {
+                header("location: index.php");       
+            }
         }
         public function postDetail(){
             $UserID = $_SESSION['isLoginOk'];

@@ -38,6 +38,7 @@ class Profile
             WHERE (friend_ship.User1ID = UserID OR friend_ship.User2ID = UserID)
             AND UserID != '" . $this->UserID . "'
             AND (friend_ship.User1ID = '" . $this->UserID . "' OR friend_ship.User2ID = '" . $this->UserID . "')  
+            AND friend_ship.Active=1
             GROUP BY UserID LIMIT 6;"; /*limit 6 nguoi bann*/
         $resultFriends = mysqli_query($connection, $queryFriends);
 
@@ -177,11 +178,15 @@ class Profile
     {
         $connection = $this->connectDb();
         $sql1 = "DELETE FROM images WHERE PostID = $PostID";
+        $sql3 = "DELETE FROM comment WHERE PostID = $PostID";
+        $sql4 = "DELETE FROM like_action WHERE PostID = $PostID";
         $sql2 = "DELETE FROM post WHERE PostID = $PostID";
         $result1 = mysqli_query($connection, $sql1);
+        $result3 = mysqli_query($connection, $sql3);
+        $result4 = mysqli_query($connection, $sql4);
         $result2 = mysqli_query($connection, $sql2);
         $this->closeDb($connection);
-        return $result1;
+        return $result1 && $result2 && $result3 && $result4;
     }
     // --------------------------------------------------------------------
     // FRIENDDDDDDD
@@ -277,6 +282,7 @@ class Profile
                         WHERE (friend_ship.User1ID = UserID OR friend_ship.User2ID = UserID)
                         AND UserID != $this->UserID
                         AND (friend_ship.User1ID = $this->UserID OR friend_ship.User2ID = $this->UserID) 
+                        AND friend_ship.Active=1
                         GROUP BY UserID;";
         $resultFriends = mysqli_query($connection, $queryFriends);
         if (mysqli_num_rows($resultFriends) > 0) {
@@ -298,7 +304,7 @@ class Profile
     {
         $connection = $this->connectDb();
         $queryFriends = "SELECT *, count(User1ID) as countFriend FROM user_profile, friend_ship
-            WHERE (friend_ship.User1ID = UserID OR friend_ship.User2ID = UserID)
+            WHERE (friend_ship.User1ID = UserID OR friend_ship.User2ID = UserID) AND friend_ship.Active=1
             AND UserID != '" . $friendId . "'
             AND (friend_ship.User1ID = '" . $friendId . "' OR friend_ship.User2ID = '" . $friendId . "')  
             GROUP BY UserID LIMIT 6;"; /*limit 6 nguoi bann*/

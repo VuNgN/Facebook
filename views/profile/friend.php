@@ -232,6 +232,7 @@ foreach ($friendInfo as $frdInfo) {
                       <a href='' class='btn btn-link py-1 px-3'>Xem tất cả bạn bè</a>
                     </div>
                     <?php
+                    if ($profileFriend)
                     foreach ($profileFriend as $rowFriends) {
                       if ($count % 3 == 0) {
                         echo '<div class="row">';

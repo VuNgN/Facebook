@@ -57,12 +57,14 @@
             $conn = $this->connectDb(); 
             $sql1 = "DELETE FROM comment WHERE PostID = $postid"; // xoa comment cua post
             $sql3 = "DELETE FROM images WHERE PostID = $postid";  //xóa anh của post
+            $sql4 = "DELETE FROM like_action WHERE PostID = $postid";
             $sql2 = "DELETE FROM post WHERE PostID = $postid";     //xóa post
             $result1 = mysqli_query($conn, $sql1);
             $result3 = mysqli_query($conn, $sql3);
+            $result4 = mysqli_query($conn, $sql4);
             $result2 = mysqli_query($conn, $sql2);
             $this->closeDb($conn);
-            return ($result1 && $result2 && $result3);
+            return ($result1 && $result2 && $result3 && $result4);
         }
 
         public function lockUser($userid) { 

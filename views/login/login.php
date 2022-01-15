@@ -16,15 +16,15 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
     <link
       rel="stylesheet"
-      href="assets/css/login-page/SF Pro Display Bold.css"
+      href="assets/css/login-page/SF-Pro-Display-Bold.css"
     />
     <link
       rel="stylesheet"
-      href="assets/css/login-page/SF Pro Display Medium.css"
+      href="assets/css/login-page/SF-Pro-Display-Medium.css"
     />
     <link
       rel="stylesheet"
-      href="assets/css/login-page/SF Pro Display Regular.css"
+      href="assets/css/login-page/SF-Pro-Display-Regular.css"
     />
     <link rel="stylesheet" href="assets/css/login-page/login-page.css" />
   </head>
@@ -674,6 +674,7 @@
       </div>
     </div> 
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="./assets/src/login.js" charset="utf-8"></script> 
+    <script src="assets/js/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/login/login.js" charset="utf-8"></script> 
   </body>
 </html>
