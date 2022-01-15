@@ -232,6 +232,7 @@ foreach ($friendInfo as $frdInfo) {
                       <a href='' class='btn btn-link py-1 px-3'>Xem tất cả bạn bè</a>
                     </div>
                     <?php
+                    if ($profileFriend)
                     foreach ($profileFriend as $rowFriends) {
                       if ($count % 3 == 0) {
                         echo '<div class="row">';
@@ -324,6 +325,10 @@ foreach ($friendInfo as $frdInfo) {
                                 <span class="material-icons-round">
                                     emoji_emotions
                                 </span>
+                                <div class="share-index-item">
+                                    <?php echo $Profile->getLikeNumber($row_news['PostID']); ?>
+                                    lượt like
+                                </div>
                             </div>
                             <!-- //ĐẾM LƯỢT BÌNH LUÂN -->
                             <div class="comment-index">

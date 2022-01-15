@@ -98,6 +98,10 @@
                                 <span class="material-icons-round">
                                     emoji_emotions
                                 </span>
+                                <div class="share-index-item">
+                                    <?php echo $Newsfeed->getLikeNumber($row_news['PostID']); ?>
+                                    lượt like
+                                </div>
                             </div>
                             <!-- //ĐẾM LƯỢT BÌNH LUÂN -->
                             <div class="comment-index">

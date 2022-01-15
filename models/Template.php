@@ -133,6 +133,18 @@
 
             $this->closeDb($connection);
         }
+
+        public function getLikeNumber($postid) {
+            $connection = $this->connectDb();
+            $sql = "SELECT COUNT(PostID) from like_action where PostID= $postid";
+            $result = mysqli_query($connection, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $likeNumber = (mysqli_fetch_assoc($result)['COUNT(PostID)']);
+                $this->closeDb($connection);
+                return $likeNumber;
+            }
+        }
+
         public function connectDb() {
             $connection = mysqli_connect(DB_HOST,
             DB_USERNAME, DB_PASSWORD, DB_NAME);

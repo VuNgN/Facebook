@@ -181,6 +181,11 @@
             $PostID = $_GET['PostID'];
             $friendID = $_GET['UserID'];
             $Profile->likeProcess($PostID);
-            header("location: index.php?controller=profile&action=getFriendInfo&UserIDFriend=".$friendID);
+            if ($friendID != $UserID) {
+                header("location: index.php?controller=profile&action=getFriendInfo&UserIDFriend=".$friendID);
+            }
+            else {
+                header("location: index.php?controller=profile&action=index");
+            }
         }
     }
