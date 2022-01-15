@@ -152,7 +152,7 @@ foreach ($friendInfo as $frdInfo) {
                     <a href="https://vi.wikipedia.org/wiki/H%C3%A0_N%E1%BB%99i"><strong><?php echo $frdInfo['UserAddress'] ?></strong></a>
                   </li>
                   <li>
-                    <i class="fab fa-github me-2 mt-3"></i><a href="https://github.com/vantranthao">https://github.com/VuNgN/facebook</a>
+                    <i class="fab fa-github me-2 mt-3"></i><a href="https://github.com/VuNgN/facebook">https://github.com/VuNgN/facebook</a>
                   </li>
                 </ul>
                 <div class="lightbox mt-4">
