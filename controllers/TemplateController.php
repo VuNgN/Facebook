@@ -32,5 +32,12 @@
             $row_user_ava = $templates->getName();
             require_once "views/templates/post.php";
         }
+        public function likeProcess() {
+            $UserID = $_SESSION['isLoginOk'];
+            $templates = new Template($UserID);
+            $PostID = $_GET['PostID'];
+            $templates->likeProcess($PostID);
+            header("location: index.php?controller=template&action=postDetail&PostID=".$PostID);
+        }
     }
 ?>

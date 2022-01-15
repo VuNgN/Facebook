@@ -86,14 +86,37 @@
                         </div>
                         <div class="action-comment-under">
                             <div class="action-comment-under-item">
-                                <div class="action-icon">
-                                    <span class="material-icons-outlined like-icon">
-                                        thumb_up
-                                    </span>
-                                </div>
-                                <div class="action-name">
-                                    <h6>Thích</h6>
-                                </div>
+                            <?php
+                            if ($templates->getLikeModel($detail['PostID'])) {
+
+                            ?>
+                                <a class="action-comment-under-item text-decoration-none" href="index.php?controller=template&action=likeProcess&PostID=<?php echo $detail['PostID'] ?>&UserID=<?php echo $detail['UserID'] ?>" style="">
+                                    <div class="action-icon">
+                                        <span class="material-icons">
+                                            thumb_up
+                                        </span>
+
+                                    </div>
+                                    <div class="action-name">
+                                        <h6>Thích</h6>
+                                    </div>
+                                </a>
+                            <?php } else {
+
+                            ?>
+                                <a class="action-comment-under-item text-decoration-none text-muted" href="index.php?controller=template&action=likeProcess&PostID=<?php echo $detail['PostID'] ?>&UserID=<?php echo $detail['UserID'] ?>" style="">
+                                    <div class="action-icon">
+                                        <span class="material-icons">
+                                            thumb_up
+                                        </span>
+
+                                    </div>
+                                    <div class="action-name">
+                                        <h6>Thích</h6>
+                                    </div>
+                                </a>
+
+                            <?php  } ?>
                             </div>
                             <div class="action-comment-under-item">
                                 <div class="action-icon">
