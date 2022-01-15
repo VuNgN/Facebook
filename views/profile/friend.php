@@ -79,14 +79,14 @@ foreach ($friendInfo as $frdInfo) {
                 if ($mysendF['Active'] == 1) {
                   echo "
                   <form class='mr-2' method='post' action='index.php?controller=profile&action=processFriend'>
-                    <button name='removeFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                    <button name='removeFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn btn-danger mr-2 hover_link' data-mdb-ripple-color='dark'>
                       <i class='fas fa-user-times'></i> Xóa bạn bè
                     </button>
                   </form>";
                 } else {
                   echo "
                   <form class='mr-2' method='post' action='index.php?controller=profile&action=processFriend'>
-                    <button name='cancelFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                    <button name='cancelFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn btn-warning mr-2 hover_link' data-mdb-ripple-color='dark'>
                       <i class='fas fa-user-slash'></i> Hủy kết bạn
                     </button>
                   </form>";
@@ -97,17 +97,17 @@ foreach ($friendInfo as $frdInfo) {
                 if ($othersendF['Active'] == 0) {
                   echo "
                 <form class='mr-2' method='post' action='index.php?controller=profile&action=processFriend'>
-                  <button name='acceptFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                  <button name='acceptFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn btn-success mr-2 hover_link' data-mdb-ripple-color='dark'>
                     <i class='fas fa-user-check'></i> Đồng ý kết bạn
                   </button>
-                  <button name='cancelFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                  <button name='cancelFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn btn-danger mr-2 hover_link' data-mdb-ripple-color='dark'>
                     <i class='fas fa-user-times'></i> Hủy kết bạn
                   </button>
                 </form>";
                 } else {
                   echo "
                   <form class='mr-2' method='post' action='index.php?controller=profile&action=processFriend'>
-                    <button name='removeFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                    <button name='removeFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn btn-danger mr-2 hover_link' data-mdb-ripple-color='dark'>
                       <i class='fas fa-user-times'></i> Xóa bạn bè
                     </button>
                   </form>";
@@ -116,7 +116,7 @@ foreach ($friendInfo as $frdInfo) {
             } else {
               echo "
                 <form class='mr-2' method='post' action='index.php?controller=profile&action=processFriend'>
-                  <button name='addFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn bg-light mr-2 hover_link' data-mdb-ripple-color='dark'>
+                  <button name='addFriend' type='submit' value='" . $frdInfo['UserID'] . "' class='btn btn-info mr-2 hover_link' data-mdb-ripple-color='dark'>
                     <i class='fas fa-user-plus'></i> Kết bạn
                   </button>
                 </form>";

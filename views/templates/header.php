@@ -193,18 +193,6 @@
                         <?php
                             }
                         ?>
-
-                    <a class="notify-item link-dark" href="index.php?controller=template&action=postDetail&PostID=<?php echo $notify['PostID'];?>">
-                        <div class="user-ava">
-                            <img class="user-img" src="<?php echo ($notify['UserAva']); ?>" alt="">
-                        </div>
-                        <div class="notify-content">
-                            <p>
-                                <b><?php echo ($notify['UserName']); ?></b> Đã đăng một bài viết mới: <?php echo ($notify['PostCaption']);?>
-                            </p>
-                            <b style="color:#1877F2"><?php echo $time?></b>
-                        </div>
-                    </a>
                 </div>
             </div>
             <div class="nav-item">
