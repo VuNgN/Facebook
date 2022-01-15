@@ -107,10 +107,7 @@
                   <a href="https://vi.wikipedia.org/wiki/H%C3%A0_N%E1%BB%99i"><strong> <?php echo $row_ava['UserAddress'] ?> </strong></a>
                 </li>
                 <li>
-                  <i class="fab fa-github me-2 mt-3"></i><a href="https://github.com/vantranthao">https://github.com/vantranthao</a>
-                </li>
-                <li>
-                  <i class="fas fa-school me-2 mt-3"></i><a href="http://c3chuongmya.edu.vn/">THPT Chương Mỹ A</a>
+                  <i class="fab fa-github me-2 mt-3"></i><a href="https://github.com/VuNgN/facebook">https://github.com/VuNgN/facebook</a>
                 </li>
               </ul>
               <button type="button" class="btn btn-light bg-light btn-block mt-3">
