@@ -482,11 +482,11 @@ foreach ($friendInfo as $frdInfo) {
                             ?>
                                 <!--COMMENT OF USER FRIEND-->
                                 <li class="comment-item myDIV">
-                                    <a class="icon" href="user_profile_friend.php?UserIDFriend=<?php echo $row_comment['UserID']; ?>">
+                                    <a class="icon" href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_comment['UserID']; ?>">
                                         <img class="user-img" src="<?php echo ($row_comment['UserAva']); ?>" alt="">
                                     </a>
                                     <div class="commentator-name">
-                                        <a href="user_profile_friend.php?UserIDFriend=<?php echo $row_comment['UserID']; ?>" class="user-name text-decoration-none link-dark">
+                                        <a href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_comment['UserID']; ?>" class="user-name text-decoration-none link-dark">
                                             <b><?php echo $row_comment['UserName']; ?></b>
                                         </a>
                                         <p class="comment-content">

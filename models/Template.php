@@ -145,6 +145,15 @@
             }
         }
 
+        public function addComment($arrComment){
+            $connection = $this->connectDb();
+            $sql_comment = "INSERT INTO comment(PostID, UserID, CommentContent)
+                            VALUES('{$arrComment['postID']}', '{$arrComment['userID']}', '{$arrComment['content']}')";
+            $result = mysqli_query($connection, $sql_comment);
+            $this->closeDb($connection);
+            return $result;
+        }
+
         public function connectDb() {
             $connection = mysqli_connect(DB_HOST,
             DB_USERNAME, DB_PASSWORD, DB_NAME);

@@ -42,5 +42,22 @@
             $templates->likeProcess($PostID);
             header("location: index.php?controller=template&action=postDetail&PostID=".$PostID);
         }
+        public function addComment(){
+            //add cmt
+            $UserID = $_SESSION['isLoginOk'];
+            $templates = new Template($UserID);
+            if (isset($_POST["btn-comment"])&& $_POST['txt-comment']){
+                $UserCommentID = $_POST["UserID"];
+                $PostID = $_POST["PostID"];
+                $CommentContent = $_POST["txt-comment"];
+                $arrComment = [
+                    'userID' => $UserCommentID,
+                    'postID' => $PostID,
+                    'content' => $CommentContent
+                ];
+                $profileAddComment = $templates->addComment($arrComment);
+            }
+            header("location: index.php?controller=template&action=postDetail&PostID=".$PostID);
+        }
     }
 ?>
