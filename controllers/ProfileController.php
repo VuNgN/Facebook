@@ -175,4 +175,12 @@
             }
             header("location: index.php?controller=profile&action=getFriendInfo&UserIDFriend=".$friendID);
         }
+        public function likeProcess() {
+            $UserID = $_SESSION['isLoginOk'];
+            $Profile = new Profile($UserID);
+            $PostID = $_GET['PostID'];
+            $friendID = $_GET['UserID'];
+            $Profile->likeProcess($PostID);
+            header("location: index.php?controller=profile&action=getFriendInfo&UserIDFriend=".$friendID);
+        }
     }

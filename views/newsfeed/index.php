@@ -42,11 +42,11 @@
             <div class="news <?php echo $row_news['PostID'] ?>">
                 <div class="row">
                     <div class="heading">
-                        <a class="user-ava" href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>">
+                        <a class="user-ava" href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_news['UserID']; ?>">
                             <img class="user-img" src="<?php echo ($row_news['UserAva']); ?>" alt="">
                         </a>
                         <div class="user-name-time">
-                            <a href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>" class="user-name text-decoration-none link-dark">
+                            <a href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_news['UserID']; ?>" class="user-name text-decoration-none link-dark">
                                 <b><?php echo $row_news['UserName'] ?></b>
                             </a>
                             <h6 class="time">
@@ -136,7 +136,7 @@
                             <?php } else {
 
                             ?>
-                                <a class="action-comment-under-item text-decoration-none link-dark" href="index.php?controller=newsfeed&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>" style="">
+                                <a class="action-comment-under-item text-decoration-none text-muted" href="index.php?controller=newsfeed&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>" style="">
                                     <div class="action-icon">
                                         <span class="material-icons">
                                             thumb_up
@@ -246,11 +246,11 @@
                             ?>
                                 <!--COMMENT OF USER FRIEND-->
                                 <li class="comment-item myDIV">
-                                    <a class="icon" href="user_profile_friend.php?UserIDFriend=<?php echo $row_comment['UserID']; ?>">
+                                    <a class="icon" href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_comment['UserID']; ?>">
                                         <img class="user-img" src="<?php echo ($row_comment['UserAva']); ?>" alt="">
                                     </a>
                                     <div class="commentator-name">
-                                        <a href="user_profile_friend.php?UserIDFriend=<?php echo $row_comment['UserID']; ?>" class="user-name text-decoration-none link-dark">
+                                        <a href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_comment['UserID']; ?>" class="user-name text-decoration-none link-dark">
                                             <b><?php echo $row_comment['UserName']; ?></b>
                                         </a>
                                         <p class="comment-content">

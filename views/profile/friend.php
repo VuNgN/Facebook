@@ -10,9 +10,9 @@ foreach ($friendInfo as $frdInfo) {
         <section class="mb-10">
           <!-- Background image -->
           <div class="p-5 text-center bg-image shadow-1-strong rounded-bottom" style="
-                background-image: url('assets/images_dev/sky.jpg');
-                height: 400px;
-              " onclick="clickImg('assets/images_dev/sky.jpg')"></div>
+                background-image: url('assets/images/sky.jpg');
+                height: 250px;
+              " onclick="clickImg('assets/images/sky.jpg')"></div>
 
           <div class="d-flex justify-content-center">
             <img src=<?php echo "'" . $frdInfo['UserAva'] . "'" ?> alt="" class="
@@ -267,11 +267,11 @@ foreach ($friendInfo as $frdInfo) {
             <div class="news <?php echo $row_news['PostID']?>">
                 <div class="row">
                     <div class="heading">
-                        <a class="user-ava" href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>">
+                        <a class="user-ava" href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_news['UserID']; ?>">
                             <img class="user-img" src="<?php echo ($row_news['UserAva']); ?>" alt="">
                         </a>
                         <div class="user-name-time">
-                            <a href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>" class="user-name text-decoration-none link-dark">
+                            <a href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_news['UserID']; ?>" class="user-name text-decoration-none link-dark">
                                 <b><?php echo $row_news['UserFirstName'] . " " . $row_news['UserLastName'] ?></b>
                             </a>
                             <h6 class="time">
@@ -344,14 +344,37 @@ foreach ($friendInfo as $frdInfo) {
                         </div>
                         <div class="action-comment-under">
                             <div class="action-comment-under-item">
-                                <div class="action-icon">
-                                    <span class="material-icons-outlined like-icon">
-                                        thumb_up
-                                    </span>
-                                </div>
-                                <div class="action-name">
-                                    <h6>Thích</h6>
-                                </div>
+                            <?php
+                            if ($Profile->getLikeModel($row_news['PostID'])) {
+
+                            ?>
+                                <a class="action-comment-under-item text-decoration-none" href="index.php?controller=profile&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>&UserID=<?php echo $row_news['UserID'] ?>" style="">
+                                    <div class="action-icon">
+                                        <span class="material-icons">
+                                            thumb_up
+                                        </span>
+
+                                    </div>
+                                    <div class="action-name">
+                                        <h6>Thích</h6>
+                                    </div>
+                                </a>
+                            <?php } else {
+
+                            ?>
+                                <a class="action-comment-under-item text-decoration-none text-muted" href="index.php?controller=profile&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>&UserID=<?php echo $row_news['UserID'] ?>" style="">
+                                    <div class="action-icon">
+                                        <span class="material-icons">
+                                            thumb_up
+                                        </span>
+
+                                    </div>
+                                    <div class="action-name">
+                                        <h6>Thích</h6>
+                                    </div>
+                                </a>
+
+                            <?php  } ?>
                             </div>
                             <div class="action-comment-under-item">
                                 <div class="action-icon">
