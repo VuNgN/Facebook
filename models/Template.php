@@ -107,6 +107,32 @@
                 return mysqli_fetch_all($result_comment, MYSQLI_ASSOC);
             }
         }
+        public function getLikeModel($postid) {
+            $connection = $this->connectDb();
+            $sql = "SELECT COUNT(PostID) from like_action where PostID= $postid and UserID= $this->UserID";
+            $result = mysqli_query($connection, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $islike = (mysqli_fetch_assoc($result)['COUNT(PostID)']==1);
+                $this->closeDb($connection);
+                return $islike;
+            }
+            // $this->closeDb($connection);
+            // return mysqli_fetch_all($result, MYSQLI_ASSOC);
+        }
+
+        public function likeProcess ($postId) {
+            $isLiked = $this->getLikeModel($postId);
+            $connection = $this->connectDb();
+            if($isLiked) {
+                $sql = "DELETE from like_action where PostID= $postId and UserID= $this->UserID";
+                $result = mysqli_query($connection, $sql);
+            } else {
+                $sql1 = "INSERT into like_action (PostID, UserID) values(" .$postId. ", ".$this->UserID.")";
+                $result = mysqli_query($connection, $sql1);
+            }
+
+            $this->closeDb($connection);
+        }
         public function connectDb() {
             $connection = mysqli_connect(DB_HOST,
             DB_USERNAME, DB_PASSWORD, DB_NAME);
