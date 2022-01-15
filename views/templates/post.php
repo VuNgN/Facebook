@@ -4,6 +4,7 @@
         <div id="main-news-feed">
         <?php
         //TRUY VẤN POST, POST_USER
+        if ($PostDetail)
         foreach($PostDetail as $detail) {
         ?>
                 <div class="news <?php echo $detail['PostID']?>">
@@ -199,7 +200,7 @@
                                                 edit
                                             </span>
                                         </div>
-                                        <form class="content" id="form-edit-comment" action="index.php?controller=newsfeed&action=editComment" method="post">
+                                        <form class="content" id="form-edit-comment" action="index.php?controller=template&action=editComment&PostID=<?php echo $detail['PostID'] ?>" method="post">
                                             <input class="ID" type="text" value="<?php echo $row_comment['UserID']; ?>" name="CommentUserID">
                                             <input class="ID" type="text" value="<?php echo $UserID; ?>" name="UserID">
                                             <!--Người đăng nhập-->
@@ -207,7 +208,7 @@
                                             <textarea id="input-edit-comment" name="txt-edit" id="" cols="30" rows="4"><?php echo $row_comment['CommentContent']; ?></textarea>
                                             <button id="btn-edit-comment" name="btn-edit" type="submit">Lưu</button>
                                         </form>
-                                        <a href="index.php?controller=newsfeed&action=deleteComment&CommentID=<?php echo $row_comment['CommentID']; ?>" class="link-dark">
+                                        <a href="index.php?controller=template&action=deleteComment&CommentID=<?php echo $row_comment['CommentID']; ?>&PostID=<?php echo $detail['PostID'] ?>" class="link-dark">
                                             <!--Người đăng nhập-->
                                             <span class="hide material-icons-outlined option-comment option-icon" style="font-size:15px">
                                                 delete_forever

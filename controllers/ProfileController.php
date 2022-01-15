@@ -93,7 +93,12 @@
                 ];
                 $profileAddComment = $Profile->editComment($arrComment);
             }
-            header('location: index.php?controller=profile&action=index');
+            if (isset($_GET['FriendId'])) {
+                header("location: index.php?controller=profile&action=getFriendInfo&UserIDFriend=".$_GET['FriendId']);
+            }
+            else {
+                header('location: index.php?controller=profile&action=index');
+            }
         }
         public function deleteComment(){
             //delete cmt
@@ -101,7 +106,12 @@
             $Profile = new Profile($UserID);
             $commentID = $_GET['CommentID'];
             $profileAddComment = $Profile->deleteComment($commentID);
-            header('location: index.php?controller=profile&action=index');
+            if (isset($_GET['FriendId'])) {
+                header("location: index.php?controller=profile&action=getFriendInfo&UserIDFriend=".$_GET['FriendId']);
+            }
+            else {
+                header('location: index.php?controller=profile&action=index');
+            }
         }
         public function addPost(){
             $UserID = $_SESSION['isLoginOk'];

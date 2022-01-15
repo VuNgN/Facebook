@@ -153,7 +153,22 @@
             $this->closeDb($connection);
             return $result;
         }
-
+        public function editComment($arrComment)
+        {
+            $connection = $this->connectDb();
+            $sql = "UPDATE comment SET CommentContent='{$arrComment['content']}' WHERE CommentID='{$arrComment['commentID']}'";
+            $result = mysqli_query($connection, $sql);
+            $this->closeDb($connection);
+            return $result;
+        }
+        public function deleteComment($commentID)
+        {
+            $connection = $this->connectDb();
+            $sql = "DELETE FROM comment WHERE CommentID = $commentID";
+            $result = mysqli_query($connection, $sql);
+            $this->closeDb($connection);
+            return $result;
+        }
         public function connectDb() {
             $connection = mysqli_connect(DB_HOST,
             DB_USERNAME, DB_PASSWORD, DB_NAME);

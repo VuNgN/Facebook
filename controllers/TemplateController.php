@@ -55,8 +55,33 @@
                     'postID' => $PostID,
                     'content' => $CommentContent
                 ];
-                $profileAddComment = $templates->addComment($arrComment);
+                $templatesAddComment = $templates->addComment($arrComment);
             }
+            header("location: index.php?controller=template&action=postDetail&PostID=".$PostID);
+        }
+        public function editComment(){
+            //edit cmt
+            $UserID = $_SESSION['isLoginOk'];
+            $templates = new Template($UserID);
+            if (isset($_POST["btn-edit"]) && $_POST['txt-edit']){
+                $CommentID = $_POST["CommentID"];
+                $CommentContent = $_POST["txt-edit"];
+                $arrComment = [
+                    'commentID' => $CommentID,
+                    'content' => $CommentContent
+                ];
+                $templatesAddComment = $templates->editComment($arrComment);
+            }
+            $PostID = $_GET['PostID'];
+            header("location: index.php?controller=template&action=postDetail&PostID=".$PostID);
+        }
+        public function deleteComment(){
+            //delete cmt
+            $UserID = $_SESSION['isLoginOk'];
+            $templates = new Template($UserID);
+            $commentID = $_GET['CommentID'];
+            $templatesAddComment = $templates->deleteComment($commentID);
+            $PostID = $_GET['PostID'];
             header("location: index.php?controller=template&action=postDetail&PostID=".$PostID);
         }
     }
