@@ -136,7 +136,7 @@
                             <?php } else {
 
                             ?>
-                                <a class="action-comment-under-item text-decoration-none link-dark" href="index.php?controller=newsfeed&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>" style="">
+                                <a class="action-comment-under-item text-decoration-none text-muted" href="index.php?controller=newsfeed&action=likeProcess&PostID=<?php echo $row_news['PostID'] ?>" style="">
                                     <div class="action-icon">
                                         <span class="material-icons">
                                             thumb_up
