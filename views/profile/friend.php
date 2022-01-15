@@ -324,6 +324,10 @@ foreach ($friendInfo as $frdInfo) {
                                 <span class="material-icons-round">
                                     emoji_emotions
                                 </span>
+                                <div class="share-index-item">
+                                    <?php echo $Profile->getLikeNumber($row_news['PostID']); ?>
+                                    lượt like
+                                </div>
                             </div>
                             <!-- //ĐẾM LƯỢT BÌNH LUÂN -->
                             <div class="comment-index">

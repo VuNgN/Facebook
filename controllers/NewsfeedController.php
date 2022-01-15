@@ -7,7 +7,7 @@
             $row_user_ava = $Newsfeed->getName(); 
             $posts = $Newsfeed->getPost();
             $friends = $Newsfeed->getFriend();
-        
+            
             require_once "views/newsfeed/index.php";
         }
         public function addComment(){

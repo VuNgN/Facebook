@@ -146,7 +146,7 @@
             ?>
               <div class="col-lg-4 mb-3">
                 <a href="<?php echo $row_img['images'] ?>" target="_blank">
-                  <img src="<?php echo $row_img['images'] ?>" alt="" onclick="clickImg('<?php echo $row_img['images'] ?>')" class="w-100 shadow-1-strong rounded" style="height: 100px;" />
+                  <img src="<?php echo $row_img['images'] ?>" alt="" onclick="clickImg(<?php echo $row_img['images'] ?>)" class="w-100 shadow-1-strong rounded" style="height: 100px;" />
                 </a>
               </div>
             <?php
@@ -304,6 +304,10 @@
                       <span class="material-icons-round">
                         emoji_emotions
                       </span>
+                      <div class="share-index-item">
+                          <?php echo $Profile->getLikeNumber($row_news['PostID']); ?>
+                          lượt like
+                      </div>
                     </div>
                     <div class="comment-index">
 
