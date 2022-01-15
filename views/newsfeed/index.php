@@ -42,11 +42,11 @@
             <div class="news <?php echo $row_news['PostID'] ?>">
                 <div class="row">
                     <div class="heading">
-                        <a class="user-ava" href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>">
+                        <a class="user-ava" href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_news['UserID']; ?>">
                             <img class="user-img" src="<?php echo ($row_news['UserAva']); ?>" alt="">
                         </a>
                         <div class="user-name-time">
-                            <a href="user_profile_friend.php?UserIDFriend=<?php echo $row_news['UserID']; ?>" class="user-name text-decoration-none link-dark">
+                            <a href="index.php?controller=profile&action=getFriendInfo&UserIDFriend=<?php echo $row_news['UserID']; ?>" class="user-name text-decoration-none link-dark">
                                 <b><?php echo $row_news['UserName'] ?></b>
                             </a>
                             <h6 class="time">
