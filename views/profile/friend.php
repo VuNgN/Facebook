@@ -10,9 +10,9 @@ foreach ($friendInfo as $frdInfo) {
         <section class="mb-10">
           <!-- Background image -->
           <div class="p-5 text-center bg-image shadow-1-strong rounded-bottom" style="
-                background-image: url('assets/images_dev/sky.jpg');
-                height: 400px;
-              " onclick="clickImg('assets/images_dev/sky.jpg')"></div>
+                background-image: url('assets/images/sky.jpg');
+                height: 250px;
+              " onclick="clickImg('assets/images/sky.jpg')"></div>
 
           <div class="d-flex justify-content-center">
             <img src=<?php echo "'" . $frdInfo['UserAva'] . "'" ?> alt="" class="
