@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 15, 2022 at 05:31 AM
+-- Generation Time: Jan 15, 2022 at 09:25 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -289,9 +289,9 @@ INSERT INTO `user_profile` (`UserID`, `UserEmail`, `UserPass`, `UserGender`, `Us
 (10, 'cspadotto7@examiner.com', '79o4q8s67u', b'1', 'Casandra', 'Spadotto', '1992-10-08', '04 Lakewood Park', 'assets\\images\\get_away_from_my_computer-wallpaper-2560x1440.jpg', 1, NULL, '', 1, '2021-12-26 15:05:38', NULL),
 (11, 'ajonsson8@topsy.com', 'aOCFQ35', b'1', 'Alyse', 'Jonsson', '1996-07-09', '683 Stang Road', 'assets\\images\\i_belive_i_can_fly-wallpaper-2560x1440.jpg', 4, NULL, '', 1, '2021-12-26 15:05:16', NULL),
 (12, 'jmcilmorow9@jalbum.net', 'OgZuo8o', b'1', 'Jase', 'McIlmorow', '1995-10-03', '9456 Sherman Terrace', 'assets\\images\\get_away_from_my_computer-wallpaper-2560x1440.jpg', 7, NULL, '', 0, '2021-12-26 15:05:58', '2021-11-30 12:25:01'),
-(19, 'nmtuan1201@gmail.com', '$2y$10$mkry.IOSUJAz6codd2AW8uIdpWiGmWoFBUOYbP2jbSEqODldFPlRS', b'0', 'tuan', 'minh', '2001-01-01', NULL, 'assets\\images\\avatar\\Tuan_avatar.jpg', 7, NULL, '28f1e0938fe9f5edf56c744b5360a574405', 1, '2022-01-15 04:03:54', NULL),
-(20, 'vunguyen220901@gmail.com', '$2y$10$3ItzUAKeKfRDr4ERj1UqY.zF5LoW6hg2YaZF7y5cXcJQXu4xrNllq', b'0', 'VU', 'nguyen', '2021-01-01', NULL, 'assets\\images\\avatar\\Vu_avatar.jpg', 0, NULL, 'b67e0d097c5ac9bfa77407950da0e5484904', 1, '2022-01-15 04:03:17', NULL),
-(21, 'thaovannihong@gmail.com', '$2y$10$eVTVsjCblVivbkLJfnnzcuB2g7qny/rDNcJDwkaLvJgbokWXTG6ZK', b'1', 'Vân', 'Trần', '2021-01-01', NULL, 'assets\\images\\avatar\\Van_avatar.jpg', 0, NULL, 'f6d129ed8c61e95954bf3958651393153129', 0, '2022-01-15 04:03:35', NULL);
+(19, 'nmtuan1201@gmail.com', '$2y$10$mkry.IOSUJAz6codd2AW8uIdpWiGmWoFBUOYbP2jbSEqODldFPlRS', b'0', 'Tuấn', 'Nguyễn', '2001-01-01', NULL, 'assets\\images\\avatar\\Tuan_avatar.jpg', 7, NULL, '28f1e0938fe9f5edf56c744b5360a574405', 1, '2022-01-15 04:49:01', NULL),
+(20, 'vunguyen220901@gmail.com', '$2y$10$3ItzUAKeKfRDr4ERj1UqY.zF5LoW6hg2YaZF7y5cXcJQXu4xrNllq', b'0', 'Vũ', 'Nguyễn', '2021-01-01', NULL, 'assets\\images\\avatar\\Vu_avatar.jpg', 0, NULL, 'b67e0d097c5ac9bfa77407950da0e5484904', 1, '2022-01-15 04:48:48', NULL),
+(21, 'thaovannihong@gmail.com', '$2y$10$eVTVsjCblVivbkLJfnnzcuB2g7qny/rDNcJDwkaLvJgbokWXTG6ZK', b'1', 'Vân', 'Trần', '2021-01-01', NULL, 'assets\\images\\avatar\\Van_avatar.jpg', 0, NULL, 'f6d129ed8c61e95954bf3958651393153129', 1, '2022-01-15 08:24:30', NULL);
 
 -- --------------------------------------------------------
 
