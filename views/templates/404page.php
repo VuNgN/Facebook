@@ -3,13 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <link rel="icon" href="../../assets/images/Facebook_logo/Facebook_logo.ico" type="image/x-icon"/>
+    <title>Facebook</title>
     <link
       rel="stylesheet"
       href="../../assets/css/templates/404page.css"
       type="text/css"
       media="all"
     />
+    
   </head>
   <body>
     <div>

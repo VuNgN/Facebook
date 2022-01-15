@@ -268,6 +268,7 @@
                 <div class="news-content">
                   <div class="content-caption">
                     <?php echo $row_news['PostCaption'] ?>
+                    <!--Edit post-->
                       <form class="editPost" action="index.php?controller=Profile&action=editPost&PostID=<?php echo $row_news['PostID']?>"
                       style="width:100%;height:auto;display:none; flex-direction:column" method="post">
                         <textarea name="editContent" id="" cols="100" rows="10"><?php echo $row_news['PostCaption']?></textarea>

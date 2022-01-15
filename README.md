@@ -1,5 +1,5 @@
 # Facebook MVC PHP
-Mô hình gốc (Chưa MVC- 94 commits): https://github.com/tuanminh121/FaceBook
+Mô hình gốc (Chưa MVC- 97 commits): https://github.com/tuanminh121/FaceBook_Web
 
 ## Thành viên 
 - Trần Thảo Vân
