@@ -412,8 +412,8 @@
                         <a class="icon" href="index.php?controller=profile&action=index">
                           <?php
                           //TRUY VẤN COMMENT, COMMENT_USER
-                          foreach ($Profile->getAvatar($row_comment['UserID']) as $rowAvatar) {
-                          }
+               /*            foreach ($Profile->getAvatar($row_comment['UserID']) as $rowAvatar) {
+                          } */
                           ?>
                           <img class="user-img" src="<?php echo $row_news['UserAva'] ?>" alt="">
                         </a>
@@ -466,7 +466,7 @@
                             <?php
                             //TRUY VẤN COMMENT, COMMENT_USER
                             ?>
-                            <img class="user-img" src="<?php echo $row_ava['UserAva'] ?>" alt="">
+                            <img class="user-img" src="<?php echo $rowAvatar['UserAva'] ?>" alt="">
                           </a>
                         <?php } ?>
                         <div class="commentator-name">

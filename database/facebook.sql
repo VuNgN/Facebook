@@ -329,7 +329,7 @@ CREATE TABLE `view_post` (
 --
 DROP TABLE IF EXISTS `view_comment`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_comment`  AS SELECT `comment`.`CommentID` AS `CommentID`, `comment`.`CommentContent` AS `CommentContent`, `comment`.`PostID` AS `PostID`, `comment`.`UserID` AS `UserID`, concat(`user_profile`.`UserFirstName`,' ',`user_profile`.`UserLastName`) AS `UserName`, `user_profile`.`UserAva` AS `UserAva` FROM (`comment` join `user_profile` on(`comment`.`UserID` = `user_profile`.`UserID`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`id18287084_tuan`@`localhost` SQL SECURITY DEFINER VIEW `view_comment`  AS SELECT `comment`.`CommentID` AS `CommentID`, `comment`.`CommentContent` AS `CommentContent`, `comment`.`PostID` AS `PostID`, `comment`.`UserID` AS `UserID`, concat(`user_profile`.`UserFirstName`,' ',`user_profile`.`UserLastName`) AS `UserName`, `user_profile`.`UserAva` AS `UserAva` FROM (`comment` join `user_profile` on(`comment`.`UserID` = `user_profile`.`UserID`)) ;
 
 -- --------------------------------------------------------
 
@@ -338,7 +338,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_post`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_post`  AS SELECT `post`.`PostID` AS `PostID`, `post`.`UserID` AS `UserID`, concat(`user_profile`.`UserFirstName`,' ',`user_profile`.`UserLastName`) AS `UserName`, `post`.`PostCaption` AS `PostCaption`, `post`.`PostTime` AS `PostTime` FROM (`post` join `user_profile` on(`post`.`UserID` = `user_profile`.`UserID`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`id18287084_tuan`@`localhost` SQL SECURITY DEFINER VIEW `view_post`  AS SELECT `post`.`PostID` AS `PostID`, `post`.`UserID` AS `UserID`, concat(`user_profile`.`UserFirstName`,' ',`user_profile`.`UserLastName`) AS `UserName`, `post`.`PostCaption` AS `PostCaption`, `post`.`PostTime` AS `PostTime` FROM (`post` join `user_profile` on(`post`.`UserID` = `user_profile`.`UserID`)) ;
 
 --
 -- Indexes for dumped tables

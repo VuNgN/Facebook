@@ -153,13 +153,13 @@
                                 </a>
 
                             <?php  } ?>
-                            <div class="action-comment-under-item">
+                            <div class="action-comment-under-item btn-comment">
                                 <div class="action-icon">
                                     <span class="material-icons-outlined comment-icon">
                                         chat_bubble_outline
                                     </span>
                                 </div>
-                                <div class="action-name btn-comment <?php echo $row_news['PostID'] ?>">
+                                <div class="action-name <?php echo $row_news['PostID'] ?>">
                                     <h6>Bình luận</h6>
                                 </div>
                             </div>
